@@ -1,0 +1,69 @@
+/* ============================================================
+   CABRU — stili pagine interne (categorie, brand, hub, guide)
+   Estende style.css (stesse variabili/brand).
+   ============================================================ */
+
+.lang-switch { display:inline-flex; gap:2px; margin-left:6px; border-left:1px solid var(--line); padding-left:16px; }
+.lang-switch .lang { font-size:.82rem; font-weight:700; color:var(--muted); padding:4px 6px; border-radius:6px; letter-spacing:.03em; }
+.lang-switch .lang.on { color:#fff; background:var(--accent); }
+.lang-switch .lang:hover { color:var(--ink); }
+.lang-switch .lang.on:hover { color:#fff; }
+
+.page { padding: 40px 0 84px; }
+.crumb { font-size:.85rem; color:var(--muted); margin-bottom:26px; }
+.crumb a { color:var(--muted); }
+.crumb a:hover { color:var(--accent); }
+.crumb span { color:var(--ink-soft); }
+
+.doc { max-width: 820px; }
+.doc h1 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); margin-bottom: 22px; letter-spacing:-.01em; }
+.doc h2 { font-size: 1.4rem; margin: 40px 0 12px; }
+.doc h3 { font-size: 1.12rem; margin: 26px 0 8px; color:var(--ink); }
+.doc p { color: var(--ink-soft); font-size: 1.03rem; margin: 0 0 14px; }
+.doc a { color: var(--accent); }
+.doc a:hover { text-decoration: underline; }
+.doc ul.mrk { margin: 4px 0 18px; padding-left: 0; list-style: none; }
+.doc ul.mrk li { position:relative; padding: 8px 0 8px 26px; border-top:1px solid var(--line); color:var(--ink-soft); font-size:1rem; }
+.doc ul.mrk li:first-child { border-top:0; }
+.doc ul.mrk li::before { content:""; position:absolute; left:2px; top:16px; width:8px; height:8px; border-radius:2px; background:var(--accent); }
+
+/* logo brand in cima alla pagina-brand */
+.brand-hero { display:flex; align-items:center; justify-content:center; height:120px; border:1px solid var(--line);
+  border-radius:var(--radius); background:#fff; margin-bottom:30px; padding:24px; }
+.brand-hero img { max-height:70px; width:auto; object-fit:contain; }
+
+/* FAQ */
+.faq { margin-top: 46px; border-top:1px solid var(--line); padding-top: 30px; }
+.faq > h2 { margin-top:0; }
+.faq-item { padding: 16px 0; border-bottom:1px solid var(--line); }
+.faq-q { font-size:1.04rem; margin:0 0 6px; color:var(--ink); }
+.faq-a { color:var(--muted); font-size:.98rem; }
+.faq-a a { color:var(--accent); }
+
+.cta-block { margin-top: 40px; }
+
+/* hub aziende: griglia brand */
+.brand-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:20px; }
+.brand-card { display:flex; flex-direction:column; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:#fff; transition:.18s; text-decoration:none; }
+.brand-card:hover { box-shadow:var(--shadow); border-color:#d7dade; transform:translateY(-2px); }
+.brand-card__logo { height:84px; display:grid; place-items:center; padding:16px; border-bottom:1px solid var(--line); }
+.brand-card__logo img { max-height:46px; width:auto; object-fit:contain; }
+.brand-card__name { padding:12px 14px; font-size:.92rem; font-weight:600; color:var(--ink); text-align:center; }
+
+/* hub prodotti: griglia categorie */
+.cat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:20px; }
+.cat-card { display:flex; flex-direction:column; gap:6px; border:1px solid var(--line); border-radius:var(--radius); padding:22px 22px; background:#fff; transition:.18s; text-decoration:none; }
+.cat-card:hover { box-shadow:var(--shadow); border-color:#d7dade; transform:translateY(-2px); }
+.cat-card__name { font-size:1.1rem; font-weight:700; color:var(--ink); }
+.cat-card__meta { font-size:.9rem; color:var(--muted); }
+
+.doc .page-wide { max-width:none; }
+
+@media (max-width: 900px){
+  .brand-grid { grid-template-columns:repeat(3,1fr); }
+}
+@media (max-width: 640px){
+  .brand-grid { grid-template-columns:repeat(2,1fr); }
+  .cat-grid { grid-template-columns:1fr; }
+  .lang-switch { margin-left:0; padding-left:0; border-left:0; }
+}

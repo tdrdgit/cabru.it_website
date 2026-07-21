@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CABRU — Un unico interlocutore per tutte le scienze della vita</title>
+  <meta name="description" content="CABRU s.a.s. seleziona e distribuisce in Italia reagenti, kit, anticorpi, proteine, terreni di coltura e diagnostici di 21 produttori internazionali. Un unico interlocutore, dalla richiesta alla consegna.">
+
+  <link rel="icon" href="img/logo-cabru.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/content.css">
+
+  <!-- Attiva gli stati iniziali delle animazioni SOLO se JS è attivo e l'utente
+       non ha richiesto meno movimento. Senza JS o con reduced-motion, la pagina
+       resta completamente statica e leggibile (SEO / accessibilità safe). -->
+  <script>
+    (function () {
+      try {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduce) document.documentElement.classList.add('anim');
+      } catch (e) {}
+    })();
+  </script>
+
+  <style>
+    /* ===========================================================
+       CABRU — Homepage scrollytelling
+       Estende style.css / content.css. Palette e neutri invariati.
+       =========================================================== */
+
+    :root{
+      --px-1:#0f80a8;   /* accent            */
+      --px-2:#0a6485;   /* accent scuro      */
+      --px-3:#4f9fbe;   /* blu medio         */
+      --px-4:#9cc6d6;   /* blu chiaro        */
+      --px-5:#cfe0e8;   /* blu pallido       */
+      --px-6:#aeb9c1;   /* blu-grigio (logo) */
+      --ease-out:cubic-bezier(.16,1,.3,1);
+    }
+
+    html,body{ overflow-x:hidden; }
+    body{ background:var(--bg); }
+
+    /* Larghezza editoriale un filo più ampia per i grandi respiri */
+    .wrap-lg{ max-width:1240px; margin:0 auto; padding:0 24px; }
+
+    /* barra di avanzamento scroll */
+    .scroll-progress{
+      position:fixed; top:0; left:0; height:3px; width:0%;
+      background:linear-gradient(90deg,var(--accent),var(--px-3));
+      z-index:120; transition:width .08s linear;
+    }
+
+    /* ---------- Motivo pixel-grid (richiamo del logo) ---------- */
+    .pixel-field{ position:absolute; inset:0; pointer-events:none; }
+    .pixel-field .px{
+      position:absolute; border-radius:2px; will-change:transform,opacity;
+    }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .s-hero{
+      position:relative; overflow:hidden;
+      background:var(--bg-soft);
+      border-bottom:1px solid var(--line);
+      padding:0;
+    }
+    .s-hero::before{ /* griglia leggerissima di fondo */
+      content:""; position:absolute; inset:0;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size:30px 30px;
+      -webkit-mask-image:radial-gradient(ellipse 75% 85% at 80% 25%, #000 0%, transparent 72%);
+              mask-image:radial-gradient(ellipse 75% 85% at 80% 25%, #000 0%, transparent 72%);
+      opacity:.6; pointer-events:none;
+    }
+    .hero-grid{
+      position:relative; z-index:2;
+      display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center;
+      padding:82px 0 76px;
+    }
+    .hero-copy{ max-width:600px; }
+    .s-hero h1{ color:var(--ink); margin-top:6px; }
+    .s-hero h1 .accent{ color:var(--accent); }
+    .s-hero .lead{ font-size:1.2rem; color:var(--ink-soft); margin:22px 0 32px; max-width:560px; }
+
+    /* comporre il campo pixel dell'hero */
+    .hero-art{
+      position:relative; height:420px;
+      display:grid; place-items:center;
+    }
+    .hero-pixels{
+      position:relative;
+      width:min(420px,84%); aspect-ratio:1/1;
+    }
+    .hero-pixels .px{ position:absolute; }
+
+    .stats{ margin-top:52px; }
+
+    /* scroll hint */
+    .scroll-hint{
+      position:absolute; left:50%; bottom:22px; transform:translateX(-50%);
+      z-index:3; display:flex; flex-direction:column; align-items:center; gap:8px;
+      font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted);
+    }
+    .scroll-hint .dot{
+      width:22px; height:34px; border:2px solid var(--px-6); border-radius:12px; position:relative;
+    }
+    .scroll-hint .dot::after{
+      content:""; position:absolute; left:50%; top:7px; width:3px; height:6px; border-radius:2px;
+      background:var(--accent); transform:translateX(-50%);
+      animation:hintScroll 1.6s var(--ease-out) infinite;
+    }
+    @keyframes hintScroll{ 0%{opacity:0;transform:translate(-50%,0)} 30%{opacity:1} 100%{opacity:0;transform:translate(-50%,12px)} }
+
+    /* ============================================================
+       VALUE PROP — "un unico interlocutore"
+       ============================================================ */
+    .s-value{ position:relative; background:#fff; padding:110px 0; }
+    .value-lead{ max-width:820px; }
+    .value-lead h2{
+      font-size:clamp(1.9rem,4vw,3rem); line-height:1.08; letter-spacing:-.02em;
+    }
+    .value-lead h2 .accent{ color:var(--accent); }
+    .value-lead p{ color:var(--muted); font-size:1.12rem; margin-top:20px; max-width:640px; }
+
+    /* diagramma: produttori -> CABRU -> laboratorio */
+    .flow{
+      display:grid; grid-template-columns:1fr auto 1fr auto 1fr; align-items:stretch; gap:0;
+      margin-top:64px; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+      background:var(--bg-soft);
+    }
+    .flow-node{ padding:34px 30px; background:#fff; }
+    .flow-node .kfig{ font-size:2.4rem; font-weight:800; letter-spacing:-.03em; color:var(--ink); line-height:1; }
+    .flow-node .kfig span{ color:var(--accent); }
+    .flow-node.mid{ background:var(--accent); color:#fff; display:grid; align-content:center; text-align:center; }
+    .flow-node.mid .kfig{ color:#fff; }
+    .flow-node .klbl{ margin-top:10px; font-size:.9rem; color:var(--muted); }
+    .flow-node.mid .klbl{ color:rgba(255,255,255,.8); }
+    .flow-node .kname{ font-size:1.05rem; font-weight:700; margin-top:4px; }
+    .flow-arrow{
+      display:grid; place-items:center; width:64px; background:var(--bg-soft); color:var(--px-3);
+    }
+    .flow-arrow svg{ width:26px; height:26px; }
+
+    /* ============================================================
+       MANUFACTURERS — le 21 aziende rappresentate
+       ============================================================ */
+    .s-mfr{ background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:104px 0; overflow:hidden; }
+    .mfr-grid{
+      display:grid; grid-template-columns:repeat(7,1fr); gap:14px; margin-top:48px;
+    }
+    .mfr{
+      display:grid; place-items:center; height:96px; padding:16px;
+      background:#fff; border:1px solid var(--line); border-radius:var(--radius-s);
+      transition:box-shadow .2s, border-color .2s, transform .2s; will-change:transform,opacity;
+    }
+    .mfr img{ max-height:52px; max-width:100%; width:auto; object-fit:contain; transition:transform .2s; }
+    .mfr:hover{ box-shadow:var(--shadow); border-color:#d1d6da; transform:translateY(-2px); }
+    .mfr:hover img{ transform:scale(1.05); }
+    .mfr-foot{ margin-top:34px; display:flex; flex-wrap:wrap; align-items:center; gap:16px; }
+
+    /* ============================================================
+       CATEGORIE — indice sticky con categoria attiva
+       ============================================================ */
+    .s-cat{ background:#fff; padding:104px 0; }
+    .cat-layout{ display:grid; grid-template-columns:.9fr 1.1fr; gap:56px; align-items:start; margin-top:40px; }
+    .cat-sticky{ position:sticky; top:120px; }
+    .cat-stage{
+      border:1px solid var(--line); border-radius:var(--radius); background:var(--bg-soft);
+      padding:38px 34px; position:relative; overflow:hidden; min-height:340px;
+    }
+    .cat-stage .cat-index{ font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+    .cat-stage .cat-index b{ color:var(--accent); }
+    .cat-stage .cat-ico{
+      width:64px; height:64px; border-radius:16px; display:grid; place-items:center;
+      background:#fff; color:var(--accent); border:1px solid var(--line); margin:22px 0 20px;
+    }
+    .cat-stage .cat-ico svg{ width:32px; height:32px; }
+    .cat-stage h3{ font-size:1.7rem; letter-spacing:-.01em; color:var(--ink); min-height:1.2em; }
+    .cat-stage p{ color:var(--muted); font-size:1rem; margin-top:12px; }
+    .cat-stage .cat-go{ margin-top:20px; display:inline-flex; align-items:center; gap:8px; font-weight:600; color:var(--accent); }
+    .cat-stage .cat-go svg{ width:16px; height:16px; }
+    /* mini pixel-grid decorativa nell'angolo dello stage */
+    .cat-stage .stage-px{ position:absolute; inset:auto -10px -10px auto; width:150px; height:150px; opacity:.5; }
+
+    .cat-list{ list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+    .cat-row{
+      display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:20px;
+      padding:26px 8px; border-bottom:1px solid var(--line);
+      text-decoration:none; color:var(--ink); transition:padding .25s var(--ease-out), background .2s;
+    }
+    .cat-row .rn{ font-size:.9rem; font-weight:700; color:var(--px-6); letter-spacing:.05em; width:34px; }
+    .cat-row .rname{ font-size:1.25rem; font-weight:700; letter-spacing:-.01em; transition:color .2s; }
+    .cat-row .rgo{ color:var(--px-6); transition:transform .25s var(--ease-out), color .2s; }
+    .cat-row .rgo svg{ width:20px; height:20px; display:block; }
+    .cat-row:hover, .cat-row.active{ background:var(--accent-soft); padding-left:18px; padding-right:14px; }
+    .cat-row.active .rn{ color:var(--accent); }
+    .cat-row:hover .rname, .cat-row.active .rname{ color:var(--accent-dark); }
+    .cat-row:hover .rgo, .cat-row.active .rgo{ color:var(--accent); transform:translateX(4px); }
+
+    /* ============================================================
+       PROCESSO — dalla richiesta alla consegna
+       ============================================================ */
+    .s-proc{ background:var(--bg-dark); color:#fff; padding:108px 0; position:relative; overflow:hidden; }
+    .s-proc .eyebrow{ color:#7ec3de; }
+    .s-proc h2{ color:#fff; }
+    .s-proc .sub{ color:rgba(255,255,255,.62); font-size:1.08rem; max-width:640px; margin-top:14px; }
+    .proc-track{ position:relative; margin-top:64px; }
+    .proc-line{
+      position:absolute; left:0; top:34px; height:2px; width:100%;
+      background:rgba(255,255,255,.14);
+    }
+    .proc-line .fill{ position:absolute; left:0; top:0; height:100%; width:0%; background:linear-gradient(90deg,var(--accent),var(--px-3)); }
+    .proc-steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:26px; position:relative; }
+    .proc-step .dot{
+      width:16px; height:16px; border-radius:4px; background:var(--px-6);
+      position:relative; z-index:2; margin-bottom:34px; transition:background .3s, transform .3s;
+    }
+    .proc-step.on .dot{ background:var(--accent); transform:scale(1.15); box-shadow:0 0 0 6px rgba(15,128,168,.18); }
+    .proc-step .pn{ font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:#7ec3de; }
+    .proc-step h3{ color:#fff; font-size:1.18rem; margin:8px 0 10px; }
+    .proc-step p{ color:rgba(255,255,255,.6); font-size:.95rem; margin:0; }
+
+    /* ============================================================
+       CLOSING CTA
+       ============================================================ */
+    .s-cta{ position:relative; overflow:hidden; background:var(--accent); color:#fff; padding:112px 0; }
+    .s-cta .pixel-field{ opacity:.9; }
+    .cta-inner{ position:relative; z-index:2; max-width:760px; }
+    .s-cta .eyebrow{ color:rgba(255,255,255,.85); }
+    .s-cta h2{ color:#fff; font-size:clamp(1.9rem,4vw,3rem); line-height:1.08; letter-spacing:-.02em; }
+    .s-cta p{ color:rgba(255,255,255,.9); font-size:1.15rem; margin-top:18px; max-width:560px; }
+    .s-cta .btn-row{ margin-top:32px; }
+    .btn-white{ background:#fff; color:var(--accent-dark); }
+    .btn-white:hover{ background:#eef6f9; color:var(--accent-dark); transform:translateY(-1px); }
+    .btn-outline-w{ background:transparent; color:#fff; border-color:rgba(255,255,255,.55); }
+    .btn-outline-w:hover{ border-color:#fff; color:#fff; }
+    .cta-contacts{
+      position:relative; z-index:2; display:flex; flex-wrap:wrap; gap:34px; margin-top:48px;
+      padding-top:30px; border-top:1px solid rgba(255,255,255,.25); font-size:.98rem;
+    }
+    .cta-contacts a{ color:#fff; font-weight:600; }
+    .cta-contacts .k{ display:block; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.7); margin-bottom:4px; }
+
+    /* ============================================================
+       Reveal — stato iniziale solo con .anim (JS + motion ok)
+       ============================================================ */
+    .anim [data-reveal]{ opacity:0; transform:translateY(26px); }
+    .anim .hero-pixels .px{ opacity:0; }
+    .anim .flow-node, .anim .flow-arrow{ opacity:0; }
+    .anim .proc-step{ opacity:0; transform:translateY(20px); }
+
+    /* ============================================================
+       Responsive
+       ============================================================ */
+    @media (max-width:1040px){
+      .mfr-grid{ grid-template-columns:repeat(5,1fr); }
+    }
+    @media (max-width:920px){
+      .hero-grid{ grid-template-columns:1fr; gap:8px; padding:60px 0 64px; }
+      .hero-art{ height:300px; order:-1; }
+      .hero-pixels{ width:min(300px,70%); }
+      .cat-layout{ grid-template-columns:1fr; gap:30px; }
+      .cat-sticky{ position:static; }
+      .cat-stage{ min-height:0; }
+      .flow{ grid-template-columns:1fr; }
+      .flow-arrow{ width:100%; height:52px; transform:rotate(90deg); }
+      .proc-steps{ grid-template-columns:1fr 1fr; gap:34px 26px; }
+      .proc-line{ display:none; }
+    }
+    @media (max-width:680px){
+      .mfr-grid{ grid-template-columns:repeat(3,1fr); gap:12px; }
+      .value-lead h2, .s-cta h2{ font-size:1.7rem; }
+      .cat-row .rname{ font-size:1.08rem; }
+      .proc-steps{ grid-template-columns:1fr; }
+      .s-value,.s-mfr,.s-cat,.s-proc,.s-cta{ padding:72px 0; }
+    }
+    @media (max-width:460px){
+      .mfr-grid{ grid-template-columns:repeat(2,1fr); }
+    }
+
+    /* Fallback duro: nessun movimento richiesto → tutto visibile e fermo */
+    @media (prefers-reduced-motion: reduce){
+      .scroll-hint .dot::after{ animation:none; }
+      html{ scroll-behavior:auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index-scrolly.html" aria-label="CABRU home">
+        <img src="img/logo-cabru.png" alt="CABRU">
+      </a>
+      <input type="checkbox" id="navtoggle" class="nav-checkbox" aria-label="Apri il menu">
+      <label for="navtoggle" class="nav-burger" aria-label="Apri il menu"><span></span><span></span><span></span></label>
+      <nav class="nav">
+        <a href="/prodotti/">Prodotti</a>
+        <a href="/aziende/">Aziende</a>
+        <a href="/contatti/">Contatti</a>
+        <a href="/contatti/" class="nav-cta">Contattaci</a>
+        <span class="lang-switch"><a href="index-scrolly.html" class="lang on">IT</a><a href="/en/" class="lang">EN</a></span>
+      </nav>
+    </div>
+  </header>
+
+  <span id="top"></span>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="s-hero">
+    <div class="wrap-lg">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow" data-reveal>Prodotti per laboratorio, industria e ricerca</span>
+          <h1 data-reveal>Reagenti e soluzioni per la ricerca,<br>la <span class="accent">diagnostica</span> e l'industria.</h1>
+          <p class="lead" data-reveal>
+            CABRU seleziona e distribuisce in Italia i prodotti di produttori
+            internazionali specializzati: anticorpi, kit, proteine, reagenti per
+            biologia molecolare e terreni di coltura. Un unico interlocutore.
+          </p>
+          <div class="btn-row" data-reveal>
+            <a href="#categorie" class="btn btn-primary">Esplora i prodotti</a>
+            <a href="#aziende" class="btn btn-ghost">Le aziende che rappresentiamo</a>
+          </div>
+
+          <div class="stats" data-reveal>
+            <div class="stat">
+              <div class="num"><span data-partner-count>21</span></div>
+              <div class="lbl">Aziende rappresentate</div>
+            </div>
+            <div class="stat">
+              <div class="num">8</div>
+              <div class="lbl">Categorie di prodotto</div>
+            </div>
+            <div class="stat">
+              <div class="num">100<span>%</span></div>
+              <div class="lbl">Focus laboratorio &amp; life science</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-pixels" id="heroPixels"></div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <span class="dot"></span>
+      <span>Scorri</span>
+    </div>
+  </section>
+
+  <!-- ============ 2 · VALUE PROP ============ -->
+  <section class="s-value" id="valore">
+    <div class="wrap-lg">
+      <div class="value-lead">
+        <span class="eyebrow" data-reveal>Perché CABRU</span>
+        <h2 data-reveal>Un unico interlocutore.<br><span class="accent">Tutte le scienze della vita.</span></h2>
+        <p data-reveal>
+          Selezioniamo produttori internazionali specializzati e ne portiamo i prodotti
+          nel tuo laboratorio con un solo referente: biologia molecolare, immunochimica,
+          proteomica, microbiologia e diagnostica. Un solo contatto per ordini,
+          informazioni tecniche e assistenza.
+        </p>
+      </div>
+
+      <div class="flow" aria-hidden="true">
+        <div class="flow-node">
+          <div class="kfig"><span>21</span></div>
+          <div class="kname">Produttori internazionali</div>
+          <div class="klbl">Specializzati, selezionati uno a uno.</div>
+        </div>
+        <div class="flow-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </div>
+        <div class="flow-node mid">
+          <div class="kfig">CABRU</div>
+          <div class="klbl">Il tuo unico interlocutore in Italia</div>
+        </div>
+        <div class="flow-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </div>
+        <div class="flow-node">
+          <div class="kfig">Il tuo <span>lab</span></div>
+          <div class="kname">Ricerca · Diagnostica · Industria</div>
+          <div class="klbl">Un solo contatto, dalla richiesta alla consegna.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3 · AZIENDE RAPPRESENTATE ============ -->
+  <section class="s-mfr" id="aziende">
+    <div class="wrap-lg">
+      <div class="section-head" style="max-width:760px;margin-bottom:0">
+        <span class="eyebrow" data-reveal>Le aziende che rappresentiamo</span>
+        <h2 data-reveal><strong data-partner-count>21</strong> produttori internazionali. Li rappresentiamo in Italia.</h2>
+        <p data-reveal>Ogni azienda copre un'area specifica delle scienze della vita. Insieme, coprono l'intero laboratorio.</p>
+      </div>
+
+      <div class="mfr-grid" id="mfrGrid">
+        <a class="mfr" href="/aziende/a-a-biotechnology/" title="A&amp;A Biotechnology"><img src="img/partners/a-a-biotechnology.png" alt="A&amp;A Biotechnology" loading="lazy"></a>
+        <a class="mfr" href="/aziende/affinity-biologicals/" title="Affinity Biologicals"><img src="img/partners/affinity-biologicals.png" alt="Affinity Biologicals" loading="lazy"></a>
+        <a class="mfr" href="/aziende/bioatlas/" title="Bioatlas"><img src="img/partners/bioatlas.png" alt="Bioatlas" loading="lazy"></a>
+        <a class="mfr" href="/aziende/biomedica-diagnostics/" title="BioMedica Diagnostics"><img src="img/partners/biomedica-diagnostics.png" alt="BioMedica Diagnostics" loading="lazy"></a>
+        <a class="mfr" href="/aziende/biovendor/" title="BioVendor"><img src="img/partners/biovendor.png" alt="BioVendor" loading="lazy"></a>
+        <a class="mfr" href="/aziende/candor-bioscience/" title="Candor Bioscience"><img src="img/partners/candor-bioscience.png" alt="Candor Bioscience" loading="lazy"></a>
+        <a class="mfr" href="/aziende/cayman-chemical/" title="Cayman Chemical"><img src="img/partners/cayman-chemical.png" alt="Cayman Chemical" loading="lazy"></a>
+        <a class="mfr" href="/aziende/condalab/" title="Condalab"><img src="img/partners/condalab.png" alt="Condalab" loading="lazy"></a>
+        <a class="mfr" href="/aziende/dia-pro/" title="DIA.PRO"><img src="img/partners/dia-pro.png" alt="DIA.PRO" loading="lazy"></a>
+        <a class="mfr" href="/aziende/dgel-sciences/" title="DGel Sciences"><img src="img/partners/dgel-sciences.png" alt="DGel Sciences" loading="lazy"></a>
+        <a class="mfr" href="/aziende/enzyme-research-laboratories/" title="Enzyme Research Laboratories"><img src="img/partners/enzyme-research.png" alt="Enzyme Research Laboratories" loading="lazy"></a>
+        <a class="mfr" href="/aziende/exbio/" title="ExBio"><img src="img/partners/exbio.png" alt="ExBio" loading="lazy"></a>
+        <a class="mfr" href="/aziende/finetest/" title="FineTest"><img src="img/partners/finetest.png" alt="FineTest" loading="lazy"></a>
+        <a class="mfr" href="/aziende/g-biosciences/" title="G Biosciences"><img src="img/partners/g-biosciences.png" alt="G Biosciences" loading="lazy"></a>
+        <a class="mfr" href="/aziende/immbiomed/" title="IMMBIOMED"><img src="img/partners/immbiomed.png" alt="IMMBIOMED" loading="lazy"></a>
+        <a class="mfr" href="/aziende/ldn/" title="LDN — Labor Diagnostika Nord"><img src="img/partners/ldn.png" alt="LDN — Labor Diagnostika Nord" loading="lazy"></a>
+        <a class="mfr" href="/aziende/magbio/" title="MAGBIO"><img src="img/partners/magbio.png" alt="MAGBIO" loading="lazy"></a>
+        <a class="mfr" href="/aziende/reliatech/" title="ReliaTech"><img src="img/partners/reliatech.png" alt="ReliaTech" loading="lazy"></a>
+        <a class="mfr" href="/aziende/rovalab/" title="Rovalab"><img src="img/partners/rovalab.png" alt="Rovalab" loading="lazy"></a>
+        <a class="mfr" href="/aziende/seqens/" title="SEQENS"><img src="img/partners/seqens.png" alt="SEQENS" loading="lazy"></a>
+        <a class="mfr" href="/aziende/smobio/" title="SMOBIO"><img src="img/partners/smobio.png" alt="SMOBIO" loading="lazy"></a>
+      </div>
+
+      <div class="mfr-foot" data-reveal>
+        <a href="/aziende/" class="btn btn-primary">Vai all'elenco completo</a>
+        <span style="color:var(--muted);font-size:.95rem">Ogni azienda ha una scheda dedicata in italiano.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4 · CATEGORIE ============ -->
+  <section class="s-cat" id="categorie">
+    <div class="wrap-lg">
+      <div class="section-head" style="max-width:760px;margin-bottom:0">
+        <span class="eyebrow" data-reveal>Cosa offriamo</span>
+        <h2 data-reveal>Otto categorie. Un laboratorio intero.</h2>
+        <p data-reveal>Una gamma completa per la ricerca, la diagnostica e il controllo qualità. Scorri: la scheda a fianco segue la categoria.</p>
+      </div>
+
+      <div class="cat-layout">
+        <!-- pannello sticky: categoria attiva -->
+        <div class="cat-sticky" aria-hidden="true">
+          <div class="cat-stage" id="catStage">
+            <div class="cat-index">Categoria <b id="catNum">01</b> / 08</div>
+            <div class="cat-ico" id="catIco"></div>
+            <h3 id="catName">Anticorpi</h3>
+            <p id="catDesc">Anticorpi primari mono e policlonali e anticorpi secondari.</p>
+            <a class="cat-go" id="catLink" href="/prodotti/anticorpi/">
+              Vai alla categoria
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+            <div class="pixel-field stage-px" id="stagePx"></div>
+          </div>
+        </div>
+
+        <!-- elenco scannabile e linkato -->
+        <ul class="cat-list" id="catList">
+          <li><a class="cat-row" href="/prodotti/anticorpi/"
+                 data-n="01" data-name="Anticorpi"
+                 data-desc="Anticorpi primari mono e policlonali e anticorpi secondari."
+                 data-ico="ab">
+            <span class="rn">01</span>
+            <span class="rname">Anticorpi</span>
+            <span class="rgo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+          </a></li>
+
+          <li><a class="cat-row" href="/prodotti/molecole-biochimiche/"
+                 data-n="02" data-name="Molecole biochimiche"
+                 data-desc="Principi attivi, inibitori, attivatori, standard, substrati, traccianti, coloranti, enzimi."
+                 data-ico="mol">
+            <span class="rn">02</span>
+            <span class="rname">Molecole biochimiche</span>
+            <span class="rgo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+          </a></li>
+
+          <li><a class="cat-row" href="/prodotti/kit-elisa/"
+                 data-n="03" data-name="Kit immunoenzimatici"
+                 data-desc="Kit ELISA, EIA, per FC e IHC; colorimetrici e fluorimetrici per il dosaggio di antigeni, metaboliti e lo studio dei processi biologici."
+                 data-ico="kit">
+            <span class="rn">03</span>
+            <span class="rname">Kit immunoenzimatici</span>
+            <span class="rgo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+          </a></li>
+
+          <li><a class="cat-row" href="/prodotti/proteine/"
+                 data-n="04" data-name="Proteine"
+                 data-desc="Proteine ricombinanti e proteine purificate."
+                 data-ico="prot">
+            <span class="rn">04</span>
+            <span class="rname">Proteine</span>
+            <span class="rgo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+          </a></li>
+
+          <li><a class="cat-row" href="/prodotti/acidi-nucleici/"
+                 data-n="05" data-name="Acidi nucleici"
+                 data-desc="Reagenti e kit per estrazione, purificazione, retrotrascrizione, amplificazione (qPCR, PCR), modificazione, sequenziamento, NGS ed elettroforesi."
+                 data-ico="dna">
+            <span class="rn">05</span>
+            <span class="rname">Acidi nucleici</span>
+            <span class="rgo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+          </a></li>
+
+          <li><a class="cat-row" href="/prodotti/elettroforesi-western-blot/"
+                 data-n="06" data-name="Elettroforesi &amp; western blot"
+                 data-desc="Reagenti e kit per estrazione, purificazione, dosaggio ed elettroforesi di proteine 1D e 2D e per western blot."
+                 data-ico="gel">
+            <span class="rn">06</span>
+            <span class="rname">Elettroforesi &amp; western blot</span>
+            <span class="rgo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+          </a></li>
+
+          <li><a class="cat-row" href="/prodotti/terreni-microbiologia/"
+                 data-n="07" data-name="Terreni per microbiologia"
+                 data-desc="Terreni classici e cromogenici, supplementi, agar, peptoni, estratti, agarosi."
+                 data-ico="micro">
+            <span class="rn">07</span>
+            <span class="rname">Terreni per microbiologia</span>
+            <span class="rgo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+          </a></li>
+
+          <li><a class="cat-row" href="/prodotti/soluzioni-polveri/"
+                 data-n="08" data-name="Soluzioni e polveri"
+                 data-desc="Soluzioni pronte all'uso e polveri per la preparazione in laboratorio."
+                 data-ico="sol">
+            <span class="rn">08</span>
+            <span class="rname">Soluzioni e polveri</span>
+            <span class="rgo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+          </a></li>
+        </ul>
+      </div>
+
+      <div style="margin-top:40px" data-reveal>
+        <a href="/prodotti/" class="btn btn-ghost">Vedi tutte le categorie</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5 · PROCESSO ============ -->
+  <section class="s-proc" id="processo">
+    <div class="wrap-lg">
+      <span class="eyebrow" data-reveal>Come lavoriamo</span>
+      <h2 data-reveal>Dalla richiesta alla consegna.</h2>
+      <p class="sub" data-reveal>Un percorso lineare con un solo referente. Tu chiedi, noi seguiamo tutto il resto.</p>
+
+      <div class="proc-track">
+        <div class="proc-line" aria-hidden="true"><div class="fill" id="procFill"></div></div>
+        <div class="proc-steps">
+          <div class="proc-step" data-step>
+            <div class="dot"></div>
+            <div class="pn">Fase 01</div>
+            <h3>Richiesta</h3>
+            <p>Ci scrivi il prodotto, il codice o l'applicazione che ti serve. Anche solo la domanda tecnica.</p>
+          </div>
+          <div class="proc-step" data-step>
+            <div class="dot"></div>
+            <div class="pn">Fase 02</div>
+            <h3>Verifica</h3>
+            <p>Controlliamo disponibilità, tempi e alternative presso i produttori che rappresentiamo.</p>
+          </div>
+          <div class="proc-step" data-step>
+            <div class="dot"></div>
+            <div class="pn">Fase 03</div>
+            <h3>Offerta e ordine</h3>
+            <p>Ricevi un'offerta chiara. Confermi, e gestiamo l'ordine con il produttore per te.</p>
+          </div>
+          <div class="proc-step" data-step>
+            <div class="dot"></div>
+            <div class="pn">Fase 04</div>
+            <h3>Consegna</h3>
+            <p>Il prodotto arriva in laboratorio, con l'assistenza tecnica quando serve.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6 · CTA FINALE ============ -->
+  <section class="s-cta" id="contatti">
+    <div class="pixel-field" id="ctaPixels" aria-hidden="true"></div>
+    <div class="wrap-lg">
+      <div class="cta-inner">
+        <span class="eyebrow" data-reveal>Parliamone</span>
+        <h2 data-reveal>Un solo interlocutore<br>per tutte le scienze della vita.</h2>
+        <p data-reveal>Cerchi un prodotto specifico o non lo trovi tra le categorie? Scrivici: verifichiamo la disponibilità presso i nostri partner e ti seguiamo dalla richiesta alla consegna.</p>
+        <div class="btn-row" data-reveal>
+          <a href="/contatti/" class="btn btn-white">Contattaci</a>
+          <a href="mailto:info@cabru.it?subject=Richiesta%20informazioni" class="btn btn-outline-w">Invia una email</a>
+        </div>
+      </div>
+
+      <div class="cta-contacts" data-reveal>
+        <div>
+          <span class="k">Sede</span>
+          Via Enrico Forlanini 52, 20862 Arcore (MB)
+        </div>
+        <div>
+          <span class="k">Telefono</span>
+          <a href="tel:+390396013988">039 6013988</a>
+        </div>
+        <div>
+          <span class="k">Email</span>
+          <a href="mailto:info@cabru.it">info@cabru.it</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <span class="foot-brand">CABRU s.a.s.</span>
+        &nbsp;·&nbsp; Via Enrico Forlanini 52, 20862 Arcore (MB) &nbsp;·&nbsp;
+        <a href="tel:+390396013988">039 6013988</a> &nbsp;·&nbsp;
+        <a href="mailto:info@cabru.it">info@cabru.it</a>
+      </div>
+      <div>© <span id="year"></span> CABRU — Prodotti per laboratorio, industria e ricerca</div>
+    </div>
+  </footer>
+
+  <!-- ====== Icone SVG per lo stage categoria (sorgente nascosta) ====== -->
+  <div id="catIcons" hidden aria-hidden="true">
+    <span data-k="ab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v7"/><path d="M12 10 6 21"/><path d="M12 10l6 11"/><path d="M8 16h8"/></svg></span>
+    <span data-k="mol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="10" ry="4.5"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)"/></svg></span>
+    <span data-k="kit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></span>
+    <span data-k="prot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3c0 4 12 5 12 9s-12 5-12 9"/><path d="M18 3c0 4-12 5-12 9s12 5 12 9"/><path d="M8 6h8M8 18h8M9 9h6M9 15h6"/></svg></span>
+    <span data-k="dna"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2c8 3 8 17 0 20M16 2c-8 3-8 17 0 20"/><path d="M9 5h6M8.4 9h7.2M8.4 15h7.2M9 19h6"/></svg></span>
+    <span data-k="gel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="6" height="18" rx="1"/><rect x="14" y="3" width="6" height="18" rx="1"/><path d="M4 8h6M4 13h6M14 7h6M14 12h6M14 17h6"/></svg></span>
+    <span data-k="micro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M3 12h18"/><path d="M12 4v3M9.5 5.5 12 7l2.5-1.5"/><circle cx="10" cy="15" r="1"/><circle cx="14" cy="16" r="1"/></svg></span>
+    <span data-k="sol"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 15h9"/></svg></span>
+  </div>
+
+  <!-- ============ GSAP + ScrollTrigger (CDN) ============ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+  (function () {
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    var PALETTE = ['var(--px-1)','var(--px-2)','var(--px-3)','var(--px-4)','var(--px-5)','var(--px-6)'];
+
+    /* ---------- barra di avanzamento (sempre attiva, leggerissima) ---------- */
+    var bar = document.getElementById('scrollProgress');
+    function onScrollBar(){
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    }
+    window.addEventListener('scroll', onScrollBar, { passive:true });
+    onScrollBar();
+
+    /* ---------- categoria attiva: pannello sticky (JS, no motion needed) ---------- */
+    (function catSync(){
+      var rows = Array.prototype.slice.call(document.querySelectorAll('#catList .cat-row'));
+      if (!rows.length) return;
+      var elNum = document.getElementById('catNum'),
+          elName = document.getElementById('catName'),
+          elDesc = document.getElementById('catDesc'),
+          elLink = document.getElementById('catLink'),
+          elIco  = document.getElementById('catIco'),
+          icoSrc = document.getElementById('catIcons');
+      function icoHtml(k){ var s = icoSrc.querySelector('[data-k="'+k+'"]'); return s ? s.innerHTML : ''; }
+      function setActive(row){
+        rows.forEach(function(r){ r.classList.toggle('active', r === row); });
+        elNum.textContent = row.getAttribute('data-n');
+        elName.innerHTML  = row.getAttribute('data-name');
+        elDesc.textContent = row.getAttribute('data-desc');
+        elLink.setAttribute('href', row.getAttribute('href'));
+        elIco.innerHTML = icoHtml(row.getAttribute('data-ico'));
+      }
+      setActive(rows[0]);
+      if (!('IntersectionObserver' in window)) return;
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting) setActive(e.target); });
+      }, { rootMargin:'-45% 0px -45% 0px', threshold:0 });
+      rows.forEach(function(r){ io.observe(r); });
+    })();
+
+    /* ---------- generatore di pixel-grid ---------- */
+    function buildPixels(host, cols, rows, opts){
+      opts = opts || {};
+      var frag = document.createDocumentFragment();
+      var cells = [];
+      var gap = opts.gap != null ? opts.gap : 8;   // % del passo lasciato come gap
+      var pw = 100 / cols, ph = 100 / rows;
+      for (var r = 0; r < rows; r++){
+        for (var c = 0; c < cols; c++){
+          // densità: qualche cella vuota per dare texture
+          if (Math.random() < (opts.empty != null ? opts.empty : 0.18)) continue;
+          var d = document.createElement('span');
+          d.className = 'px';
+          d.style.left   = (c * pw) + '%';
+          d.style.top    = (r * ph) + '%';
+          d.style.width  = (pw - gap/cols) + '%';
+          d.style.height = (ph - gap/rows) + '%';
+          var pal = opts.palette || PALETTE;
+          d.style.background = pal[(Math.random() * pal.length) | 0];
+          d.style.opacity = opts.baseOpacity != null ? opts.baseOpacity : 1;
+          frag.appendChild(d);
+          cells.push(d);
+        }
+      }
+      host.appendChild(frag);
+      return cells;
+    }
+
+    // Hero: motivo denso che richiama il marchio
+    var heroCells = [];
+    var heroHost = document.getElementById('heroPixels');
+    if (heroHost) heroCells = buildPixels(heroHost, 9, 9, { gap:10, empty:0.14 });
+
+    // Stage categoria: piccola grid decorativa (blu pallidi)
+    var stageHost = document.getElementById('stagePx');
+    if (stageHost) buildPixels(stageHost, 6, 6, { gap:12, empty:0.2, palette:['var(--px-4)','var(--px-5)','var(--px-3)'], baseOpacity:0.85 });
+
+    // CTA finale: motivo su fondo blu (bianchi translucidi)
+    var ctaHost = document.getElementById('ctaPixels');
+    var ctaCells = [];
+    if (ctaHost){
+      // riempi tutta la sezione: molte celle piccole
+      ctaCells = buildPixels(ctaHost, 20, 10, {
+        gap:14, empty:0.55,
+        palette:['rgba(255,255,255,.14)','rgba(255,255,255,.09)','rgba(255,255,255,.20)','rgba(10,100,133,.35)'],
+        baseOpacity:1
+      });
+    }
+
+    /* ============================================================
+       ANIMAZIONI GSAP — solo se lib caricata e .anim presente
+       (se la CDN non risponde o reduced-motion: fallback statico)
+       ============================================================ */
+    var animate = document.documentElement.classList.contains('anim') &&
+                  typeof window.gsap !== 'undefined';
+
+    if (!animate){
+      // Nessuna animazione: garantiamo che tutto sia visibile.
+      document.documentElement.classList.remove('anim');
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1 · HERO — assemblaggio dei pixel + entrata copy
+    if (heroCells.length){
+      gsap.set(heroCells, { opacity:0, scale:0.2,
+        xPercent:function(){ return gsap.utils.random(-260,260); },
+        yPercent:function(){ return gsap.utils.random(-260,260); },
+        rotation:function(){ return gsap.utils.random(-60,60); }
+      });
+      gsap.to(heroCells, {
+        opacity:1, scale:1, xPercent:0, yPercent:0, rotation:0,
+        duration:1.1, ease:'power3.out', stagger:{ each:0.012, from:'center' }, delay:0.15
+      });
+      // parallax leggero al scroll
+      gsap.to(heroHost, {
+        yPercent:-14, ease:'none',
+        scrollTrigger:{ trigger:'.s-hero', start:'top top', end:'bottom top', scrub:true }
+      });
+    }
+
+    // reveal generico per copy dell'hero (immediato)
+    gsap.to('.s-hero [data-reveal]', {
+      opacity:1, y:0, duration:0.8, ease:'power3.out', stagger:0.08, delay:0.1
+    });
+
+    // reveal generico on-scroll per il resto della pagina
+    gsap.utils.toArray('[data-reveal]').forEach(function(el){
+      if (el.closest('.s-hero')) return; // già gestiti
+      gsap.to(el, {
+        opacity:1, y:0, duration:0.7, ease:'power3.out',
+        scrollTrigger:{ trigger:el, start:'top 86%' }
+      });
+    });
+
+    // 2 · VALUE PROP — nodi del diagramma che si accendono
+    gsap.to(['.flow-node','.flow-arrow'], {
+      opacity:1, duration:0.5, ease:'power2.out', stagger:0.12,
+      scrollTrigger:{ trigger:'.flow', start:'top 78%' }
+    });
+
+    // 3 · AZIENDE — i loghi si assemblano nella griglia (scrub)
+    gsap.utils.toArray('#mfrGrid .mfr').forEach(function(card){
+      gsap.from(card, {
+        opacity:0, scale:0.55,
+        x:function(){ return gsap.utils.random(-180,180); },
+        y:function(){ return gsap.utils.random(-110,110); },
+        rotation:function(){ return gsap.utils.random(-22,22); },
+        ease:'power2.out',
+        scrollTrigger:{ trigger:'#mfrGrid', start:'top 88%', end:'top 42%', scrub:0.6 }
+      });
+    });
+
+    // 5 · PROCESSO — la linea si disegna + step in on
+    var steps = gsap.utils.toArray('.proc-step');
+    gsap.to(steps, {
+      opacity:1, y:0, duration:0.6, ease:'power3.out', stagger:0.14,
+      scrollTrigger:{ trigger:'.proc-steps', start:'top 82%' }
+    });
+    var fill = document.getElementById('procFill');
+    if (fill){
+      ScrollTrigger.create({
+        trigger:'.proc-track', start:'top 70%', end:'bottom 60%', scrub:0.5,
+        onUpdate:function(self){
+          var p = self.progress;
+          fill.style.width = (p*100) + '%';
+          var lit = Math.round(p * steps.length);
+          steps.forEach(function(s,i){ s.classList.toggle('on', i < lit); });
+        }
+      });
+    }
+
+    // 6 · CTA — leggero shimmer dei pixel al scroll
+    if (ctaCells.length){
+      gsap.from(ctaCells, {
+        opacity:0, scale:0.4, duration:0.9, ease:'power2.out',
+        stagger:{ each:0.004, from:'random' },
+        scrollTrigger:{ trigger:'.s-cta', start:'top 75%' }
+      });
+    }
+
+    // ricalcolo dopo il caricamento immagini (loghi lazy)
+    window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
+  })();
+  </script>
+</body>
+</html>
