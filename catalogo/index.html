@@ -360,36 +360,23 @@
   qForm.appendChild(qStatus);
   function qNote(ok, txt){ qStatus.style.display='block'; qStatus.style.color = ok ? '#0a6485' : '#b02a24'; qStatus.textContent = txt; }
 
+  var QUOTE_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxFIOSOQAUYItZ3p7jrT3twEtVousUhwBWJyMgU0ZLjMttBUoa-uiCRRTEzrzSOtuk3/exec';
   qForm.addEventListener('submit', function(e){
     e.preventDefault();
     var f = qForm;
-    if(!f.email.value.trim()){ f.email.focus(); f.email.style.borderColor = 'var(--accent)'; qNote(false, 'Inserisci un indirizzo email valido.'); return; }
+    if(!f.email.value.trim() || f.email.value.indexOf('@') < 1){ f.email.focus(); f.email.style.borderColor = 'var(--accent)'; qNote(false, 'Inserisci un indirizzo email valido.'); return; }
     if(!basket.length){ qNote(false, 'Nessun prodotto selezionato.'); return; }
-    var subj = 'Richiesta di quotazione — sito CABRU';
-    var prod = basket.map(function(it){ return '[' + it.code + '] ' + (it.name||'') + (it.company?' ('+it.company+')':'') + ' — Q.ta: ' + it.qty; }).join('\n');
-    var KEY = window.CABRU_FORMS_KEY || '';
-
-    function fallback(){
-      var lines = ['Richiesta di quotazione', '', 'CONTATTO', 'Nome: ' + f.nome.value, 'Email: ' + f.email.value,
-        'Telefono: ' + f.tel.value, 'Azienda/Ente: ' + f.azienda.value, 'Reparto: ' + f.reparto.value];
-      if(f.note.value.trim()) lines.push('Note: ' + f.note.value);
-      lines.push('', 'PRODOTTI (' + basket.length + ')', prod);
-      window.location.href = 'mailto:info@cabru.it?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(lines.join('\n'));
-    }
-    if(!KEY || KEY.indexOf('REPLACE_') === 0){ fallback(); return; }
-
-    var data = { access_key: KEY, subject: subj, from_name: (f.nome.value.trim() || 'CABRU website'),
-      replyto: f.email.value.trim(), tipo: 'Richiesta di quotazione', nome: f.nome.value, email: f.email.value,
-      telefono: f.tel.value, azienda: f.azienda.value, reparto: f.reparto.value, note: f.note.value,
-      prodotti: prod };
+    var prod = basket.map(function(it){ return '[' + it.code + '] ' + (it.name||'') + (it.company?' ('+it.company+')':'') + ' — Q.tà: ' + it.qty; }).join('\n');
+    var items = basket.map(function(it){ return { code: it.code, name: it.name||'', company: it.company||'', qty: it.qty }; });
+    var data = { lingua: 'it', nome: f.nome.value, email: f.email.value, telefono: f.tel.value,
+      azienda: f.azienda.value, reparto: f.reparto.value, numProdotti: basket.length, prodotti: prod, items: items, note: f.note.value };
     var sb = qForm.querySelector('button[type=submit]'); var lbl = sb.textContent;
     sb.disabled = true; sb.textContent = 'Invio in corso…'; qNote(true, '');
-    fetch('https://api.web3forms.com/submit', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data) })
-      .then(function(r){ return r.json(); }).then(function(j){
-        sb.disabled = false; sb.textContent = lbl;
-        if(j && j.success){ basket = []; save(); renderItems(); qForm.reset(); qNote(true, 'Richiesta inviata. Grazie, ti risponderemo a breve.'); }
-        else qNote(false, 'Invio non riuscito. Riprova o scrivi a info@cabru.it.');
-      }).catch(function(){ sb.disabled = false; sb.textContent = lbl; qNote(false, 'Invio non riuscito. Riprova o scrivi a info@cabru.it.'); });
+    fetch(QUOTE_ENDPOINT, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(data) })
+      .then(function(){ sb.disabled = false; sb.textContent = lbl; basket = []; save(); renderItems(); qForm.reset();
+        qNote(true, 'Richiesta inviata. Grazie, ti risponderemo a breve. Riceverai una email di conferma.'); })
+      .catch(function(){ sb.disabled = false; sb.textContent = lbl;
+        qNote(false, 'Invio non riuscito. Controlla la connessione o scrivi a info@cabru.it.'); });
   });
 
   Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), function(el){
