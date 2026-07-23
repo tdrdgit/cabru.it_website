@@ -154,10 +154,12 @@ section { padding: 88px 0; }
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
 }
 .prod {
+  display: block; color: inherit; text-decoration: none;
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
   padding: 26px 24px; transition: .2s;
 }
 .prod:hover { box-shadow: var(--shadow); border-color: #d7dade; transform: translateY(-2px); }
+.prod:hover h3 { color: var(--accent); }
 .prod .ico {
   width: 46px; height: 46px; border-radius: 12px;
   background: var(--accent-soft); color: var(--accent);

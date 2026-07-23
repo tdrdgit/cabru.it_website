@@ -124,7 +124,7 @@
 <script>
 (function(){
   var MQ = window.matchMedia('(max-width: 640px)');
-  var ROWH = MQ.matches ? 84 : 40, BUF = 6;
+  var ROWH = MQ.matches ? 112 : 40, BUF = 6;
   var elTable = document.querySelector('.cat-table');
   var COLW   = [44,150,240,78,420,170];        // add, codice, prodotto, q.tà, descrizione, applicazione
   var COLMIN = [44, 70, 90,54,120, 60];
@@ -285,7 +285,7 @@
   var raf = null;
   elViewport.addEventListener('scroll', function(){ if(raf) return; raf = requestAnimationFrame(function(){ raf=null; render(); }); });
   window.addEventListener('resize', function(){ if(state.filtered.length) render(); });
-  function onMQ(){ ROWH = MQ.matches ? 84 : 40; if(state.filtered.length){ elSpacer.style.height = (state.filtered.length * ROWH) + 'px'; render(); } }
+  function onMQ(){ ROWH = MQ.matches ? 112 : 40; if(state.filtered.length){ elSpacer.style.height = (state.filtered.length * ROWH) + 'px'; render(); } }
   if(MQ.addEventListener) MQ.addEventListener('change', onMQ); else if(MQ.addListener) MQ.addListener(onMQ);
   elApp.addEventListener('change', function(){
     var v = elApp.value; highlightForApp(v);

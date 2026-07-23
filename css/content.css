@@ -129,23 +129,23 @@
 .cat-thead > div:hover .cat-resizer::after, .cat-resizer.drag::after { background: var(--accent); }
 .cat-spin { display: inline-block; width: 15px; height: 15px; border: 2px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: catspin .7s linear infinite; vertical-align: -3px; margin-right: 8px; }
 @keyframes catspin { to { transform: rotate(360deg); } }
-/* --- iPhone / mobile: record su due righe (riga1: codice·prodotto·q.tà·applicazione, riga2: descrizione) --- */
+/* --- iPhone / mobile: record su tre righe (riga1: codice + q.tà, riga2: prodotto, riga3: descrizione) --- */
 @media (max-width: 640px) {
   .cat-controls { position: static; z-index: auto; }
   .cat-allrow { display: none; } /* su mobile "Tutte le aziende" scarica ~40MB: disattivato */
   .cat-inner { width: 100% !important; min-width: 0; }
   .cat-thead { display: none; }
   .cat-vrow {
-    grid-template-columns: 30px 96px minmax(40px,1fr) auto auto !important;
-    grid-template-rows: 30px 1fr; align-items: center; column-gap: 2px;
-    height: 84px; padding: 6px 0; border-bottom: 1px solid var(--line);
-    grid-template-areas: "add code name qty app" "desc desc desc desc desc"; }
-  .cat-vrow .add  { grid-area: add; }
-  .cat-vrow .code { grid-area: code; }
+    grid-template-columns: 40px 1fr auto !important;
+    grid-template-rows: auto auto 1fr; align-items: center; column-gap: 4px; row-gap: 3px;
+    height: 112px; padding: 8px 0; border-bottom: 1px solid var(--line);
+    grid-template-areas: "add code qty" "add name name" "add desc desc"; }
+  .cat-vrow .add  { grid-area: add; align-self: center; }
+  .cat-vrow .code { grid-area: code; font-weight: 600; }
   .cat-vrow .name { grid-area: name; }
-  .cat-vrow .qty  { grid-area: qty;  color: var(--muted); text-align: right; }
-  .cat-vrow .app  { grid-area: app;  color: var(--accent); font-size: .72rem; max-width: 38vw; }
-  .cat-vrow .desc { grid-area: desc; align-self: start; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.32; font-size: .8rem; }
+  .cat-vrow .qty  { grid-area: qty;  color: var(--muted); text-align: right; white-space: nowrap; }
+  .cat-vrow .app  { display: none; }
+  .cat-vrow .desc { grid-area: desc; align-self: start; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.3; font-size: .8rem; color: var(--muted); }
   .cat-vrow > div { padding: 0 10px; }
 }
 
