@@ -188,19 +188,22 @@ section { padding: 88px 0; }
 .partner__name { font-size: 1.02rem; margin-bottom: 8px; color: var(--ink); }
 .partner__desc { font-size: .9rem; color: var(--muted); margin: 0; line-height: 1.5; }
 
-/* Cayman: card in evidenza a tutta larghezza, logo a sinistra e testo a destra */
+/* Cayman: card a tutta larghezza, logo a sinistra, stessa altezza delle altre */
 .partner--lead { grid-column: 1 / -1; flex-direction: row; align-items: stretch; }
 .partner--lead .partner__logo {
-  flex: 0 0 300px; height: auto; min-height: 150px;
+  flex: 0 0 300px; height: auto;
   border-bottom: 0; border-right: 1px solid var(--line);
 }
-.partner--lead .partner__logo img { max-height: 96px; max-width: 76%; }
-.partner--lead .partner__body { display: flex; flex-direction: column; justify-content: center; padding: 26px 30px; }
-.partner--lead .partner__name { font-size: 1.3rem; }
-.partner--lead .partner__desc { font-size: 1rem; max-width: 70ch; }
+.partner--lead .partner__logo img { max-height: 72px; max-width: 74%; }
+.partner--lead .partner__body { display: flex; flex-direction: column; justify-content: center; padding: 20px 28px; }
+.partner--lead .partner__name { font-size: 1.1rem; }
+.partner--lead .partner__desc { font-size: .92rem; max-width: 78ch; }
+@media (min-width: 721px) {
+  .partner--lead { min-height: 236px; }
+}
 @media (max-width: 720px) {
   .partner--lead { flex-direction: column; }
-  .partner--lead .partner__logo { flex: none; border-right: 0; border-bottom: 1px solid var(--line); min-height: 120px; }
+  .partner--lead .partner__logo { flex: none; border-right: 0; border-bottom: 1px solid var(--line); min-height: 104px; }
 }
 
 /* ---------- Chi siamo ---------- */
