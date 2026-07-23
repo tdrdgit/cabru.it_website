@@ -168,24 +168,20 @@ section { padding: 88px 0; }
 .prod p { font-size: .92rem; color: var(--muted); margin: 0; }
 
 /* ---------- Partner ---------- */
+/* muro di loghi compatto: Cayman in evidenza su riga intera, poi gli altri 19 */
 .partners-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px;
 }
-.partner {
-  display: flex; flex-direction: column;
-  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-  overflow: hidden; transition: .2s;
+.partners-grid .partner__logo {
+  height: 100px; display: grid; place-items: center;
+  padding: 16px; border: 1px solid var(--line); border-radius: 14px;
+  background: #fff; transition: .18s;
 }
-.partner:hover { box-shadow: var(--shadow); border-color: #d7dade; transform: translateY(-2px); }
-.partner__logo {
-  height: 108px; display: grid; place-items: center;
-  padding: 22px; border-bottom: 1px solid var(--line);
-  background: #fff;
-}
-a.partner__logo { transition: background .18s; }
-a.partner__logo:hover { background: var(--accent-soft); }
-.partner__logo img { max-height: 60px; width: auto; object-fit: contain; transition: transform .18s; }
-a.partner__logo:hover img { transform: scale(1.04); }
+.partners-grid a.partner__logo:hover { box-shadow: var(--shadow); border-color: #cfd4d9; transform: translateY(-2px); }
+.partners-grid .partner__logo img { max-height: 50px; max-width: 82%; width: auto; object-fit: contain; transition: transform .18s; }
+.partners-grid a.partner__logo:hover img { transform: scale(1.04); }
+.partner__logo--lead { grid-column: 1 / -1; height: 150px; border-color: #cfd4d9 !important; }
+.partner__logo--lead img { max-height: 88px !important; max-width: 58% !important; }
 .partner__body { padding: 20px 22px 24px; }
 .partner__name { font-size: 1.02rem; margin-bottom: 8px; color: var(--ink); }
 .partner__desc { font-size: .9rem; color: var(--muted); margin: 0; }
@@ -252,13 +248,14 @@ a.partner__logo:hover img { transform: scale(1.04); }
   .nav-checkbox:checked ~ .nav { max-height: 360px; padding: 8px 0; }
   .nav a { padding: 13px 24px; font-size: 1.02rem; }
   .nav a.nav-cta { margin: 8px 24px 6px; text-align: center; padding: 12px; }
-  .partners-grid { grid-template-columns: repeat(2, 1fr); }
+  .partners-grid { grid-template-columns: repeat(3, 1fr); }
   .contact-grid { grid-template-columns: 1fr; }
   .stats { gap: 30px; }
   section { padding: 64px 0; }
   .hero .wrap { padding: 64px 24px 56px; }
 }
 @media (max-width: 520px) {
-  .prod-grid, .partners-grid { grid-template-columns: 1fr; }
+  .prod-grid { grid-template-columns: 1fr; }
+  .partners-grid { grid-template-columns: repeat(2, 1fr); }
   .stat .num { font-size: 2rem; }
 }

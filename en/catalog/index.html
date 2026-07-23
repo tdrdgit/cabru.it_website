@@ -22,8 +22,7 @@
       <a href="../products/">Products</a>
       <a href="../brands/">Brands</a>
       <a href="./">Catalogue</a>
-      <a href="../contact/">Contact</a>
-      <a href="../contact/" class="nav-cta">Contact us</a>
+      <a href="mailto:info@cabru.it" class="nav-cta js-contact">Contact us</a>
       <span class="lang-switch"><a href="../../catalogo/" class="lang">IT</a><a href="./" class="lang on">EN</a></span>
     </nav>
   </div>
@@ -64,7 +63,7 @@
     </div>
     <p class="cat-intro" style="margin-top:18px;font-size:.9rem">
       The catalogue is indicative and may change. For availability, prices and quotations,
-      please <a href="../contact/">contact CABRU</a> quoting the product code.
+      please <a href="mailto:info@cabru.it" class="js-contact">contact CABRU</a> quoting the product code.
     </p>
   </div>
 </main>
@@ -93,7 +92,7 @@
   <div class="modal__box wide">
     <button class="modal__close" type="button" data-close aria-label="Chiudi">×</button>
     <h2>Quotation request</h2>
-    <p class="sub">Selected products and contact details. Submitting opens a pre-filled email to CABRU.</p>
+    <p class="sub">Selected products and contact details. The request is sent to CABRU.</p>
     <div id="qItems"></div>
     <form id="qForm" class="qform" novalidate>
       <div><label>Full name</label><input name="nome" type="text" autocomplete="name"></div>
@@ -318,18 +317,41 @@
   qItems.addEventListener('input', function(e){ var t=e.target; if(t.hasAttribute('data-i')){ basket[+t.getAttribute('data-i')].qty = t.value; save(); } });
   qItems.addEventListener('click', function(e){ var b=e.target.closest('[data-del]'); if(!b) return; basket.splice(+b.getAttribute('data-del'),1); save(); renderItems(); if(!basket.length) closeM(quoteModal); });
 
+  var qStatus = document.createElement('p');
+  qStatus.style.cssText = 'margin:10px 0 0;font-size:.92rem;display:none';
+  qForm.appendChild(qStatus);
+  function qNote(ok, txt){ qStatus.style.display='block'; qStatus.style.color = ok ? '#0a6485' : '#b02a24'; qStatus.textContent = txt; }
+
   qForm.addEventListener('submit', function(e){
     e.preventDefault();
     var f = qForm;
-    if(!f.email.value.trim()){ f.email.focus(); f.email.style.borderColor = 'var(--accent)'; return; }
-    var lines = ['Quotation request', '', 'CONTACT', 'Name: ' + f.nome.value, 'Email: ' + f.email.value,
-      'Phone: ' + f.tel.value, 'Company/Institution: ' + f.azienda.value, 'Department: ' + f.reparto.value];
-    if(f.note.value.trim()) lines.push('Notes: ' + f.note.value);
-    lines.push('', 'PRODUCTS (' + basket.length + ')');
-    basket.forEach(function(it){ lines.push('- [' + it.code + '] ' + (it.name||'') + (it.company?' ('+it.company+')':'') + ' — Qty: ' + it.qty); });
-    var href = 'mailto:info@cabru.it?subject=' + encodeURIComponent('Quotation request — CABRU website') +
-               '&body=' + encodeURIComponent(lines.join('\n'));
-    window.location.href = href;
+    if(!f.email.value.trim()){ f.email.focus(); f.email.style.borderColor = 'var(--accent)'; qNote(false, 'Please enter a valid email address.'); return; }
+    if(!basket.length){ qNote(false, 'No products selected.'); return; }
+    var subj = 'Quotation request — CABRU website';
+    var prod = basket.map(function(it){ return '[' + it.code + '] ' + (it.name||'') + (it.company?' ('+it.company+')':'') + ' — Qty: ' + it.qty; }).join('\n');
+    var KEY = window.CABRU_FORMS_KEY || '';
+
+    function fallback(){
+      var lines = ['Quotation request', '', 'CONTACT', 'Name: ' + f.nome.value, 'Email: ' + f.email.value,
+        'Phone: ' + f.tel.value, 'Company/Institution: ' + f.azienda.value, 'Department: ' + f.reparto.value];
+      if(f.note.value.trim()) lines.push('Notes: ' + f.note.value);
+      lines.push('', 'PRODUCTS (' + basket.length + ')', prod);
+      window.location.href = 'mailto:info@cabru.it?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(lines.join('\n'));
+    }
+    if(!KEY || KEY.indexOf('REPLACE_') === 0){ fallback(); return; }
+
+    var data = { access_key: KEY, subject: subj, from_name: (f.nome.value.trim() || 'CABRU website'),
+      replyto: f.email.value.trim(), tipo: 'Quotation request', nome: f.nome.value, email: f.email.value,
+      telefono: f.tel.value, azienda: f.azienda.value, reparto: f.reparto.value, note: f.note.value,
+      prodotti: prod };
+    var sb = qForm.querySelector('button[type=submit]'); var lbl = sb.textContent;
+    sb.disabled = true; sb.textContent = 'Sending…'; qNote(true, '');
+    fetch('https://api.web3forms.com/submit', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data) })
+      .then(function(r){ return r.json(); }).then(function(j){
+        sb.disabled = false; sb.textContent = lbl;
+        if(j && j.success){ basket = []; save(); renderItems(); qForm.reset(); qNote(true, 'Request sent. Thank you, we will get back to you shortly.'); }
+        else qNote(false, 'Sending failed. Please try again or write to info@cabru.it.');
+      }).catch(function(){ sb.disabled = false; sb.textContent = lbl; qNote(false, 'Sending failed. Please try again or write to info@cabru.it.'); });
   });
 
   Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), function(el){
@@ -340,5 +362,6 @@
   renderFab();
 })();
 </script>
+<script src="../../js/site.js" defer></script>
 </body>
 </html>
