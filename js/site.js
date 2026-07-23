@@ -8,7 +8,7 @@
        come ripiego, senza perdere dati.                                */
 (function () {
   "use strict";
-  var ACCESS_KEY = "ba829356-cf0f-4d21-9e1c-272430bad50a";
+  var ACCESS_KEY = "19d01248-fe5c-4486-a402-70c6f63c0e9c";
   window.CABRU_FORMS_KEY = ACCESS_KEY;            // riuso nel catalogo
   var KEY_OK = ACCESS_KEY.indexOf("REPLACE_") !== 0;
   var ENDPOINT = "https://api.web3forms.com/submit";
