@@ -366,8 +366,8 @@
     var f = qForm;
     if(!f.email.value.trim() || f.email.value.indexOf('@') < 1){ f.email.focus(); f.email.style.borderColor = 'var(--accent)'; qNote(false, 'Inserisci un indirizzo email valido.'); return; }
     if(!basket.length){ qNote(false, 'Nessun prodotto selezionato.'); return; }
-    var prod = basket.map(function(it){ return '[' + it.code + '] ' + (it.name||'') + (it.company?' ('+it.company+')':'') + ' — Q.tà: ' + it.qty + (it.desc?' — '+it.desc:''); }).join('\n');
-    var items = basket.map(function(it){ return { code: it.code, name: it.name||'', company: it.company||'', qty: it.qty, desc: it.desc||'' }; });
+    var prod = basket.map(function(it){ return '[' + it.code + '] ' + (it.name||'') + (it.company?' ('+it.company+')':'') + (it.pkg?' — Conf.: '+it.pkg:'') + ' — Q.tà: ' + it.qty + (it.desc?' — '+it.desc:''); }).join('\n');
+    var items = basket.map(function(it){ return { code: it.code, name: it.name||'', company: it.company||'', pkg: it.pkg||'', qty: it.qty, desc: it.desc||'' }; });
     var data = { lingua: 'it', nome: f.nome.value, email: f.email.value, telefono: f.tel.value,
       azienda: f.azienda.value, reparto: f.reparto.value, numProdotti: basket.length, prodotti: prod, items: items, note: f.note.value };
     var sb = qForm.querySelector('button[type=submit]'); var lbl = sb.textContent;
