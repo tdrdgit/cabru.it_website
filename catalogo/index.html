@@ -53,12 +53,21 @@
     </div>
 
     <div class="cat-table">
-      <div class="cat-thead">
-        <div class="h-add"></div><div>Codice</div><div>Prodotto</div><div class="h-qty">Q.tà</div><div class="h-app">Applicazione</div><div>Descrizione</div>
-      </div>
-      <div class="cat-viewport" id="viewport">
-        <div class="cat-empty" id="empty">Seleziona un'azienda, oppure un'applicazione (cross-azienda), per iniziare.</div>
-        <div class="cat-spacer" id="spacer" style="display:none"></div>
+      <div class="cat-scroll" id="catScroll">
+        <div class="cat-inner">
+          <div class="cat-thead">
+            <div class="h-add"></div>
+            <div>Codice<span class="cat-resizer" data-col="1"></span></div>
+            <div>Prodotto<span class="cat-resizer" data-col="2"></span></div>
+            <div class="h-qty">Q.tà<span class="cat-resizer" data-col="3"></span></div>
+            <div>Descrizione<span class="cat-resizer" data-col="4"></span></div>
+            <div class="h-app">Applicazione<span class="cat-resizer" data-col="5"></span></div>
+          </div>
+          <div class="cat-viewport" id="viewport">
+            <div class="cat-empty" id="empty">Seleziona un'azienda, oppure un'applicazione (cross-azienda), per iniziare.</div>
+            <div class="cat-spacer" id="spacer" style="display:none"></div>
+          </div>
+        </div>
       </div>
     </div>
     <p class="cat-intro" style="margin-top:18px;font-size:.9rem">
@@ -114,7 +123,34 @@
 
 <script>
 (function(){
-  var ROWH = 40, BUF = 6;
+  var MQ = window.matchMedia('(max-width: 640px)');
+  var ROWH = MQ.matches ? 84 : 40, BUF = 6;
+  var elTable = document.querySelector('.cat-table');
+  var COLW   = [44,150,240,78,420,170];        // add, codice, prodotto, q.tà, descrizione, applicazione
+  var COLMIN = [44, 70, 90,54,120, 60];
+  function applyCols(){
+    elTable.style.setProperty('--cat-cols', COLW.map(function(w){return w+'px';}).join(' '));
+    elTable.style.setProperty('--cat-total', COLW.reduce(function(a,b){return a+b;},0)+'px');
+  }
+  applyCols();
+  // ridimensionamento colonne trascinando il bordo destro dell'intestazione (solo desktop/tablet)
+  (function(){
+    var drag = null;
+    document.addEventListener('pointerdown', function(e){
+      var r = e.target.closest && e.target.closest('.cat-resizer'); if(!r || MQ.matches) return;
+      var col = +r.getAttribute('data-col');
+      drag = { col: col, x: e.clientX, w: COLW[col], el: r };
+      r.classList.add('drag'); document.body.style.userSelect = 'none'; e.preventDefault();
+    });
+    document.addEventListener('pointermove', function(e){
+      if(!drag) return;
+      COLW[drag.col] = Math.max(COLMIN[drag.col], drag.w + (e.clientX - drag.x));
+      applyCols(); e.preventDefault();
+    });
+    document.addEventListener('pointerup', function(){
+      if(!drag) return; drag.el.classList.remove('drag'); drag = null; document.body.style.userSelect = '';
+    });
+  })();
   var state = { products: [], filtered: [], app: "", q: "", mode: null, companyName: "", appsIndex: {}, index: [] };
   var elCompanies = document.getElementById('companies');
   var elAll = document.getElementById('allBtn');
@@ -233,8 +269,8 @@
         '<div class="code">' + esc(p[0]) + '</div>' +
         '<div class="name">' + esc(p[1]) + '</div>' +
         '<div class="qty">' + esc(p[2]) + '</div>' +
-        '<div class="app">' + esc(p[3]) + '</div>' +
-        '<div class="desc">' + esc(p[4]) + '</div></div>';
+        '<div class="desc">' + esc(p[4]) + '</div>' +
+        '<div class="app">' + esc(p[3]) + '</div></div>';
     }
     elSpacer.innerHTML = html;
   }
@@ -249,6 +285,8 @@
   var raf = null;
   elViewport.addEventListener('scroll', function(){ if(raf) return; raf = requestAnimationFrame(function(){ raf=null; render(); }); });
   window.addEventListener('resize', function(){ if(state.filtered.length) render(); });
+  function onMQ(){ ROWH = MQ.matches ? 84 : 40; if(state.filtered.length){ elSpacer.style.height = (state.filtered.length * ROWH) + 'px'; render(); } }
+  if(MQ.addEventListener) MQ.addEventListener('change', onMQ); else if(MQ.addListener) MQ.addListener(onMQ);
   elApp.addEventListener('change', function(){
     var v = elApp.value; highlightForApp(v);
     if(state.mode === null){ selectAll(v); }   // nessuna azienda scelta: carica tutte e applica il filtro
