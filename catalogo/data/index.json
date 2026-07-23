@@ -1,0 +1,128 @@
+[
+ {
+  "slug": "cayman-chemical",
+  "name": "Cayman Chemical",
+  "count": 67119,
+  "apps": 307,
+  "kb": 24136
+ },
+ {
+  "slug": "finetest",
+  "name": "FineTest",
+  "count": 33709,
+  "apps": 280,
+  "kb": 15592
+ },
+ {
+  "slug": "g-biosciences",
+  "name": "G Biosciences",
+  "count": 6604,
+  "apps": 1,
+  "kb": 418
+ },
+ {
+  "slug": "exbio",
+  "name": "ExBio",
+  "count": 4093,
+  "apps": 318,
+  "kb": 2919
+ },
+ {
+  "slug": "reliatech",
+  "name": "ReliaTech",
+  "count": 3444,
+  "apps": 199,
+  "kb": 5441
+ },
+ {
+  "slug": "condalab",
+  "name": "Condalab",
+  "count": 1157,
+  "apps": 3,
+  "kb": 120
+ },
+ {
+  "slug": "biovendor",
+  "name": "BioVendor",
+  "count": 1025,
+  "apps": 1,
+  "kb": 105
+ },
+ {
+  "slug": "a-a-biotechnology",
+  "name": "A&A Biotechnology",
+  "count": 337,
+  "apps": 1,
+  "kb": 67
+ },
+ {
+  "slug": "affinity-biologicals",
+  "name": "Affinity Biologicals",
+  "count": 261,
+  "apps": 2,
+  "kb": 140
+ },
+ {
+  "slug": "enzyme-research-laboratories",
+  "name": "Enzyme Research Laboratories",
+  "count": 110,
+  "apps": 0,
+  "kb": 40
+ },
+ {
+  "slug": "ldn",
+  "name": "LDN",
+  "count": 102,
+  "apps": 1,
+  "kb": 8
+ },
+ {
+  "slug": "dia-pro",
+  "name": "DIA.PRO",
+  "count": 72,
+  "apps": 1,
+  "kb": 6
+ },
+ {
+  "slug": "bioatlas",
+  "name": "Bioatlas",
+  "count": 65,
+  "apps": 1,
+  "kb": 7
+ },
+ {
+  "slug": "candor-bioscience",
+  "name": "Candor Bioscience",
+  "count": 63,
+  "apps": 3,
+  "kb": 10
+ },
+ {
+  "slug": "magbio",
+  "name": "MAGBIO",
+  "count": 57,
+  "apps": 11,
+  "kb": 7
+ },
+ {
+  "slug": "rovalab",
+  "name": "Rovalab",
+  "count": 55,
+  "apps": 1,
+  "kb": 4
+ },
+ {
+  "slug": "smobio",
+  "name": "SMOBIO",
+  "count": 6,
+  "apps": 1,
+  "kb": 1
+ },
+ {
+  "slug": "seqens",
+  "name": "SEQENS",
+  "count": 3,
+  "apps": 0,
+  "kb": 1
+ }
+]

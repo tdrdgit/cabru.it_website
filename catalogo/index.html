@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalogo prodotti | CABRU</title>
+<meta name="description" content="Catalogo prodotti CABRU: reagenti, kit, anticorpi, proteine e terreni dai produttori rappresentati in Italia. Ricerca per codice, nome, applicazione e azienda.">
+<link rel="canonical" href="https://www.cabru.it/catalogo/">
+<link rel="alternate" hreflang="it" href="https://www.cabru.it/catalogo/">
+<link rel="alternate" hreflang="en" href="https://www.cabru.it/en/catalog/">
+<link rel="alternate" hreflang="x-default" href="https://www.cabru.it/catalogo/">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="CABRU"><img src="../img/logo-cabru.png" alt="CABRU"></a>
+    <input type="checkbox" id="navtoggle" class="nav-checkbox" aria-label="Menu">
+    <label for="navtoggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+    <nav class="nav">
+      <a href="../prodotti/">Prodotti</a>
+      <a href="../aziende/">Aziende</a>
+      <a href="./">Catalogo</a>
+      <a href="../contatti/">Contatti</a>
+      <a href="../contatti/" class="nav-cta">Contattaci</a>
+      <span class="lang-switch"><a href="./" class="lang on">IT</a><a href="../en/catalog/" class="lang">EN</a></span>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <div class="wrap cat-wrap">
+    <nav class="crumb"><a href="../">Home</a> › <span>Catalogo prodotti</span></nav>
+    <h1>Catalogo prodotti</h1>
+    <p class="cat-intro">Oltre 100.000 referenze dai produttori rappresentati da CABRU in Italia. Selezionare un'azienda per esplorare il relativo catalogo, quindi filtrare per applicazione o cercare per codice, nome o descrizione.</p>
+
+    <div class="cat-controls">
+      <div class="cat-label">Azienda</div>
+      <div class="cat-allrow"><button class="cat-pill all" id="allBtn" type="button">Tutte le aziende</button></div>
+      <div class="cat-companies" id="companies"></div>
+      <div class="cat-field cat-appline">
+        <label class="cat-label" for="fApp">Applicazione</label>
+        <select id="fApp" disabled><option value="">Tutte</option></select>
+      </div>
+      <div class="cat-row2">
+        <div class="cat-field grow">
+          <label class="cat-label" for="fSearch">Cerca (codice, nome, descrizione)</label>
+          <input id="fSearch" type="search" placeholder="Seleziona un'azienda o un'applicazione…" disabled autocomplete="off">
+        </div>
+        <button id="clearBtn" class="cat-clear" type="button" disabled>× Svuota filtri</button>
+        <div class="cat-count" id="count"></div>
+      </div>
+    </div>
+
+    <div class="cat-table">
+      <div class="cat-thead">
+        <div class="h-add"></div><div>Codice</div><div>Prodotto</div><div class="h-qty">Q.tà</div><div class="h-app">Applicazione</div><div>Descrizione</div>
+      </div>
+      <div class="cat-viewport" id="viewport">
+        <div class="cat-empty" id="empty">Seleziona un'azienda, oppure un'applicazione (cross-azienda), per iniziare.</div>
+        <div class="cat-spacer" id="spacer" style="display:none"></div>
+      </div>
+    </div>
+    <p class="cat-intro" style="margin-top:18px;font-size:.9rem">
+      Il catalogo è indicativo e può variare. Per disponibilità, prezzi e preventivi
+      è possibile <a href="../contatti/">contattare CABRU</a> indicando il codice prodotto.
+    </p>
+  </div>
+</main>
+
+<!-- pulsante flottante richiesta di quotazione -->
+<button class="basket-fab" id="basketFab" type="button"><span>Richiesta di quotazione</span> <span class="b-count" id="bCount">0</span></button>
+
+<!-- modale: aggiungi prodotto -->
+<div class="modal" id="addModal" aria-hidden="true">
+  <div class="modal__bg" data-close></div>
+  <div class="modal__box">
+    <button class="modal__close" type="button" data-close aria-label="Chiudi">×</button>
+    <h2 id="amName">Prodotto</h2>
+    <p class="sub" id="amCompany"></p>
+    <dl class="pdetail" id="amDetail"></dl>
+    <div class="qty-row">
+      <div class="cat-field"><label class="cat-label" for="amQty">Quantità richiesta</label><input id="amQty" type="text" value="1" autocomplete="off"></div>
+      <button class="btn btn-primary" id="amAdd" type="button" style="margin-bottom:1px">Aggiungi alla richiesta di quotazione</button>
+    </div>
+  </div>
+</div>
+
+<!-- modale: richiesta di quotazione -->
+<div class="modal" id="quoteModal" aria-hidden="true">
+  <div class="modal__bg" data-close></div>
+  <div class="modal__box wide">
+    <button class="modal__close" type="button" data-close aria-label="Chiudi">×</button>
+    <h2>Richiesta di quotazione</h2>
+    <p class="sub">Prodotti selezionati e dati di contatto. L'invio aprirà un'email precompilata verso CABRU.</p>
+    <div id="qItems"></div>
+    <form id="qForm" class="qform" novalidate>
+      <div><label>Nome e cognome</label><input name="nome" type="text" autocomplete="name"></div>
+      <div><label>Email <span class="req">*</span></label><input name="email" type="email" required autocomplete="email"></div>
+      <div><label>Telefono</label><input name="tel" type="text" autocomplete="tel"></div>
+      <div><label>Azienda / Ente</label><input name="azienda" type="text" autocomplete="organization"></div>
+      <div><label>Reparto</label><input name="reparto" type="text"></div>
+      <div class="full"><label>Note</label><textarea name="note" rows="2"></textarea></div>
+      <div class="full"><button class="btn btn-primary" type="submit">Invia richiesta di quotazione</button></div>
+    </form>
+  </div>
+</div>
+
+<footer class="site-footer"><div class="wrap">
+  <div><span class="foot-brand">CABRU s.a.s.</span> · Via Enrico Forlanini 52, 20862 Arcore (MB) · <a href="tel:+390396013988">039 6013988</a> · <a href="mailto:info@cabru.it">info@cabru.it</a></div>
+  <div>© <span id="y"></span> CABRU — Prodotti per laboratorio, industria e ricerca</div>
+</div></footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+
+<script>
+(function(){
+  var ROWH = 40, BUF = 6;
+  var state = { products: [], filtered: [], app: "", q: "", mode: null, companyName: "", appsIndex: {}, index: [] };
+  var elCompanies = document.getElementById('companies');
+  var elAll = document.getElementById('allBtn');
+  var elApp = document.getElementById('fApp');
+  var elSearch = document.getElementById('fSearch');
+  var elViewport = document.getElementById('viewport');
+  var elSpacer = document.getElementById('spacer');
+  var elEmpty = document.getElementById('empty');
+  var elCount = document.getElementById('count');
+  var elClear = document.getElementById('clearBtn');
+  var pillBySlug = {};
+
+  function esc(s){ return (s||"").replace(/[&<>"]/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  Promise.all([
+    fetch('data/apps_index.json').then(function(r){return r.json();}),
+    fetch('data/index.json').then(function(r){return r.json();})
+  ]).then(function(res){
+    state.appsIndex = res[0];
+    state.index = res[1];
+    res[1].forEach(function(co){
+      var b = document.createElement('button');
+      b.className = 'cat-pill'; b.setAttribute('data-slug', co.slug);
+      b.innerHTML = esc(co.name) + '<span class="c">' + co.count.toLocaleString('it-IT') + '</span>';
+      b.onclick = function(){ selectCompany(co, b); };
+      pillBySlug[co.slug] = b;
+      elCompanies.appendChild(b);
+    });
+    // applicazioni disponibili da subito (tutte), anche senza aver scelto un'azienda
+    var apps = {}; Object.keys(state.appsIndex).forEach(function(a){ apps[a] = state.appsIndex[a].n; });
+    populateApps(apps);
+  });
+
+  elAll.addEventListener('click', function(){ selectAll(); });
+
+  function setActive(el){
+    elAll.classList.toggle('on', el === elAll);
+    Object.keys(pillBySlug).forEach(function(s){ pillBySlug[s].classList.toggle('on', pillBySlug[s] === el); });
+  }
+  function clearHighlight(){ Object.keys(pillBySlug).forEach(function(s){ pillBySlug[s].classList.remove('hl'); }); }
+  function highlightForApp(app){
+    clearHighlight();
+    var info = app && state.appsIndex[app];
+    if(info && info.c) info.c.forEach(function(s){ if(pillBySlug[s]) pillBySlug[s].classList.add('hl'); });
+  }
+  function loadingUI(name){
+    elEmpty.style.display = 'block';
+    elEmpty.innerHTML = '<span class="cat-spin"></span> Caricamento di ' + esc(name) + '…';
+    elSpacer.style.display = 'none'; elApp.disabled = true; elSearch.disabled = true; elClear.disabled = true;
+  }
+  function populateApps(map){
+    var keys = Object.keys(map).sort();
+    elApp.innerHTML = '<option value="">Tutte le applicazioni</option>' +
+      keys.map(function(k){ return '<option value="'+esc(k)+'">'+esc(k)+' ('+map[k]+')</option>'; }).join('');
+    elApp.disabled = keys.length === 0;
+  }
+  function afterLoad(placeholder, keepApp){
+    state.q = ""; elSearch.value = "";
+    elSearch.disabled = false; elClear.disabled = false; elSearch.placeholder = 'Cerca in ' + placeholder + '…';
+    if(keepApp){ elApp.value = keepApp; state.app = keepApp; highlightForApp(keepApp); }
+    else { state.app = ""; clearHighlight(); }
+    applyFilter();
+  }
+
+  function selectCompany(co, btn){
+    state.mode = 'company'; setActive(btn); loadingUI(co.name);
+    fetch('data/' + co.slug + '.json').then(function(r){return r.json();}).then(function(d){
+      state.products = d.products; state.companyName = co.name;
+      var apps = {}; d.products.forEach(function(p){ if(p[3]) apps[p[3]] = (apps[p[3]]||0)+1; });
+      populateApps(apps); afterLoad(co.name);
+    });
+  }
+
+  function selectAll(keepApp){
+    state.mode = 'all'; setActive(elAll); loadingUI('tutte le aziende');
+    Promise.all(state.index.map(function(co){
+      return fetch('data/' + co.slug + '.json').then(function(r){return r.json();}).then(function(d){
+        return d.products.map(function(p){ return [p[0],p[1],p[2],p[3],p[4],co.name]; });
+      });
+    })).then(function(chunks){
+      var all = []; chunks.forEach(function(c){ for(var i=0;i<c.length;i++) all.push(c[i]); });
+      state.products = all; state.companyName = "";
+      var apps = {}; Object.keys(state.appsIndex).forEach(function(a){ apps[a] = state.appsIndex[a].n; });
+      populateApps(apps); afterLoad('tutte le aziende', keepApp);
+    });
+  }
+
+  function applyFilter(){
+    var q = state.q.toLowerCase().trim(), app = state.app;
+    if(!q && !app){ state.filtered = state.products; }
+    else {
+      state.filtered = state.products.filter(function(p){
+        if(app && p[3] !== app) return false;
+        if(q){ return (p[0]&&p[0].toLowerCase().indexOf(q)>=0) || (p[1]&&p[1].toLowerCase().indexOf(q)>=0) || (p[4]&&p[4].toLowerCase().indexOf(q)>=0); }
+        return true;
+      });
+    }
+    elCount.innerHTML = '<strong>' + state.filtered.length.toLocaleString('it-IT') + '</strong> prodotti';
+    elEmpty.style.display = state.filtered.length ? 'none' : 'block';
+    if(!state.filtered.length){ elEmpty.textContent = 'Nessun prodotto corrisponde.'; elSpacer.style.display='none'; return; }
+    elSpacer.style.display = 'block';
+    elSpacer.style.height = (state.filtered.length * ROWH) + 'px';
+    elViewport.scrollTop = 0;
+    render();
+  }
+
+  function render(){
+    var top = elViewport.scrollTop, h = elViewport.clientHeight;
+    var start = Math.max(0, Math.floor(top / ROWH) - BUF);
+    var end = Math.min(state.filtered.length, Math.ceil((top + h) / ROWH) + BUF);
+    var html = "";
+    for(var i = start; i < end; i++){
+      var p = state.filtered[i];
+      html += '<div class="cat-vrow" style="top:' + (i*ROWH) + 'px">' +
+        '<div class="add"><button class="add-btn" data-i="' + i + '" title="Aggiungi alla richiesta di quotazione">+</button></div>' +
+        '<div class="code">' + esc(p[0]) + '</div>' +
+        '<div class="name">' + esc(p[1]) + '</div>' +
+        '<div class="qty">' + esc(p[2]) + '</div>' +
+        '<div class="app">' + esc(p[3]) + '</div>' +
+        '<div class="desc">' + esc(p[4]) + '</div></div>';
+    }
+    elSpacer.innerHTML = html;
+  }
+
+  // click sul "+" di una riga -> apre la modale di aggiunta
+  elSpacer.addEventListener('click', function(e){
+    var b = e.target.closest('.add-btn'); if(!b) return;
+    var p = state.filtered[+b.getAttribute('data-i')];
+    if(p && window.CatalogAdd) window.CatalogAdd(p, state.mode === 'all' ? p[5] : state.companyName);
+  });
+
+  var raf = null;
+  elViewport.addEventListener('scroll', function(){ if(raf) return; raf = requestAnimationFrame(function(){ raf=null; render(); }); });
+  window.addEventListener('resize', function(){ if(state.filtered.length) render(); });
+  elApp.addEventListener('change', function(){
+    var v = elApp.value; highlightForApp(v);
+    if(state.mode === null){ selectAll(v); }   // nessuna azienda scelta: carica tutte e applica il filtro
+    else { state.app = v; applyFilter(); }
+  });
+  elClear.addEventListener('click', function(){
+    elApp.value = ""; state.app = ""; elSearch.value = ""; state.q = "";
+    clearHighlight(); applyFilter(); elSearch.focus();
+  });
+  var deb = null;
+  elSearch.addEventListener('input', function(){ clearTimeout(deb); deb = setTimeout(function(){ state.q = elSearch.value; applyFilter(); }, 160); });
+})();
+</script>
+
+<script>
+/* ---- Basket + richiesta di quotazione ---- */
+(function(){
+  var KEY = 'cabru_basket_v1';
+  var basket = load();
+  var pending = null;
+  var fab = document.getElementById('basketFab'), bCount = document.getElementById('bCount');
+  var addModal = document.getElementById('addModal'), quoteModal = document.getElementById('quoteModal');
+  var amName = document.getElementById('amName'), amCompany = document.getElementById('amCompany'),
+      amDetail = document.getElementById('amDetail'), amQty = document.getElementById('amQty'),
+      amAdd = document.getElementById('amAdd'), qItems = document.getElementById('qItems'),
+      qForm = document.getElementById('qForm');
+
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch(e){ return []; } }
+  function save(){ localStorage.setItem(KEY, JSON.stringify(basket)); renderFab(); }
+  function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function openM(m){ m.classList.add('open'); }
+  function closeM(m){ m.classList.remove('open'); }
+
+  function renderFab(){ bCount.textContent = basket.length; fab.classList.toggle('show', basket.length > 0); }
+
+  // apertura modale aggiunta (chiamata dal catalogo)
+  window.CatalogAdd = function(p, company){
+    pending = { code: p[0], name: p[1], pkg: p[2], app: p[3], desc: p[4], company: company || '' };
+    amName.textContent = pending.name || pending.code;
+    amCompany.textContent = pending.company;
+    var rows = [['Codice', pending.code], ['Confezione', pending.pkg], ['Applicazione', pending.app], ['Descrizione', pending.desc]];
+    amDetail.innerHTML = rows.filter(function(r){return r[1];}).map(function(r){
+      return '<dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd>'; }).join('');
+    amQty.value = '1';
+    openM(addModal);
+    setTimeout(function(){ amQty.focus(); amQty.select(); }, 30);
+  };
+
+  amAdd.addEventListener('click', function(){
+    if(!pending) return;
+    basket.push({ code: pending.code, name: pending.name, company: pending.company, pkg: pending.pkg, qty: (amQty.value || '1').trim() });
+    save(); closeM(addModal);
+  });
+
+  fab.addEventListener('click', function(){ renderItems(); openM(quoteModal); });
+
+  function renderItems(){
+    if(!basket.length){ qItems.innerHTML = '<p class="q-empty">Nessun prodotto selezionato.</p>'; return; }
+    qItems.innerHTML = basket.map(function(it, i){
+      return '<div class="qitem"><div class="qi-name"><b>' + esc(it.name || it.code) + '</b>' +
+        '<span>' + esc(it.code) + (it.company ? ' · ' + esc(it.company) : '') + '</span></div>' +
+        '<input type="text" value="' + esc(it.qty) + '" data-i="' + i + '" aria-label="Quantità">' +
+        '<button class="qi-del" type="button" data-del="' + i + '" aria-label="Rimuovi">×</button></div>';
+    }).join('');
+  }
+  qItems.addEventListener('input', function(e){ var t=e.target; if(t.hasAttribute('data-i')){ basket[+t.getAttribute('data-i')].qty = t.value; save(); } });
+  qItems.addEventListener('click', function(e){ var b=e.target.closest('[data-del]'); if(!b) return; basket.splice(+b.getAttribute('data-del'),1); save(); renderItems(); if(!basket.length) closeM(quoteModal); });
+
+  qForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var f = qForm;
+    if(!f.email.value.trim()){ f.email.focus(); f.email.style.borderColor = 'var(--accent)'; return; }
+    var lines = ['Richiesta di quotazione', '', 'CONTATTO', 'Nome: ' + f.nome.value, 'Email: ' + f.email.value,
+      'Telefono: ' + f.tel.value, 'Azienda/Ente: ' + f.azienda.value, 'Reparto: ' + f.reparto.value];
+    if(f.note.value.trim()) lines.push('Note: ' + f.note.value);
+    lines.push('', 'PRODOTTI (' + basket.length + ')');
+    basket.forEach(function(it){ lines.push('- [' + it.code + '] ' + (it.name||'') + (it.company?' ('+it.company+')':'') + ' — Q.tà: ' + it.qty); });
+    var href = 'mailto:info@cabru.it?subject=' + encodeURIComponent('Richiesta di quotazione — sito CABRU') +
+               '&body=' + encodeURIComponent(lines.join('\n'));
+    window.location.href = href;
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), function(el){
+    el.addEventListener('click', function(){ closeM(addModal); closeM(quoteModal); });
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ closeM(addModal); closeM(quoteModal); } });
+
+  renderFab();
+})();
+</script>
+</body>
+</html>
