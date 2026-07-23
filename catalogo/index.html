@@ -184,7 +184,7 @@
     populateApps(apps);
   });
 
-  elAll.addEventListener('click', function(){ selectAll(); });
+  elAll.addEventListener('click', function(){ if(MQ.matches) return; selectAll(); });
 
   function setActive(el){
     elAll.classList.toggle('on', el === elAll);
@@ -289,7 +289,11 @@
   if(MQ.addEventListener) MQ.addEventListener('change', onMQ); else if(MQ.addListener) MQ.addListener(onMQ);
   elApp.addEventListener('change', function(){
     var v = elApp.value; highlightForApp(v);
-    if(state.mode === null){ selectAll(v); }   // nessuna azienda scelta: carica tutte e applica il filtro
+    if(state.mode === null){
+      if(MQ.matches){ elEmpty.style.display = 'block';
+        elEmpty.textContent = 'Su smartphone seleziona prima un\'azienda (evidenziate qui sopra) per vedere i prodotti.'; return; }
+      selectAll(v);   // nessuna azienda scelta: carica tutte e applica il filtro
+    }
     else { state.app = v; applyFilter(); }
   });
   elClear.addEventListener('click', function(){

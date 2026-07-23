@@ -131,7 +131,8 @@
 @keyframes catspin { to { transform: rotate(360deg); } }
 /* --- iPhone / mobile: record su due righe (riga1: codice·prodotto·q.tà·applicazione, riga2: descrizione) --- */
 @media (max-width: 640px) {
-  .cat-controls { top: 64px; }
+  .cat-controls { position: static; z-index: auto; }
+  .cat-allrow { display: none; } /* su mobile "Tutte le aziende" scarica ~40MB: disattivato */
   .cat-inner { width: 100% !important; min-width: 0; }
   .cat-thead { display: none; }
   .cat-vrow {
