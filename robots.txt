@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /catalogo/data/
+
+Sitemap: https://www.cabru.it/sitemap.xml

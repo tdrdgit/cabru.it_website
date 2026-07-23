@@ -1,0 +1,45 @@
+# CABRU s.a.s.
+
+> CABRU s.a.s. è un distributore italiano di reagenti, kit, anticorpi, proteine, terreni di coltura e prodotti diagnostici per il laboratorio di ricerca, la diagnostica e l'industria. Con sede ad Arcore (MB), rappresenta e distribuisce in Italia i prodotti di produttori internazionali selezionati.
+
+Sito bilingue: italiano su https://www.cabru.it/ , inglese su https://www.cabru.it/en/ .
+
+## Categorie di prodotto
+- [Anticorpi per ricerca e diagnostica](https://www.cabru.it/prodotti/anticorpi/): Anticorpi primari mono e policlonali, secondari e coniugati per ricerca e diagnostica, dai produttori rappresentati da CABRU.
+- [Molecole biochimiche per la ricerca](https://www.cabru.it/prodotti/molecole-biochimiche/): Inibitori, attivatori, enzimi, substrati, coloranti, traccianti e standard analitici per la ricerca, dai produttori rappresentati da CABRU in Italia.
+- [Kit ELISA e saggi immunoenzimatici](https://www.cabru.it/prodotti/kit-elisa/): Kit ELISA ed EIA colorimetrici e fluorimetrici per il dosaggio di antigeni, metaboliti e biomarcatori, dai produttori rappresentati da CABRU in Italia.
+- [Proteine ricombinanti e purificate](https://www.cabru.it/prodotti/proteine/): Proteine ricombinanti e purificate, citochine e fattori di crescita per la ricerca, dai produttori rappresentati da CABRU in Italia.
+- [Reagenti e kit per acidi nucleici](https://www.cabru.it/prodotti/acidi-nucleici/): Kit e reagenti per estrazione e purificazione di DNA/RNA, retrotrascrizione, qPCR, PCR, NGS ed elettroforesi, dai produttori rappresentati da CABRU.
+- [Elettroforesi delle proteine e western blot](https://www.cabru.it/prodotti/elettroforesi-western-blot/): Reagenti e kit per elettroforesi di proteine 1D e 2D, western blot e marker di peso molecolare, dai produttori rappresentati da CABRU in Italia.
+- [Terreni di coltura per microbiologia](https://www.cabru.it/prodotti/terreni-microbiologia/): Terreni di coltura classici e cromogenici, agar, peptoni, estratti e supplementi per la microbiologia, dai produttori rappresentati da CABRU in Italia.
+- [Soluzioni e polveri per il laboratorio](https://www.cabru.it/prodotti/soluzioni-polveri/): Soluzioni pronte all'uso, buffer stabilizzanti, BSA e polveri per la preparazione in laboratorio, dai produttori rappresentati da CABRU in Italia.
+- [Plasmi carenti e di controllo](https://www.cabru.it/prodotti/plasmi/): Plasmi carenti e di controllo per lo studio dell'emostasi, della coagulazione e della trombosi, dai produttori rappresentati da CABRU in Italia.
+- [Prodotti per la diagnostica](https://www.cabru.it/prodotti/prodotti-diagnostici/): Kit e prodotti per la diagnostica dai produttori rappresentati da CABRU in Italia.
+
+## Aziende rappresentate in Italia
+- [Cayman Chemical in Italia](https://www.cabru.it/aziende/cayman-chemical/)
+- [A&A Biotechnology in Italia](https://www.cabru.it/aziende/a-a-biotechnology/)
+- [Affinity Biologicals in Italia](https://www.cabru.it/aziende/affinity-biologicals/)
+- [Bioatlas in Italia](https://www.cabru.it/aziende/bioatlas/)
+- [BioMedica Diagnostics in Italia](https://www.cabru.it/aziende/biomedica-diagnostics/)
+- [BioVendor in Italia](https://www.cabru.it/aziende/biovendor/)
+- [Candor Bioscience in Italia](https://www.cabru.it/aziende/candor-bioscience/)
+- [Condalab in Italia](https://www.cabru.it/aziende/condalab/)
+- [DIA.PRO in Italia](https://www.cabru.it/aziende/dia-pro/)
+- [Enzyme Research Laboratories in Italia](https://www.cabru.it/aziende/enzyme-research-laboratories/)
+- [ExBio in Italia](https://www.cabru.it/aziende/exbio/)
+- [FineTest in Italia](https://www.cabru.it/aziende/finetest/)
+- [G Biosciences in Italia](https://www.cabru.it/aziende/g-biosciences/)
+- [IMMBIOMED in Italia](https://www.cabru.it/aziende/immbiomed/)
+- [LDN (Labor Diagnostika Nord) in Italia](https://www.cabru.it/aziende/ldn/)
+- [MAGBIO in Italia](https://www.cabru.it/aziende/magbio/)
+- [ReliaTech in Italia](https://www.cabru.it/aziende/reliatech/)
+- [Rovalab in Italia](https://www.cabru.it/aziende/rovalab/)
+- [SEQENS in Italia](https://www.cabru.it/aziende/seqens/)
+- [Le aziende che rappresentiamo](https://www.cabru.it/aziende/smobio/)
+
+## Catalogo
+- [Catalogo prodotti](https://www.cabru.it/catalogo/): oltre 100.000 referenze ricercabili per codice, nome, applicazione e azienda.
+
+## Contatti
+CABRU s.a.s. — Via Enrico Forlanini 52, 20862 Arcore (MB), Italia — info@cabru.it — +39 039 6013988
