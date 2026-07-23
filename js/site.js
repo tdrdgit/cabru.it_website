@@ -1,17 +1,11 @@
-/* CABRU — componente contatti condiviso (modale + invio Web3Forms).
+/* CABRU — componente contatti condiviso (modale + invio via Google Apps Script).
    Self-contained: inietta stile + markup, si aggancia a qualunque
    elemento con classe .js-contact o link verso la vecchia pagina contatti.
-
-   >>> CONFIGURAZIONE: incolla qui la access key gratuita di Web3Forms
-       (registrala su https://web3forms.com con l'email info@cabru.it).
-       Finché resta il placeholder, i form aprono una mail precompilata
-       come ripiego, senza perdere dati.                                */
+   Il messaggio viene registrato nel Google Sheet privato e inoltrato a
+   info@cabru.it, con email di conferma al mittente (stesso backend del catalogo). */
 (function () {
   "use strict";
-  var ACCESS_KEY = "19d01248-fe5c-4486-a402-70c6f63c0e9c";
-  window.CABRU_FORMS_KEY = ACCESS_KEY;            // riuso nel catalogo
-  var KEY_OK = ACCESS_KEY.indexOf("REPLACE_") !== 0;
-  var ENDPOINT = "https://api.web3forms.com/submit";
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbxFIOSOQAUYItZ3p7jrT3twEtVousUhwBWJyMgU0ZLjMttBUoa-uiCRRTEzrzSOtuk3/exec";
 
   var EN = (document.documentElement.lang || "it").toLowerCase().indexOf("en") === 0
         || location.pathname.indexOf("/en/") !== -1;
@@ -117,11 +111,9 @@
     if (form.botcheck.checked) return;
 
     var data = {
-      access_key: window.CABRU_FORMS_KEY,
-      subject: (EN ? "Website contact — CABRU" : "Contatto dal sito — CABRU"),
-      from_name: form.name.value.trim() || "CABRU website",
-      replyto: email,
-      name: form.name.value.trim(),
+      tipo: "contatto",
+      lingua: EN ? "en" : "it",
+      nome: form.name.value.trim(),
       email: email,
       telefono: form.telefono.value.trim(),
       azienda: form.azienda.value.trim(),
@@ -129,25 +121,16 @@
       messaggio: msg
     };
 
-    if (!KEY_OK) { mailtoFallback(data); return; }
-
     btn.disabled = true; btn.textContent = T.sending; setNote("", "");
     fetch(ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      method: "POST", mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify(data)
-    }).then(function (r) { return r.json(); }).then(function (j) {
+    }).then(function () {
       btn.disabled = false; btn.textContent = T.send;
-      if (j && j.success) { form.reset(); setNote("ok", T.ok); }
-      else setNote("ko", T.err);
-    }).catch(function () { btn.disabled = false; btn.textContent = T.send; setNote("ko", T.err); });
+      form.reset(); setNote("ok", T.ok);
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = T.send; setNote("ko", T.err);
+    });
   });
-
-  /* ripiego finché manca la access key: apre una mail precompilata */
-  function mailtoFallback(d) {
-    var body = [T.name + ": " + d.name, T.email + ": " + d.email, T.tel + ": " + d.telefono,
-                T.company + ": " + d.azienda, T.dept + ": " + d.reparto, "", d.messaggio].join("\n");
-    window.location.href = "mailto:info@cabru.it?subject=" + encodeURIComponent(d.subject) +
-      "&body=" + encodeURIComponent(body);
-  }
 })();
