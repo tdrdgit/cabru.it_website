@@ -20,7 +20,7 @@
     err: "Sending failed. Please try again or write to info@cabru.it.",
     reqmail: "Please enter a valid email address.",
     reqmsg: "Please enter a message.", close: "Close",
-    consent: 'I consent to the processing of my data to reply to this request (no marketing use). <a href="/en/privacy/" target="_blank" rel="noopener">Privacy</a>',
+    consent: 'I have read the <a href="/en/privacy/" target="_blank" rel="noopener">privacy policy</a> and consent to the processing of my data to handle this request. Data will not be used for marketing purposes.',
     reqconsent: "Please consent to the processing of your data."
   } : {
     title: "Contattaci",
@@ -32,7 +32,7 @@
     err: "Invio non riuscito. Riprova o scrivi a info@cabru.it.",
     reqmail: "Inserisci un indirizzo email valido.",
     reqmsg: "Inserisci un messaggio.", close: "Chiudi",
-    consent: 'Acconsento al trattamento dei miei dati per rispondere a questa richiesta (nessun uso a fini di marketing). <a href="/privacy/" target="_blank" rel="noopener">Privacy</a>',
+    consent: 'Ho letto l\'<a href="/privacy/" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per rispondere alla richiesta. I dati non saranno usati per finalità di marketing.',
     reqconsent: "È necessario autorizzare il trattamento dei dati."
   };
 
