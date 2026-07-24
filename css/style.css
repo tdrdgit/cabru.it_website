@@ -13,7 +13,7 @@
   --bg-soft:    #f6f7f9;   /* fondi di sezione */
   --bg-dark:    #23262b;   /* fondo scuro (footer / accenti) */
 
-  --accent:      #0f80a8;  /* blu CABRU (campionato dal logo) */
+  --accent:      #0d7397;  /* blu CABRU (dal logo, leggermente scurito per contrasto AA ≥4.5:1) */
   --accent-dark: #0a6485;
   --accent-soft: #e4f0f5;
 
@@ -45,6 +45,9 @@ a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--accent-dark); }
 
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+/* link inline nel corpo testo: distinguibili anche senza colore (WCAG 1.4.1) */
+.section-head p a, .site-footer a { text-decoration: underline; }
 
 /* ---------- Tipografia ---------- */
 h1, h2, h3 { margin: 0; line-height: 1.15; letter-spacing: -0.01em; font-weight: 700; }
@@ -230,6 +233,7 @@ section { padding: 88px 0; }
 .contact-card.dark { background: var(--bg-dark); color: #fff; border-color: #33373d; }
 .contact-card.dark h3 { color: #fff; }
 .contact-card.dark a { color: #7ec3de; }
+.contact-card.dark a.btn-primary { color: #fff; }  /* il CTA resta bianco: non ereditare il colore-link */
 .contact-row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 18px; }
 .contact-row:last-child { margin-bottom: 0; }
 .contact-row .ico {
