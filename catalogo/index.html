@@ -387,7 +387,7 @@
     fetch(QUOTE_ENDPOINT, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(data) })
       .then(function(r){ return r.json(); }).then(function(res){ sb.disabled = false; sb.textContent = lbl;
         if(res && res.ok){ basket = []; save(); renderItems(); qForm.reset();
-          qNote(true, 'Richiesta inviata. Grazie, ti risponderemo a breve. Riceverai una email di conferma.'); }
+          qNote(true, 'Richiesta inviata. Grazie, ti risponderemo a breve. Riceverai una email di conferma: controlla anche nella cartella spam e, se non dovesse arrivare, contattaci telefonicamente al numero 039 6013988.'); }
         else { qNote(false, 'Invio non riuscito. Riprova o scrivi a info@cabru.it.'); } })
       .catch(function(){ sb.disabled = false; sb.textContent = lbl;
         qNote(false, 'Invio non riuscito. Controlla la connessione o scrivi a info@cabru.it.'); });
