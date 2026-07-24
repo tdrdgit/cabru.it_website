@@ -1,3 +1,8 @@
 .DS_Store
 *.log
 Thumbs.db
+
+# dipendenze Python locali dei generatori (installate on-demand, ~65MB): mai committarle
+_tooling/pylib/
+# l'XLS delle correzioni viene generato FUORI dal repo; questa riga è una sicurezza
+CABRU_testi_IT_da_correggere.xlsx
