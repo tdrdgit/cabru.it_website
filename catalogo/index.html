@@ -384,9 +384,11 @@
       azienda: f.azienda.value, reparto: f.reparto.value, numProdotti: basket.length, prodotti: prod, items: items, note: f.note.value };
     var sb = qForm.querySelector('button[type=submit]'); var lbl = sb.textContent;
     sb.disabled = true; sb.textContent = 'Invio in corso…'; qNote(true, '');
-    fetch(QUOTE_ENDPOINT, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(data) })
-      .then(function(){ sb.disabled = false; sb.textContent = lbl; basket = []; save(); renderItems(); qForm.reset();
-        qNote(true, 'Richiesta inviata. Grazie, ti risponderemo a breve. Riceverai una email di conferma.'); })
+    fetch(QUOTE_ENDPOINT, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(data) })
+      .then(function(r){ return r.json(); }).then(function(res){ sb.disabled = false; sb.textContent = lbl;
+        if(res && res.ok){ basket = []; save(); renderItems(); qForm.reset();
+          qNote(true, 'Richiesta inviata. Grazie, ti risponderemo a breve. Riceverai una email di conferma.'); }
+        else { qNote(false, 'Invio non riuscito. Riprova o scrivi a info@cabru.it.'); } })
       .catch(function(){ sb.disabled = false; sb.textContent = lbl;
         qNote(false, 'Invio non riuscito. Controlla la connessione o scrivi a info@cabru.it.'); });
   });

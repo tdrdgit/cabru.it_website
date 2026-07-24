@@ -123,12 +123,13 @@
 
     btn.disabled = true; btn.textContent = T.sending; setNote("", "");
     fetch(ENDPOINT, {
-      method: "POST", mode: "no-cors",
+      method: "POST",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify(data)
-    }).then(function () {
+    }).then(function (r) { return r.json(); }).then(function (res) {
       btn.disabled = false; btn.textContent = T.send;
-      form.reset(); setNote("ok", T.ok);
+      if (res && res.ok) { form.reset(); setNote("ok", T.ok); }
+      else { setNote("ko", T.err); }
     }).catch(function () {
       btn.disabled = false; btn.textContent = T.send; setNote("ko", T.err);
     });
