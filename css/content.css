@@ -196,6 +196,63 @@
 .q-empty { color: var(--muted); padding: 20px 0; text-align: center; }
 @media (max-width: 560px){ .qform { grid-template-columns: 1fr; } }
 
+/* ============================================================
+   QUALITÀ / ISO 9001 — badge, banda home, pagina certificazioni
+   Il badge "ISO 9001" è un marchio tipografico disegnato in stile
+   CABRU: NON è il logo ufficiale ISO (marchio registrato, non usabile
+   da terzi) e non è un marchio di ente accreditato.
+   ============================================================ */
+
+/* --- banda ISO in fondo alla home (compatta) --- */
+.iso-band { border-top: 1px solid var(--line); background: #fff; }
+.iso-band .wrap { display: flex; align-items: center; gap: 30px; padding: 44px 24px; }
+.iso-band__seal { flex: none; width: 88px; }
+.iso-band__seal svg { width: 88px; height: 88px; display: block; }
+.iso-band__text { flex: 1; min-width: 0; }
+.iso-band__text h2 { font-size: 1.32rem; margin-bottom: 8px; letter-spacing: -.01em; }
+.iso-band__text p { color: var(--muted); font-size: 1rem; margin: 0; max-width: 74ch; }
+.iso-band__text p a { text-decoration: underline; }
+.iso-band__cta { flex: none; }
+@media (max-width: 640px) {
+  .iso-band .wrap { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .iso-band__cta { align-self: stretch; }
+  .iso-band__cta .btn { width: 100%; justify-content: center; }
+}
+
+/* --- riquadro certificato CABRU (pagina qualità) --- */
+.cert-card { display: flex; gap: 28px; align-items: flex-start; border: 1px solid var(--line);
+  border-radius: var(--radius); background: var(--bg-soft); padding: 28px 30px; margin: 18px 0 10px; }
+.cert-card__seal { flex: none; width: 112px; }
+.cert-card__seal svg { width: 112px; height: 112px; display: block; }
+.cert-card__body { flex: 1; min-width: 0; }
+.cert-meta { display: grid; grid-template-columns: auto 1fr; gap: 9px 22px; margin: 0 0 18px; font-size: 1rem; }
+.cert-meta dt { color: var(--muted); font-weight: 600; }
+.cert-meta dd { margin: 0; color: var(--ink); }
+@media (max-width: 560px) {
+  .cert-card { flex-direction: column; gap: 20px; }
+  .cert-card__seal, .cert-card__seal svg { width: 96px; }
+  .cert-card__seal svg { height: 96px; }
+  .cert-meta { grid-template-columns: 1fr; gap: 2px; }
+  .cert-meta dd { margin-bottom: 10px; }
+}
+
+/* segnaposto in attesa di dati reali (equivalente web dell'ARANCIONE) */
+.tbd { background: #fff4e6; color: #b45309; padding: 1px 8px; border-radius: 5px; font-weight: 600; font-size: .95em; }
+.btn.is-tbd { background: #fff; color: #b45309; border: 1px dashed #f0b366; cursor: default; }
+.btn.is-tbd:hover { background: #fff; color: #b45309; transform: none; }
+
+/* --- elenco produttori + standard --- */
+.qm-list { list-style: none; padding: 0; margin: 14px 0 8px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.qm-row { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; padding: 13px 18px; border-top: 1px solid var(--line); }
+.qm-row:first-child { border-top: 0; }
+.qm-co { flex: 0 0 210px; font-weight: 700; color: var(--ink); text-decoration: none; }
+.qm-co:hover { color: var(--accent); text-decoration: underline; }
+.qm-std { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+.chip { font-size: .74rem; font-weight: 600; letter-spacing: .02em; padding: 3px 9px; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--muted); background: #fff; white-space: nowrap; }
+.chip--on { background: var(--accent); border-color: var(--accent); color: #fff; }
+@media (max-width: 560px) { .qm-co { flex-basis: 100%; } }
+
 /* --- Prodotti in evidenza (home) --- */
 .feat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .feat-card { display: flex; flex-direction: column; gap: 6px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; text-decoration: none; transition: .18s; }

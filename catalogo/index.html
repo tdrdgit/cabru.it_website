@@ -118,6 +118,7 @@
       <div><label>Azienda / Ente</label><input name="azienda" type="text" autocomplete="organization"></div>
       <div><label>Reparto</label><input name="reparto" type="text"></div>
       <div class="full"><label>Note</label><textarea name="note" rows="2"></textarea></div>
+      <div class="full" style="margin-top:2px"><label style="display:flex;gap:7px;align-items:flex-start;font-size:.72rem;color:#7a828a;font-weight:400;line-height:1.35;cursor:pointer"><input name="consenso" type="checkbox" style="width:auto;margin-top:1px;flex:0 0 auto"> <span>Acconsento al trattamento dei miei dati per gestire questa richiesta di quotazione (nessun uso a fini di marketing). <a href="/privacy/" target="_blank" rel="noopener">Privacy</a></span></label></div>
       <div class="full"><button class="btn btn-primary" type="submit">Invia richiesta di quotazione</button></div>
     </form>
   </div>
@@ -126,6 +127,7 @@
 <footer class="site-footer"><div class="wrap">
   <div><span class="foot-brand">CABRU s.a.s.</span> · Via Enrico Forlanini 52, 20862 Arcore (MB) · <a href="tel:+390396013988">039 6013988</a> · <a href="mailto:info@cabru.it">info@cabru.it</a></div>
   <div>© <span id="y"></span> CABRU — Prodotti per laboratorio, industria e ricerca</div>
+      <div class="foot-legal"><a href="../privacy/">Privacy</a> · <a href="../termini/">Termini e Condizioni</a></div>
 </div></footer>
 <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 
@@ -367,21 +369,25 @@
   qItems.addEventListener('input', function(e){ var t=e.target; if(t.hasAttribute('data-i')){ basket[+t.getAttribute('data-i')].qty = t.value; save(); } });
   qItems.addEventListener('click', function(e){ var b=e.target.closest('[data-del]'); if(!b) return; basket.splice(+b.getAttribute('data-del'),1); save(); renderItems(); if(!basket.length) closeM(quoteModal); });
 
+  var qSubmitWrap = qForm.querySelector('button[type=submit]').parentNode;
+  qSubmitWrap.style.cssText = 'display:flex;align-items:center;gap:14px;flex-wrap:wrap';
   var qStatus = document.createElement('p');
-  qStatus.style.cssText = 'margin:10px 0 0;font-size:.92rem;display:none';
-  qForm.appendChild(qStatus);
-  function qNote(ok, txt){ qStatus.style.display='block'; qStatus.style.color = ok ? '#0a6485' : '#b02a24'; qStatus.textContent = txt; }
+  qStatus.style.cssText = 'margin:0;font-size:.9rem;line-height:1.4;display:none;flex:1 1 180px;min-width:180px';
+  qSubmitWrap.appendChild(qStatus);
+  function qNote(ok, txt){ qStatus.style.display='block'; qStatus.style.color = ok ? '#0a6485' : '#b02a24'; qStatus.textContent = txt; try{ qStatus.scrollIntoView({block:'nearest'}); }catch(e){} }
 
   var QUOTE_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxFIOSOQAUYItZ3p7jrT3twEtVousUhwBWJyMgU0ZLjMttBUoa-uiCRRTEzrzSOtuk3/exec';
   qForm.addEventListener('submit', function(e){
     e.preventDefault();
     var f = qForm;
     if(!f.email.value.trim() || f.email.value.indexOf('@') < 1){ f.email.focus(); f.email.style.borderColor = 'var(--accent)'; qNote(false, 'Inserisci un indirizzo email valido.'); return; }
+    if(!f.consenso.checked){ f.consenso.focus(); qNote(false, 'Per inviare la richiesta è necessario autorizzare il trattamento dei dati.'); return; }
     if(!basket.length){ qNote(false, 'Nessun prodotto selezionato.'); return; }
     var prod = basket.map(function(it){ return '[' + it.code + '] ' + (it.name||'') + (it.company?' ('+it.company+')':'') + (it.pkg?' — Conf.: '+it.pkg:'') + ' — Q.tà: ' + it.qty + (it.desc?' — '+it.desc:''); }).join('\n');
     var items = basket.map(function(it){ return { code: it.code, name: it.name||'', company: it.company||'', pkg: it.pkg||'', qty: it.qty, desc: it.desc||'' }; });
     var data = { lingua: 'it', nome: f.nome.value, email: f.email.value, telefono: f.tel.value,
-      azienda: f.azienda.value, reparto: f.reparto.value, numProdotti: basket.length, prodotti: prod, items: items, note: f.note.value };
+      azienda: f.azienda.value, reparto: f.reparto.value, numProdotti: basket.length, prodotti: prod, items: items, note: f.note.value,
+      consensoPrivacy: true, marketing: false };
     var sb = qForm.querySelector('button[type=submit]'); var lbl = sb.textContent;
     sb.disabled = true; sb.textContent = 'Invio in corso…'; qNote(true, '');
     fetch(QUOTE_ENDPOINT, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(data) })

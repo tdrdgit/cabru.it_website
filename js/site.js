@@ -19,7 +19,9 @@
     ok: "Message sent. Thank you, we will get back to you shortly.",
     err: "Sending failed. Please try again or write to info@cabru.it.",
     reqmail: "Please enter a valid email address.",
-    reqmsg: "Please enter a message.", close: "Close"
+    reqmsg: "Please enter a message.", close: "Close",
+    consent: 'I consent to the processing of my data to reply to this request (no marketing use). <a href="/en/privacy/" target="_blank" rel="noopener">Privacy</a>',
+    reqconsent: "Please consent to the processing of your data."
   } : {
     title: "Contattaci",
     sub: "Invia un messaggio a CABRU. Rispondiamo nel più breve tempo possibile.",
@@ -29,7 +31,9 @@
     ok: "Messaggio inviato. Grazie, ti risponderemo a breve.",
     err: "Invio non riuscito. Riprova o scrivi a info@cabru.it.",
     reqmail: "Inserisci un indirizzo email valido.",
-    reqmsg: "Inserisci un messaggio.", close: "Chiudi"
+    reqmsg: "Inserisci un messaggio.", close: "Chiudi",
+    consent: 'Acconsento al trattamento dei miei dati per rispondere a questa richiesta (nessun uso a fini di marketing). <a href="/privacy/" target="_blank" rel="noopener">Privacy</a>',
+    reqconsent: "È necessario autorizzare il trattamento dei dati."
   };
 
   /* ---- stile iniettato (indipendente dai CSS di pagina) ---- */
@@ -54,6 +58,10 @@
     + '.cm-note{grid-column:1/-1;margin:2px 0 0;font-size:.9rem;border-radius:8px;padding:10px 12px;display:none}'
     + '.cm-note.ok{display:block;background:#e4f0f5;color:#0a6485}'
     + '.cm-note.ko{display:block;background:#fbe7e6;color:#b02a24}'
+    + '.cm-consent{grid-column:1/-1;margin:2px 0 2px}'
+    + '.cm-consent label{display:flex;gap:7px;align-items:flex-start;margin:0;font-size:.72rem;font-weight:400;color:#7a828a;line-height:1.35;cursor:pointer}'
+    + '.cm-consent input{width:auto;margin:1px 0 0;flex:0 0 auto}'
+    + '.cm-consent a{color:#0f80a8}'
     + '@media(max-width:520px){.cm-form{grid-template-columns:1fr}}';
   var st = document.createElement("style");
   st.textContent = css;
@@ -75,6 +83,7 @@
     + '<div><label>' + T.company + '</label><input name="azienda" type="text" autocomplete="organization"></div>'
     + '<div><label>' + T.dept + '</label><input name="reparto" type="text"></div>'
     + '<div class="full"><label>' + T.msg + ' <span class="req">*</span></label><textarea name="messaggio" rows="3" required></textarea></div>'
+    + '<div class="cm-consent"><label><input name="consenso" type="checkbox"><span>' + T.consent + '</span></label></div>'
     + '<input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">'
     + '<p class="cm-note"></p>'
     + '<div class="full"><button class="cm-btn" type="submit">' + T.send + '</button></div>'
@@ -108,6 +117,7 @@
     var msg = form.messaggio.value.trim();
     if (!email || email.indexOf("@") < 1) { setNote("ko", T.reqmail); form.email.focus(); return; }
     if (!msg) { setNote("ko", T.reqmsg); form.messaggio.focus(); return; }
+    if (!form.consenso.checked) { setNote("ko", T.reqconsent); form.consenso.focus(); return; }
     if (form.botcheck.checked) return;
 
     var data = {
@@ -118,7 +128,9 @@
       telefono: form.telefono.value.trim(),
       azienda: form.azienda.value.trim(),
       reparto: form.reparto.value.trim(),
-      messaggio: msg
+      messaggio: msg,
+      consensoPrivacy: true,
+      marketing: false
     };
 
     btn.disabled = true; btn.textContent = T.sending; setNote("", "");
