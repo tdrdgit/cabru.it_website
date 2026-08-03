@@ -1,166 +1,166 @@
 {
-"it": {
-"a-a-biotechnology": {
-"name": "A&A Biotechnology",
-"desc": "Kit per estrazione e purificazione di gDNA, pDNA, RNA e microRNA; reagenti per retrotrascrizione, amplificazione (qPCR, PCR), modificazione ed elettroforesi degli acidi nucleici."
-},
-"affinity-biologicals": {
-"name": "Affinity Biologicals",
-"desc": "Anticorpi, kit EIA ed ELISA, plasmi carenti e di controllo per lo studio di emostasi e trombosi."
-},
-"bioatlas": {
-"name": "Bioatlas",
-"desc": "Reagenti per qPCR, PCR ed elettroforesi degli acidi nucleici; sostituto atossico dell'EtBr."
-},
-"biomedica-diagnostics": {
-"name": "BioMedica Diagnostics",
-"desc": "Anticorpi, enzimi, proteine, kit, plasmi carenti e di controllo per lo studio delle malattie cardiovascolari."
-},
-"biovendor": {
-"name": "BioVendor",
-"desc": "Kit ELISA, anticorpi e proteine per lo studio di processi biologici e patologie."
-},
-"candor-bioscience": {
-"name": "Candor Bioscience",
-"desc": "Soluzioni per ottimizzare il funzionamento degli anticorpi nelle analisi ELISA, WB, IF, ICC, IHC, IP e array."
-},
-"cayman-chemical": {
-"name": "Cayman Chemical",
-"desc": "Anticorpi, molecole biochimiche (inibitori, proteine, enzimi, substrati, coloranti, traccianti), kit per il dosaggio di antigeni e metaboliti, proteine ricombinanti, soluzioni."
-},
-"condalab": {
-"name": "Condalab",
-"desc": "Terreni per microbiologia classici e cromogenici, agar, peptoni, estratti, zuccheri, terreni per biologia molecolare, agarosi."
-},
-"dia-pro": {
-"name": "DIA.PRO",
-"desc": "Kit diagnostici."
-},
-"enzyme-research-laboratories": {
-"name": "Enzyme Research Laboratories",
-"desc": "Proteine, enzimi, inibitori e co-fattori della coagulazione."
-},
-"exbio": {
-"name": "ExBio",
-"desc": "Anticorpi monoclonali purificati e coniugati per citofluorimetria."
-},
-"finetest": {
-"name": "FineTest",
-"desc": "Kit ELISA, anticorpi, proteine ricombinanti."
-},
-"g-biosciences": {
-"name": "G Biosciences",
-"desc": "Kit e reagenti per proteomica: estrazione, dosaggio e purificazione di proteine, elettroforesi mono e bidimensionale, reagenti per spettrometria, reagenti e polveri di laboratorio, prodotti per biologia molecolare."
-},
-"immbiomed": {
-"name": "IMMBIOMED",
-"desc": "Anticorpi."
-},
-"ldn": {
-"name": "LDN — Labor Diagnostika Nord",
-"desc": "Kit ELISA per endocrinologia e neuroscienze."
-},
-"magbio": {
-"name": "MAGBIO",
-"desc": "Biglie magnetiche per estrazione e purificazione di DNA, RNA e prodotti di PCR da processare mediante NGS e sequenziamento."
-},
-"reliatech": {
-"name": "ReliaTech",
-"desc": "Anticorpi, proteine ricombinanti, citochine, fattori di crescita."
-},
-"rovalab": {
-"name": "Rovalab",
-"desc": "Nucleotidi, Taq DNA polimerasi, mix per PCR."
-},
-"seqens": {
-"name": "SEQENS",
-"desc": "Bovine Serum Albumin (BSA)."
-},
-"smobio": {
-"name": "SMOBIO",
-"desc": "Marker per DNA e proteine."
-}
-},
-"en": {
-"a-a-biotechnology": {
-"name": "A&A Biotechnology",
-"desc": "Kits for extraction and purification of gDNA, pDNA, RNA and microRNA; reagents for reverse transcription, amplification (qPCR, PCR), modification and nucleic-acid electrophoresis."
-},
-"affinity-biologicals": {
-"name": "Affinity Biologicals",
-"desc": "Antibodies, EIA and ELISA kits, deficient and control plasmas for the study of haemostasis and thrombosis."
-},
-"bioatlas": {
-"name": "Bioatlas",
-"desc": "Reagents for qPCR, PCR and nucleic-acid electrophoresis; non-toxic EtBr substitute."
-},
-"biomedica-diagnostics": {
-"name": "BioMedica Diagnostics",
-"desc": "Antibodies, enzymes, proteins, kits, deficient and control plasmas for cardiovascular-disease research."
-},
-"biovendor": {
-"name": "BioVendor",
-"desc": "ELISA kits, antibodies and proteins for the study of biological processes and disease."
-},
-"candor-bioscience": {
-"name": "Candor Bioscience",
-"desc": "Solutions to optimise antibody performance in ELISA, WB, IF, ICC, IHC, IP and array assays."
-},
-"cayman-chemical": {
-"name": "Cayman Chemical",
-"desc": "Antibodies, biochemicals (inhibitors, proteins, enzymes, substrates, dyes, tracers), assay kits for antigens and metabolites, recombinant proteins, solutions."
-},
-"condalab": {
-"name": "Condalab",
-"desc": "Classic and chromogenic microbiology culture media, agar, peptones, extracts, sugars, molecular-biology media, agarose."
-},
-"dia-pro": {
-"name": "DIA.PRO",
-"desc": "Diagnostic kits."
-},
-"enzyme-research-laboratories": {
-"name": "Enzyme Research Laboratories",
-"desc": "Proteins, enzymes, inhibitors and coagulation co-factors."
-},
-"exbio": {
-"name": "ExBio",
-"desc": "Purified and conjugated monoclonal antibodies for flow cytometry."
-},
-"finetest": {
-"name": "FineTest",
-"desc": "ELISA kits, antibodies, recombinant proteins."
-},
-"g-biosciences": {
-"name": "G Biosciences",
-"desc": "Kits and reagents for proteomics: protein extraction, assay and purification, 1D and 2D electrophoresis, mass-spectrometry reagents, laboratory reagents and powders, molecular-biology products."
-},
-"immbiomed": {
-"name": "IMMBIOMED",
-"desc": "Antibodies."
-},
-"ldn": {
-"name": "LDN — Labor Diagnostika Nord",
-"desc": "ELISA kits for endocrinology and neuroscience."
-},
-"magbio": {
-"name": "MAGBIO",
-"desc": "Magnetic beads for extraction and purification of DNA, RNA and PCR products for NGS and sequencing workflows."
-},
-"reliatech": {
-"name": "ReliaTech",
-"desc": "Antibodies, recombinant proteins, cytokines, growth factors."
-},
-"rovalab": {
-"name": "Rovalab",
-"desc": "Nucleotides, Taq DNA polymerase, PCR mixes."
-},
-"seqens": {
-"name": "SEQENS",
-"desc": "Bovine Serum Albumin (BSA)."
-},
-"smobio": {
-"name": "SMOBIO",
-"desc": "DNA and protein markers."
-}
-}
+  "it": {
+    "a-a-biotechnology": {
+      "name": "A&A Biotechnology",
+      "desc": "Kit per estrazione e purificazione di gDNA, pDNA, RNA e microRNA; reagenti per retrotrascrizione, amplificazione (qPCR, PCR), modificazione ed elettroforesi degli acidi nucleici."
+    },
+    "affinity-biologicals": {
+      "name": "Affinity Biologicals",
+      "desc": "Anticorpi, kit EIA ed ELISA, plasmi carenti e di controllo per lo studio di emostasi e trombosi."
+    },
+    "bioatlas": {
+      "name": "Bioatlas",
+      "desc": "Reagenti per qPCR, PCR ed elettroforesi degli acidi nucleici; sostituto atossico dell'EtBr."
+    },
+    "biomedica-diagnostics": {
+      "name": "BioMedica Diagnostics",
+      "desc": "Anticorpi, enzimi, proteine, kit, plasmi carenti e di controllo per lo studio delle malattie cardiovascolari."
+    },
+    "biovendor": {
+      "name": "BioVendor",
+      "desc": "Kit ELISA, anticorpi e proteine per lo studio di processi biologici e patologie."
+    },
+    "candor-bioscience": {
+      "name": "Candor Medix Biochemica",
+      "desc": "Soluzioni per ottimizzare il funzionamento degli anticorpi nelle analisi ELISA, WB, IF, ICC, IHC, IP e array."
+    },
+    "cayman-chemical": {
+      "name": "Cayman Chemical",
+      "desc": "Anticorpi, molecole biochimiche (inibitori, proteine, enzimi, substrati, coloranti, traccianti), kit per il dosaggio di antigeni e metaboliti, proteine ricombinanti, soluzioni."
+    },
+    "condalab": {
+      "name": "Condalab",
+      "desc": "Terreni per microbiologia classici e cromogenici, agar, peptoni, estratti, zuccheri, terreni per biologia molecolare, agarosi."
+    },
+    "dia-pro": {
+      "name": "DIA.PRO",
+      "desc": "Kit diagnostici."
+    },
+    "enzyme-research-laboratories": {
+      "name": "Enzyme Research Laboratories",
+      "desc": "Proteine, enzimi, inibitori e co-fattori della coagulazione."
+    },
+    "exbio": {
+      "name": "ExBio",
+      "desc": "Anticorpi monoclonali purificati e coniugati per citofluorimetria."
+    },
+    "finetest": {
+      "name": "FineTest",
+      "desc": "Kit ELISA, anticorpi, proteine ricombinanti."
+    },
+    "g-biosciences": {
+      "name": "G Biosciences",
+      "desc": "Kit e reagenti per proteomica: estrazione, dosaggio e purificazione di proteine, elettroforesi mono e bidimensionale, reagenti per spettrometria, reagenti e polveri di laboratorio, prodotti per biologia molecolare."
+    },
+    "immbiomed": {
+      "name": "IMMBIOMED",
+      "desc": "Anticorpi."
+    },
+    "ldn": {
+      "name": "LDN — Labor Diagnostika Nord",
+      "desc": "Kit ELISA per endocrinologia e neuroscienze."
+    },
+    "magbio": {
+      "name": "MAGBIO",
+      "desc": "Biglie magnetiche per estrazione e purificazione di DNA, RNA e prodotti di PCR da processare mediante NGS e sequenziamento."
+    },
+    "reliatech": {
+      "name": "ReliaTech",
+      "desc": "Anticorpi, proteine ricombinanti, citochine, fattori di crescita."
+    },
+    "rovalab": {
+      "name": "Rovalab",
+      "desc": "Nucleotidi, Taq DNA polimerasi, mix per PCR."
+    },
+    "seqens": {
+      "name": "SEQENS",
+      "desc": "Bovine Serum Albumin (BSA)."
+    },
+    "smobio": {
+      "name": "SMOBIO",
+      "desc": "Marker per DNA e proteine."
+    }
+  },
+  "en": {
+    "a-a-biotechnology": {
+      "name": "A&A Biotechnology",
+      "desc": "Kits for extraction and purification of gDNA, pDNA, RNA and microRNA; reagents for reverse transcription, amplification (qPCR, PCR), modification and nucleic-acid electrophoresis."
+    },
+    "affinity-biologicals": {
+      "name": "Affinity Biologicals",
+      "desc": "Antibodies, EIA and ELISA kits, deficient and control plasmas for the study of haemostasis and thrombosis."
+    },
+    "bioatlas": {
+      "name": "Bioatlas",
+      "desc": "Reagents for qPCR, PCR and nucleic-acid electrophoresis; non-toxic EtBr substitute."
+    },
+    "biomedica-diagnostics": {
+      "name": "BioMedica Diagnostics",
+      "desc": "Antibodies, enzymes, proteins, kits, deficient and control plasmas for cardiovascular-disease research."
+    },
+    "biovendor": {
+      "name": "BioVendor",
+      "desc": "ELISA kits, antibodies and proteins for the study of biological processes and disease."
+    },
+    "candor-bioscience": {
+      "name": "Candor Medix Biochemica",
+      "desc": "Solutions to optimise antibody performance in ELISA, WB, IF, ICC, IHC, IP and array assays."
+    },
+    "cayman-chemical": {
+      "name": "Cayman Chemical",
+      "desc": "Antibodies, biochemicals (inhibitors, proteins, enzymes, substrates, dyes, tracers), assay kits for antigens and metabolites, recombinant proteins, solutions."
+    },
+    "condalab": {
+      "name": "Condalab",
+      "desc": "Classic and chromogenic microbiology culture media, agar, peptones, extracts, sugars, molecular-biology media, agarose."
+    },
+    "dia-pro": {
+      "name": "DIA.PRO",
+      "desc": "Diagnostic kits."
+    },
+    "enzyme-research-laboratories": {
+      "name": "Enzyme Research Laboratories",
+      "desc": "Proteins, enzymes, inhibitors and coagulation co-factors."
+    },
+    "exbio": {
+      "name": "ExBio",
+      "desc": "Purified and conjugated monoclonal antibodies for flow cytometry."
+    },
+    "finetest": {
+      "name": "FineTest",
+      "desc": "ELISA kits, antibodies, recombinant proteins."
+    },
+    "g-biosciences": {
+      "name": "G Biosciences",
+      "desc": "Kits and reagents for proteomics: protein extraction, assay and purification, 1D and 2D electrophoresis, mass-spectrometry reagents, laboratory reagents and powders, molecular-biology products."
+    },
+    "immbiomed": {
+      "name": "IMMBIOMED",
+      "desc": "Antibodies."
+    },
+    "ldn": {
+      "name": "LDN — Labor Diagnostika Nord",
+      "desc": "ELISA kits for endocrinology and neuroscience."
+    },
+    "magbio": {
+      "name": "MAGBIO",
+      "desc": "Magnetic beads for extraction and purification of DNA, RNA and PCR products for NGS and sequencing workflows."
+    },
+    "reliatech": {
+      "name": "ReliaTech",
+      "desc": "Antibodies, recombinant proteins, cytokines, growth factors."
+    },
+    "rovalab": {
+      "name": "Rovalab",
+      "desc": "Nucleotides, Taq DNA polymerase, PCR mixes."
+    },
+    "seqens": {
+      "name": "SEQENS",
+      "desc": "Bovine Serum Albumin (BSA)."
+    },
+    "smobio": {
+      "name": "SMOBIO",
+      "desc": "DNA and protein markers."
+    }
+  }
 }

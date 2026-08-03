@@ -10,8 +10,7 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 
 SITE = os.path.dirname(HERE)                # la cartella sito/ (padre di _tooling)
-BASE = os.path.dirname(SITE)                # cartella padre del repo: l'XLS finisce qui, FUORI dal sito pubblicato
-OUT  = os.path.join(BASE, "CABRU_testi_IT_da_correggere.xlsx")
+OUT  = os.path.join(HERE, "CABRU_testi_IT_da_correggere.xlsx")  # XLS dentro _tooling: versionato e visibile in Antigravity, ma ignorato da Pages (cartella con _)
 DESC = json.load(open(os.path.join(HERE, "desc.json"), encoding="utf-8"))["it"]
 
 # ---------- stili ----------
@@ -245,7 +244,6 @@ CATS = [
  ("terreni-microbiologia", "Terreni microbiologia"),
  ("soluzioni-polveri", "Soluzioni e polveri"),
  ("plasmi", "Plasmi"),
- ("prodotti-diagnostici", "Prodotti diagnostici"),
 ]
 for slug, short in CATS:
     p = os.path.join(SITE, "prodotti", slug, "index.html")
@@ -256,9 +254,9 @@ for slug, short in CATS:
 # 4) Foglio riepilogo aziende (nome + descrizione)
 t, m, hubrows = extract_doc(os.path.join(SITE, "aziende/index.html"))
 BRANDS = ["cayman-chemical", "a-a-biotechnology", "affinity-biologicals", "bioatlas",
-          "biomedica-diagnostics", "biovendor", "candor-bioscience", "condalab", "dia-pro",
-          "enzyme-research-laboratories", "exbio", "finetest", "g-biosciences", "immbiomed",
-          "ldn", "magbio", "reliatech", "rovalab", "seqens", "smobio"]
+          "biomedica-diagnostics", "biovendor", "candor-bioscience", "condalab",
+          "enzyme-research-laboratories", "exbio", "finetest", "g-biosciences",
+          "ldn", "magbio", "reliatech", "rovalab", "seqens"]
 list_rows = [(DESC[s]["name"], DESC[s]["desc"]) for s in BRANDS]
 ws = write_sheet(wb, "Le aziende che rappresentiamo",
                  "Le aziende che rappresentiamo — nome + descrizione", "", "",
