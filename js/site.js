@@ -20,7 +20,7 @@
     err: "Sending failed. Please try again or write to info@cabru.it.",
     reqmail: "Please enter a valid email address.",
     reqmsg: "Please enter a message.", close: "Close",
-    consent: 'I have read the <a href="/en/privacy/" target="_blank" rel="noopener">privacy policy</a> and consent to the processing of my data to handle this request. Data will not be used for marketing purposes.',
+    consent: 'I have read the <a href="__PRIVACY__" target="_blank" rel="noopener">privacy policy</a> and consent to the processing of my data to handle this request. Data will not be used for marketing purposes.',
     reqconsent: "Please consent to the processing of your data."
   } : {
     title: "Contattaci",
@@ -32,9 +32,18 @@
     err: "Invio non riuscito. Riprova o scrivi a info@cabru.it.",
     reqmail: "Inserisci un indirizzo email valido.",
     reqmsg: "Inserisci un messaggio.", close: "Chiudi",
-    consent: 'Ho letto l\'<a href="/privacy/" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per rispondere alla richiesta. I dati non saranno usati per finalità di marketing.',
+    consent: 'Ho letto l\'<a href="__PRIVACY__" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per rispondere alla richiesta. I dati non saranno usati per finalità di marketing.',
     reqconsent: "È necessario autorizzare il trattamento dei dati."
   };
+
+  /* Il link all'informativa privacy va risolto a runtime: il modale e' lo stesso
+     su tutte le pagine, ma la profondita' cambia. Riusa l'href gia' presente nel
+     footer della pagina corrente, cosi' resta corretto sia in produzione (dominio
+     alla radice) sia su un'anteprima servita da sottocartella. */
+  function privacyHref() {
+    var a = document.querySelector('a[href$="privacy/"]');
+    return a ? a.getAttribute("href") : "privacy/";
+  }
 
   /* ---- stile iniettato (indipendente dai CSS di pagina) ---- */
   var css = ''
@@ -83,7 +92,7 @@
     + '<div><label>' + T.company + '</label><input name="azienda" type="text" autocomplete="organization"></div>'
     + '<div><label>' + T.dept + '</label><input name="reparto" type="text"></div>'
     + '<div class="full"><label>' + T.msg + ' <span class="req">*</span></label><textarea name="messaggio" rows="3" required></textarea></div>'
-    + '<div class="cm-consent"><label><input name="consenso" type="checkbox"><span>' + T.consent + '</span></label></div>'
+    + '<div class="cm-consent"><label><input name="consenso" type="checkbox"><span>' + T.consent.replace("__PRIVACY__", privacyHref()) + '</span></label></div>'
     + '<input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">'
     + '<p class="cm-note"></p>'
     + '<div class="full"><button class="cm-btn" type="submit">' + T.send + '</button></div>'
@@ -159,7 +168,6 @@
   var lbl = document.querySelector('label[for="navtoggle"]');
   function sync() {
     var on = cb.checked;
-    cb.setAttribute("aria-expanded", on ? "true" : "false");
     var t = on ? L.close : L.open;
     cb.setAttribute("aria-label", t);
     if (lbl) lbl.setAttribute("aria-label", t);
