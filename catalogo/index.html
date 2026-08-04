@@ -23,15 +23,15 @@
 <body>
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="../" aria-label="CABRU"><img src="../img/logo-cabru.png" alt="CABRU"></a>
-    <input type="checkbox" id="navtoggle" class="nav-checkbox" aria-label="Menu">
+    <a class="brand" href="../" aria-label="CABRU"><img src="../img/logo-cabru.png" alt="CABRU" width="410" height="96"></a>
+    <input type="checkbox" id="navtoggle" class="nav-checkbox" aria-controls="sitenav" aria-expanded="false" aria-label="Menu">
     <label for="navtoggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
-    <nav class="nav">
+    <nav class="nav" id="sitenav">
       <a href="../prodotti/">Prodotti</a>
       <a href="../aziende/">Aziende</a>
       <a href="./">Catalogo</a>
       <a href="mailto:info@cabru.it" class="nav-cta js-contact">Contattaci</a>
-      <span class="lang-switch"><a href="./" class="lang on">IT</a><a href="../en/catalog/" class="lang">EN</a></span>
+      <span class="lang-switch"><a href="./" class="lang on" aria-current="true">IT</a><a href="../en/catalog/" class="lang">EN</a></span>
     </nav>
   </div>
 </header>
@@ -118,7 +118,7 @@
       <div><label>Azienda / Ente</label><input name="azienda" type="text" autocomplete="organization"></div>
       <div><label>Reparto</label><input name="reparto" type="text"></div>
       <div class="full"><label>Note</label><textarea name="note" rows="2"></textarea></div>
-      <div class="full" style="margin-top:2px"><label style="display:flex;gap:7px;align-items:flex-start;font-size:.72rem;color:#7a828a;font-weight:400;line-height:1.35;cursor:pointer"><input name="consenso" type="checkbox" style="width:auto;margin-top:1px;flex:0 0 auto"> <span>Ho letto l'<a href="/privacy/" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per gestire la richiesta di quotazione. I dati non saranno usati per finalità di marketing.</span></label></div>
+      <div class="full" style="margin-top:2px"><label style="display:flex;gap:7px;align-items:flex-start;font-size:.72rem;color:#7a828a;font-weight:400;line-height:1.35;cursor:pointer"><input name="consenso" type="checkbox" style="width:auto;margin-top:1px;flex:0 0 auto"> <span>Ho letto l'<a href="../privacy/" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per gestire la richiesta di quotazione. I dati non saranno usati per finalità di marketing.</span></label></div>
       <div class="full"><button class="btn btn-primary" type="submit">Invia richiesta di quotazione</button></div>
     </form>
   </div>

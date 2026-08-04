@@ -147,3 +147,23 @@
     });
   });
 })();
+
+/* Menu mobile: il toggle resta CSS-only (funziona senza JS);
+   qui si sincronizza solo lo stato ARIA per gli screen reader. */
+(function () {
+  var cb = document.getElementById("navtoggle");
+  if (!cb) return;
+  var lang = (document.documentElement.lang || "it").slice(0, 2);
+  var L = lang === "en" ? { open: "Open the menu", close: "Close the menu" }
+                        : { open: "Apri il menu", close: "Chiudi il menu" };
+  var lbl = document.querySelector('label[for="navtoggle"]');
+  function sync() {
+    var on = cb.checked;
+    cb.setAttribute("aria-expanded", on ? "true" : "false");
+    var t = on ? L.close : L.open;
+    cb.setAttribute("aria-label", t);
+    if (lbl) lbl.setAttribute("aria-label", t);
+  }
+  cb.addEventListener("change", sync);
+  sync();
+})();
