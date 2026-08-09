@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Endocannabinoidi: cosa sono e come si misurano | CABRU</title>
+<meta name="description" content="Anandamide e 2-AG: sintesi, degradazione da parte di FAAH e MAGL, perché il prelievo è il punto critico del dosaggio e quali standard deuterati servono in LC-MS/MS.">
+<link rel="canonical" href="https://www.cabru.it/guide/endocannabinoidi/">
+<link rel="alternate" hreflang="it" href="https://www.cabru.it/guide/endocannabinoidi/">
+<link rel="alternate" hreflang="en" href="https://www.cabru.it/en/guides/endocannabinoids/">
+<link rel="alternate" hreflang="x-default" href="https://www.cabru.it/guide/endocannabinoidi/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="CABRU s.a.s.">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Endocannabinoidi: cosa sono e come si misurano | CABRU">
+<meta property="og:description" content="Anandamide e 2-AG: sintesi, degradazione da parte di FAAH e MAGL, perché il prelievo è il punto critico del dosaggio e quali standard deuterati servono in LC-MS/MS.">
+<meta property="og:url" content="https://www.cabru.it/guide/endocannabinoidi/">
+<meta property="og:image" content="https://www.cabru.it/img/logo-cabru.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/content.css">
+<style>
+.doc .tbl-wrap { overflow-x:auto; margin:18px 0 26px; border:1px solid var(--line); border-radius:var(--radius-s); }
+.doc table.tbl { width:100%; border-collapse:collapse; font-size:.95rem; min-width:560px; }
+.doc table.tbl th, .doc table.tbl td { padding:10px 14px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line); color:var(--ink-soft); }
+.doc table.tbl thead th { background:var(--bg-soft); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:700; }
+.doc table.tbl tbody tr:last-child td { border-bottom:0; }
+.doc table.tbl td code { font-size:.86rem; color:var(--ink); background:var(--bg-soft); padding:2px 6px; border-radius:5px; white-space:nowrap; }
+.doc .todo { background:#fff4e5; border-left:3px solid #e08a1e; padding:2px 8px; border-radius:4px; color:#8a5200; font-weight:600; }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Endocannabinoidi: cosa sono, come si degradano e come si misurano", "description": "Anandamide e 2-AG: sintesi, degradazione da parte di FAAH e MAGL, perché il prelievo è il punto critico del dosaggio e quali standard deuterati servono in LC-MS/MS.", "inLanguage": "it-IT", "url": "https://www.cabru.it/guide/endocannabinoidi/", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.cabru.it/guide/endocannabinoidi/"}, "dateModified": "2026-08-04", "author": {"@type": "Organization", "name": "CABRU s.a.s.", "url": "https://www.cabru.it/"}, "publisher": {"@type": "Organization", "name": "CABRU s.a.s.", "url": "https://www.cabru.it/", "logo": {"@type": "ImageObject", "url": "https://www.cabru.it/img/logo-cabru.png"}}, "datePublished": "2026-08-04"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.cabru.it/"}, {"@type": "ListItem", "position": 2, "name": "Endocannabinoidi: cosa sono, come si degradano e come si misurano", "item": "https://www.cabru.it/guide/endocannabinoidi/"}]}</script>
+</head>
+<body>
+<header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../../" aria-label="CABRU"><img src="../../img/logo-cabru.png" alt="CABRU" width="410" height="96"></a>
+      <input type="checkbox" id="navtoggle" class="nav-checkbox" aria-controls="sitenav" aria-label="Menu">
+      <label for="navtoggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <nav class="nav" id="sitenav">
+        <a href="../../prodotti/">Prodotti</a><a href="../../aziende/">Aziende</a><a href="../../catalogo/">Catalogo</a>
+        <a href="../../contatti/" class="nav-cta js-contact">Contattaci</a>
+        <span class="lang-switch"><a href="./" class="lang on" aria-current="true">IT</a><a href="../../en/guides/endocannabinoids/" class="lang ">EN</a></span>
+      </nav>
+    </div>
+  </header>
+<main class="page">
+  <div class="wrap">
+    <nav class="crumb"><a href="../../">Home</a> › <span>Endocannabinoidi: cosa sono, come si degradano e come si misurano</span></nav>
+    <article class="doc">
+      <h1>Endocannabinoidi: cosa sono, come si degradano e come si misurano</h1>
+      <p>Gli endocannabinoidi sono lipidi bioattivi derivati dall'acido arachidonico che attivano i recettori cannabinoidi CB1 e CB2. I due meglio caratterizzati sono l'anandamide, o N-arachidonoiletanolamide (AEA), isolata nel 1992, e il 2-arachidonoilglicerolo (2-AG), identificato nel 1995. A differenza dei neurotrasmettitori classici non vengono immagazzinati in vescicole: sono sintetizzati su richiesta a partire da precursori di membrana, rilasciati dal neurone postsinaptico e agiscono a ritroso sui recettori CB1 del terminale presinaptico, dove riducono il rilascio di neurotrasmettitore. CB1 è espresso soprattutto nel sistema nervoso centrale, CB2 soprattutto sulle cellule del sistema immunitario. Insieme ai loro enzimi di sintesi e degradazione formano il sistema endocannabinoide, studiato in neuroscienze, dolore, infiammazione e metabolismo. Sul piano chimico appartengono alla stessa famiglia degli <a href="../eicosanoidi/">eicosanoidi</a>, con cui condividono il precursore e molte difficoltà analitiche.</p>
+<h2>Quali enzimi li producono e li degradano?</h2>
+<p>Le due molecole hanno vie del tutto separate. L'anandamide deriva dalla N-arachidonoil-fosfatidiletanolamina per azione della NAPE-fosfolipasi D, e viene idrolizzata dalla fatty acid amide hydrolase (FAAH) in acido arachidonico ed etanolamina. Il 2-AG deriva dal diacilglicerolo per azione delle diacilglicerolo lipasi α e β, e viene idrolizzato principalmente dalla monoacilglicerolo lipasi (MAGL).</p>
+<p>La ripartizione è stata quantificata: nel cervello di roditore circa l'85% dell'attività idrolitica sul 2-AG è attribuibile a MAGL, mentre ABHD12 ne rappresenta circa il 9% e ABHD6 circa il 4%. Le tre serina idrolasi hanno distribuzione subcellulare diversa e controllano verosimilmente pool distinti di 2-AG. È il motivo per cui gli inibitori selettivi di FAAH e di MAGL producono effetti farmacologici differenti e vengono studiati con saggi di screening dedicati.</p>
+<h2>Perché il prelievo è il punto critico del dosaggio</h2>
+<p>Le concentrazioni tissutali di endocannabinoidi cambiano rapidamente dopo il prelievo, e le due molecole cambiano in direzioni opposte. Nel cervello umano l'AEA aumenta in modo continuo e regione-dipendente a partire da un'ora dal decesso, fino a circa sette volte a sei ore; il 2-AG, che nelle stesse regioni è da 10 a 100 volte più concentrato dell'AEA, scende invece al 25-35% del valore iniziale entro la prima ora e poi resta stabile. Un rapporto 2-AG/AEA letto senza controllare il tempo e la temperatura fra prelievo e congelamento misura quindi in buona parte la storia del campione, non la biologia. Da qui la pratica del congelamento immediato o dell'inattivazione enzimatica rapida, e la necessità di registrare l'intervallo post-prelievo insieme al dato.</p>
+<h2>Che cosa rende difficile quantificare il 2-AG</h2>
+<p>Il 2-AG isomerizza spontaneamente nel suo isomero 1-arachidonoilglicerolo (1-AG) per migrazione dell'acile, soprattutto durante preparazione e conservazione del campione, e la velocità dipende da pH, temperatura e composizione del solvente. L'1-AG attiva CB1 con potenza circa tre volte inferiore a quella del 2-AG: confondere i due isomeri sovrastima il segnale biologico. Due strategie sono in uso: separare cromatograficamente i due isomeri con un gradiente più lungo, oppure integrarne i picchi insieme e dichiarare il risultato come 2-AG + 1-AG totale, scelta frequente in assenza di uno standard di 2-AG isomericamente puro. In entrambi i casi l'estrazione va scelta per limitare l'isomerizzazione: l'estrazione con toluene è stata proposta proprio per questo, insieme alla riduzione dell'effetto matrice nel plasma.</p>
+<h2>Quali standard servono in LC-MS/MS</h2>
+<p>La quantificazione si esegue per diluizione isotopica: a ogni campione si aggiunge, prima dell'estrazione, un analogo deuterato dell'analita, che compensa perdite di estrazione e soppressione ionica. Servono quindi sia lo standard non marcato per la curva di calibrazione, sia il corrispondente deuterato come standard interno. Le soluzioni di questi lipidi polinsaturi vanno protette da luce e ossigeno e conservate alle condizioni indicate nel certificato di analisi del lotto.</p>
+<div class="tbl-wrap"><table class="tbl"><thead><tr><th scope="col">Analita</th><th scope="col">Classe</th><th scope="col">Enzima che lo degrada</th><th scope="col">Standard interno deuterato</th></tr></thead><tbody><tr><td>Anandamide (AEA)</td><td>N-aciletanolamide</td><td>FAAH</td><td>Arachidonoyl Ethanolamide-d8</td></tr><tr><td>2-arachidonoilglicerolo (2-AG)</td><td>monoacilglicerolo</td><td>MAGL, e in misura minore ABHD6 e ABHD12</td><td>2-Arachidonoyl Glycerol-d5</td></tr><tr><td>Palmitoiletanolamide (PEA)</td><td>N-aciletanolamide</td><td>FAAH e NAAA</td><td>Palmitoyl Ethanolamide-d4</td></tr><tr><td>Oleoiletanolamide (OEA)</td><td>N-aciletanolamide</td><td>FAAH</td><td>Oleoyl Ethanolamide-d4</td></tr></tbody></table></div>
+<h2>Standard e reagenti a catalogo</h2>
+<p>Le referenze qui sotto provengono da <a href="../../aziende/cayman-chemical/">Cayman Chemical</a> e sono presenti nel catalogo CABRU. L'elenco è parziale: la gamma completa di standard, standard deuterati, inibitori enzimatici e anticorpi si consulta nel <a href="../../catalogo/">catalogo prodotti</a>, nella categoria <a href="../../prodotti/molecole-biochimiche/">molecole biochimiche</a> e fra i <a href="../../prodotti/kit-elisa/">kit ELISA</a>.</p>
+<div class="tbl-wrap"><table class="tbl"><thead><tr><th scope="col">Codice</th><th scope="col">Prodotto</th><th scope="col">Formato</th></tr></thead><tbody><tr><td><code>004CA90050-10 mg</code></td><td>Arachidonoyl Ethanolamide (anandamide)</td><td>10 mg</td></tr><tr><td><code>004CA390050-1 mg</code></td><td>Arachidonoyl Ethanolamide-d8</td><td>1 mg</td></tr><tr><td><code>004CA10007270-100 µg</code></td><td>Arachidonoyl Ethanolamide MaxSpec® Standard</td><td>100 µg</td></tr><tr><td><code>004CA62160-1 mg</code></td><td>2-Arachidonoyl Glycerol</td><td>1 mg</td></tr><tr><td><code>004CA362162-1 mg</code></td><td>2-Arachidonoyl Glycerol-d5</td><td>1 mg</td></tr><tr><td><code>004CA90350-10 mg</code></td><td>Palmitoyl Ethanolamide</td><td>10 mg</td></tr><tr><td><code>004CA10007824-1 mg</code></td><td>Palmitoyl Ethanolamide-d4</td><td>1 mg</td></tr><tr><td><code>004CA90265-1 g</code></td><td>Oleoyl Ethanolamide</td><td>1 g</td></tr><tr><td><code>004CA9000552-1 mg</code></td><td>Oleoyl Ethanolamide-d4</td><td>1 mg</td></tr><tr><td><code>004CA10005196-96 Well</code></td><td>Fatty Acid Amide Hydrolase Inhibitor Screening Assay Kit</td><td>96 pozzetti / wells</td></tr><tr><td><code>004CA705192-96 Well</code></td><td>Monoacylglycerol Lipase Inhibitor Screening Assay Kit</td><td>96 pozzetti / wells</td></tr><tr><td><code>004CA10010183-100 U</code></td><td>Fatty Acid Amide Hydrolase (human, recombinant)</td><td>100 U</td></tr><tr><td><code>004CA705194-1 ea</code></td><td>MAGL (human, recombinant)</td><td>1 ea</td></tr><tr><td><code>004CA101500-1 ea</code></td><td>CB1 Receptor Polyclonal Antibody</td><td>500 µl</td></tr><tr><td><code>004CA101550-1 ea</code></td><td>CB2 Receptor Polyclonal Antibody</td><td>500 µl</td></tr></tbody></table></div>
+<p>Per verificare la referenza adatta al pannello analitico in uso è sufficiente indicare il codice o l'analita e scrivere a <a href="mailto:info@cabru.it" class="js-contact">CABRU</a>.</p>
+      <div class="cta-block">
+        <a class="btn btn-primary js-contact" href="mailto:info@cabru.it">Richiedi informazioni</a>
+      </div>
+    </article>
+  </div>
+</main>
+<footer class="site-footer"><div class="wrap">
+      <div><span class="foot-brand">CABRU s.a.s.</span> · Via Enrico Forlanini 52, 20862 Arcore (MB) · <a href="tel:+390396013988">039 6013988</a> · <a href="mailto:info@cabru.it">info@cabru.it</a></div>
+      <div>© <span id="y"></span> CABRU — Prodotti per laboratorio, industria e ricerca</div>
+      <div class="foot-legal"><a href="../../qualita/">Qualità</a> · <a href="../../chi-siamo/">Chi siamo</a> · <a href="../../contatti/">Contatti</a> · <a href="../../privacy/">Privacy</a> · <a href="../../termini/">Termini e Condizioni</a></div>
+      </div></footer><script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<script src="../../js/site.js" defer></script>
+</body>
+</html>
