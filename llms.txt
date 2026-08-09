@@ -34,8 +34,19 @@ Sito bilingue: italiano su https://www.cabru.it/ , inglese su https://www.cabru.
 - [Rovalab in Italia](https://www.cabru.it/aziende/rovalab/)
 - [SEQENS in Italia](https://www.cabru.it/aziende/seqens/)
 
+## Guide e applicazioni
+- [Eicosanoidi](https://www.cabru.it/guide/eicosanoidi/): mediatori lipidici derivati dall'acido arachidonico — prostaglandine, trombossani, leucotrieni e lipossine — con i saggi e gli standard per studiarli.
+- [Endocannabinoidi](https://www.cabru.it/guide/endocannabinoidi/): anandamide, 2-AG, enzimi di sintesi e degradazione, recettori CB1 e CB2, e i reagenti per misurarli.
+- [Terreni cromogenici](https://www.cabru.it/guide/terreni-cromogenici/): come funziona la rivelazione enzimatica per colore, e la corrispondenza fra metodi ISO e terreni.
+- [Tossicologia forense](https://www.cabru.it/applicazioni/tossicologia-forense/): standard analitici e standard interni deuterati per la tossicologia forense e la conferma in spettrometria di massa.
+- [Emostasi e coagulazione](https://www.cabru.it/applicazioni/emostasi-coagulazione/): plasmi carenti e di controllo, fattori purificati e substrati per lo studio della coagulazione.
+
+## L'azienda
+- [Chi siamo](https://www.cabru.it/chi-siamo/): come funziona la distribuzione su mandato, come CABRU sceglie i produttori che rappresenta e cosa fa per il laboratorio.
+- [Contatti](https://www.cabru.it/contatti/): sede, telefono, email e come si richiede una quotazione.
+
 ## Catalogo
-- [Catalogo prodotti](https://www.cabru.it/catalogo/): oltre 100.000 referenze ricercabili per codice, nome, applicazione e azienda.
+- [Catalogo prodotti](https://www.cabru.it/catalogo/): 118.282 referenze ricercabili per codice, nome, applicazione e azienda.
 
 ## Qualità e certificazioni
 - [Qualità e certificazioni](https://www.cabru.it/qualita/): CABRU opera con un sistema di gestione della qualità certificato ISO 9001 e rappresenta produttori con sistemi qualità certificati (ISO 9001 e/o ISO 13485).

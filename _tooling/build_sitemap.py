@@ -53,34 +53,56 @@ def path_for(loc):
     return (p + "/index.html") if p else "index.html"
 
 
+def discover():
+    """Tutte le pagine pubblicabili, lette dal filesystem.
+
+    Fino al 2026-08-04 questa lista veniva riletta dalla sitemap gia' esistente:
+    i lastmod si aggiornavano, ma una pagina nuova non ci entrava mai — e non ci
+    sarebbe entrata nemmeno dopo il commit. Le pagine si scoprono dal disco, che
+    e' l'unica fonte che sa cosa esiste davvero.
+    """
+    found = []
+    for root, dirs, files in os.walk("."):
+        dirs[:] = [d for d in dirs if d not in ("_tooling", ".git") and not d.startswith(".")]
+        for f in files:
+            if f != "index.html":
+                continue
+            fp = os.path.normpath(os.path.join(root, f))
+            # una pagina esclusa dall'indice non va annunciata in sitemap
+            head = open(fp, encoding="utf-8").read(4000)
+            if re.search(r'<meta[^>]+name="robots"[^>]+noindex', head, re.I):
+                continue
+            rel = os.path.dirname(fp).replace(os.sep, "/").lstrip(".").strip("/")
+            found.append((f"{BASE}/{rel}/" if rel else f"{BASE}/", fp))
+    return sorted(found)
+
+
 def main():
     if not os.path.exists(SITEMAP):
         sys.exit(f"{SITEMAP} non trovato: esegui lo script dalla root del sito.")
 
-    locs = re.findall(r"<loc>(.*?)</loc>", open(SITEMAP, encoding="utf-8").read())
-    if not locs:
-        sys.exit("Nessun <loc> trovato nella sitemap.")
+    pages = discover()
+    if not pages:
+        sys.exit("Nessuna pagina trovata: esegui lo script dalla root del sito.")
 
     out = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ]
-    missing = []
-    for loc in locs:
-        fp = path_for(loc)
+    uncommitted = []
+    for loc, fp in pages:
         d = last_modified(fp)
-        if d is None:
-            missing.append(loc)
-            continue
+        if is_dirty(fp):
+            uncommitted.append(loc)
         out += ["  <url>", f"    <loc>{loc}</loc>", f"    <lastmod>{d}</lastmod>", "  </url>"]
     out += ["</urlset>", ""]
 
     open(SITEMAP, "w", encoding="utf-8").write("\n".join(out))
-    print(f"sitemap.xml rigenerata: {len(locs) - len(missing)} URL")
-    if missing:
-        print(f"ATTENZIONE - {len(missing)} URL in sitemap senza file corrispondente:")
-        for m in missing:
-            print("   ", m)
+    print(f"sitemap.xml rigenerata: {len(pages)} URL")
+    if uncommitted:
+        print(f"ATTENZIONE - {len(uncommitted)} pagine non ancora committate: il loro")
+        print("lastmod viene dalla data del file, non da git. Committa e rilancia")
+        print("questo script prima del deploy, altrimenti la data cambia a ogni salvataggio.")
 
 
 if __name__ == "__main__":
