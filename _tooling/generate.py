@@ -1,5 +1,32 @@
 #!/usr/bin/env python3
 # Generatore statico CABRU: content.json -> pagine HTML (IT + EN) nel sito.
+
+# ---------------------------------------------------------------------------
+# 🔴 FERMO DI SICUREZZA — aggiunto il 2026-08-28
+#
+# Questo script ricostruisce 21 pagine del sito da content.json. Ma content.json
+# e' fermo al 24.07.2026, mentre le pagine sono state riscritte a mano il
+# 09.08.2026 (66 pagine, contenuti nuovi) e di nuovo il 28.08.2026 (66
+# correzioni ai testi arrivate dall'XLS di Carlo).
+#
+# Lanciarlo com'e' cancella tutto quel lavoro, senza chiedere niente e senza
+# lasciare traccia: e' esattamente il guasto silenzioso che non si scopre
+# subito. Prima di poterlo riusare, content.json va riallineato ai testi che
+# stanno oggi nelle pagine.
+#
+# Se sai cosa stai facendo:  python3 generate.py --sovrascrivi-comunque
+# ---------------------------------------------------------------------------
+import sys as _sys
+if "--sovrascrivi-comunque" not in _sys.argv:
+    _sys.exit(
+        "generate.py e' fermo: content.json (24.07.2026) e' piu' vecchio delle "
+        "pagine, che sono state riscritte a mano.\n"
+        "Rigenerarle ora cancellerebbe i contenuti del 09.08 e le correzioni "
+        "del 28.08.\n"
+        "Per forzare: python3 generate.py --sovrascrivi-comunque"
+    )
+
+
 import re, json, os, html, posixpath
 
 def rel(cur, target):

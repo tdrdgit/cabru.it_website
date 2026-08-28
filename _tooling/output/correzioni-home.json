@@ -1,0 +1,154 @@
+[
+ {
+  "foglio": "Home",
+  "riga": 4,
+  "file": "index.html",
+  "attuale": "CABRU — Reagenti e prodotti per laboratorio, industria e ricerca",
+  "correzione": "CABRU — Offre prodotti per laboratori di ricerca in ambito scientifico",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 5,
+  "file": "index.html",
+  "attuale": "CABRU s.a.s. distribuisce in Italia reagenti, kit, anticorpi, proteine e terreni di coltura per il laboratorio di ricerca e l'industria. Rappresentante di produttori internazionali selezionati.",
+  "correzione": "CABRU — Reagenti e prodotti per laboratori di ricerca nell'ambito delle scienze della vita e per laboratori di controllo qualità di industrie biotecnologiche, farmaceutiche, alimentari, cosmetiche",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 7,
+  "file": "index.html",
+  "attuale": "Prodotti per laboratorio, industria e ricerca",
+  "correzione": "CABRU — Offre prodotti per laboratori di ricerca in ambito scientifico",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 8,
+  "file": "index.html",
+  "attuale": "Reagenti e soluzioni per la ricerca e l'industria.",
+  "correzione": "CABRU — Reagenti e prodotti per laboratori di ricerca nell'ambito delle scienze della vita e per laboratori di controllo qualità di industrie biotecnologiche, farmaceutiche, alimentari, cosmetiche",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 9,
+  "file": "index.html",
+  "attuale": "CABRU seleziona e distribuisce in Italia i prodotti di produttori internazionali specializzati: anticorpi, kit, proteine, reagenti per biologia molecolare e terreni di coltura, con un unico interlocutore.",
+  "correzione": "CABRU seleziona e distribuisce in Italia anticorpi, molecole biochimiche, principi attivi, inibitori, proteine, kit, terreni, reagenti per biologia molecolare dei più affidabili prodottori nazionali ed internazionali",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 12,
+  "file": "index.html",
+  "attuale": "Una gamma completa per il laboratorio di ricerca e il controllo qualità.",
+  "correzione": "Una gamma completa di prodotti per l'uso quotidiano nei lavoratori di ricerca scientifica e di controllo qualità",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 14,
+  "file": "index.html",
+  "attuale": "Anticorpi primari mono e policlonali e anticorpi secondari.",
+  "correzione": "Anticorpi primari mono e policlonali e anticorpi secondari marcati",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 17,
+  "file": "index.html",
+  "attuale": "Kit immunoenzimatici",
+  "correzione": "KIT",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 18,
+  "file": "index.html",
+  "attuale": "Kit ELISA, EIA, per FC e IHC; colorimetrici e fluorimetrici per dosaggio di antigeni, metaboliti e studio dei processi biologici.",
+  "correzione": "Kit ELISA, EIA, per FC e IHC; colorimetrici e fluorimetrici per dosaggio di antigeni, metaboliti e studio dei processi biologici.",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 25,
+  "file": "index.html",
+  "attuale": "Terreni per microbiologia",
+  "correzione": "Terreni per microbiologia e biologia molecolare",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 28,
+  "file": "index.html",
+  "attuale": "Soluzioni pronte all'uso e polveri per la preparazione in laboratorio.",
+  "correzione": "Soluzioni tampone e per le più svariate applicazioni pronte all'uso e polveri chimiche",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 34,
+  "file": "index.html",
+  "attuale": "Choline (chloride) — An essential nutrient with roles in liver, neurological and hematological function.",
+  "correzione": "Atlas Clearsight",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Home",
+  "riga": 35,
+  "file": "index.html",
+  "attuale": "RRN3 antibody — Required for efficient transcription initiation by RNA polymerase I.",
+  "correzione": "Titan HotTaq qPCR master mix",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Home",
+  "riga": 40,
+  "file": "index.html",
+  "attuale": "Distribuiamo in Italia i prodotti di 17 produttori internazionali specializzati. Ogni azienda copre un'area specifica delle scienze della vita.",
+  "correzione": "Proponiamo in Italia eccellenti prodotti per ricerca scientifica, selezionati fra le più innovative ed affidabili aziende biotecnologiche in tutto il mondo per garantire ottime performance e riproducibilità nel tempo.",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 43,
+  "file": "index.html",
+  "attuale": "CABRU s.a.s. seleziona produttori internazionali specializzati nelle scienze della vita e ne distribuisce i prodotti sul mercato italiano. Un solo referente per un'offerta che copre biologia molecolare, immunochimica, proteomica e microbiologia.",
+  "correzione": "Proponiamo in Italia eccellenti prodotti per ricerca scientifica, selezionati per garantire ottime performance, riproducibilità nel tempo; accompagnamo la scelta e l'uso dei prodotti al fine di risolvere qualsiasi problematica dovesse sorgere; offriamo un servizio quanto più rapido ed efficiente possibile sia dal punto di vista tecnico-scientifico che commerciale. Garantiamo la catena del freddo.",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 46,
+  "file": "index.html",
+  "attuale": "Un unico punto di contatto per ordini, informazioni tecniche e assistenza.",
+  "correzione": "Per informazioni o assistenza tecnico-scientifica o commerciale: info@cabru.it",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 48,
+  "file": "index.html",
+  "attuale": "Qualora il prodotto ricercato non compaia tra le categorie, CABRU ne verifica la disponibilità presso i produttori rappresentati e assiste il cliente dalla richiesta alla consegna.",
+  "correzione": "Contattaci a info@cabru.it e faremo il possibile per soddisfare le tue esigenze",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 62,
+  "file": "index.html",
+  "attuale": "Per un preventivo, la disponibilità di un prodotto o un'informazione tecnica, CABRU è a disposizione e risponde nel più breve tempo possibile.",
+  "correzione": "Per un preventivo, verificare la disponibilità di un prodotto o per un'informazione tecnica, CABRU è sempre a disposizione e risponde nel più breve tempo possibile.",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Home",
+  "riga": 64,
+  "file": "index.html",
+  "attuale": "CABRU opera con un sistema di gestione della qualità certificato ISO 9001 e rappresenta produttori con sistemi qualità certificati (ISO 9001 e/o ISO 13485). Scopri di più sulla qualità .",
+  "correzione": "CABRU opera con un sistema di gestione della qualità certificato ISO 9001 e rappresenta produttori con sistemi qualità certificati (ISO 9001 e/o ISO 13485).",
+  "stato": "APPLICABILE"
+ }
+]

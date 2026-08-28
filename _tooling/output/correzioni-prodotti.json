@@ -1,0 +1,218 @@
+[
+ {
+  "foglio": "Prod_Anticorpi",
+  "riga": 4,
+  "file": "prodotti/anticorpi/index.html",
+  "attuale": "Anticorpi primari, secondari e coniugati | CABRU",
+  "correzione": "Anticorpi primari e secondari coniugati | CABRU",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Prod_Anticorpi",
+  "riga": 5,
+  "file": "prodotti/anticorpi/index.html",
+  "attuale": "Anticorpi primari mono e policlonali, secondari e coniugati per la ricerca, dai produttori rappresentati da CABRU. Richiedi informazioni.",
+  "correzione": "Anticorpi primari mono e policlonali, secondari coniugati per le più svariate applicazioni",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Prod_Anticorpi",
+  "riga": 11,
+  "file": "prodotti/anticorpi/index.html",
+  "attuale": "CABRU commercializza anticorpi di diverse aziende produttrici: FineTest , Cayman Chemical , ExBio , ReliaTech , BioVendor , IMMBIOMED, Affinity Biologicals e BioMedica Diagnostics .",
+  "correzione": "CABRU commercializza anticorpi di diverse aziende produttrici: FineTest, Cayman Chemical, ExBio, ReliaTech, BioVendor, Affinity Biologicals, GBiosciences e BioMedica Diagnostics.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Prod_Anticorpi",
+  "riga": 16,
+  "file": "prodotti/anticorpi/index.html",
+  "attuale": "L'anticorpo primario riconosce direttamente l'antigene bersaglio; il secondario riconosce il primario ed è coniugato a un rivelatore (enzima o fluoroforo). Un approfondimento è disponibile nella guida dedicata.",
+  "correzione": "L'anticorpo primario riconosce direttamente l'antigene bersaglio; il secondario riconosce il primario ed è coniugato a un rivelatore (enzima o fluoroforo).",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Prod_Anticorpi",
+  "riga": 18,
+  "file": "prodotti/anticorpi/index.html",
+  "attuale": "Sì, in particolare i monoclonali coniugati di ExBio. Il dettaglio è riportato nella pagina ExBio .",
+  "correzione": "Sì, in particolare gli anticorpi prodotti da Fine-Test, Exbio e Cayman",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Prod_Anticorpi",
+  "riga": 20,
+  "file": "prodotti/anticorpi/index.html",
+  "attuale": "Sì: a partire dalla descrizione del target, CABRU ne verifica la disponibilità presso i produttori rappresentati.",
+  "correzione": "Sì, si può valutare la fattibilità della richiesta",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Prod_Molecole biochimiche",
+  "riga": 4,
+  "file": "prodotti/molecole-biochimiche/index.html",
+  "attuale": "Molecole biochimiche: inibitori, enzimi, standard | CABRU",
+  "correzione": "Molecole biochimiche: principi attivi, inibitori, enzimi, standard | CABRU",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Prod_Molecole biochimiche",
+  "riga": 5,
+  "file": "prodotti/molecole-biochimiche/index.html",
+  "attuale": "Inibitori, attivatori, enzimi, substrati, coloranti, traccianti e standard analitici per la ricerca, dai produttori rappresentati da CABRU in Italia.",
+  "correzione": "Principi attivi, inibitori, attivatori, enzimi, substrati, coloranti, traccianti e standard analitici.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Prod_Molecole biochimiche",
+  "riga": 11,
+  "file": "prodotti/molecole-biochimiche/index.html",
+  "attuale": "Gli ambiti d'uso includono lo screening farmacologico, lo studio di eicosanoidi e lipidi, la ricerca sullo stress ossidativo e sull'infiammazione, la tossicologia e le scienze forensi. I contesti applicativi sono illustrati nelle pagine Metabolismo e lipidi e Tossicologia e scienze forensi .",
+  "correzione": "Gli ambiti d'uso includono la somministrazione in vitro in colture cellulari o in vivo in cavie per studiarne gli effetti cellulari e sistemici oppure come riferimenti per analisi in cromatografia.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Prod_Molecole biochimiche",
+  "riga": 13,
+  "file": "prodotti/molecole-biochimiche/index.html",
+  "attuale": "CABRU rappresenta molecole biochimiche di Cayman Chemical (ampia gamma di inibitori, substrati, traccianti, standard ed eicosanoidi) e di G Biosciences (reagenti e standard per proteomica e biologia molecolare).",
+  "correzione": "Cayman Chemical copre la maggior parte del paniere di Cabru per questa tipologia di prodotti",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Prod_Kit ELISA",
+  "riga": 4,
+  "file": "prodotti/kit-elisa/index.html",
+  "attuale": "Kit ELISA e saggi immunoenzimatici | CABRU",
+  "correzione": "Kit ELISA e saggi cellulari e biochimici | CABRU",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Prod_Kit ELISA",
+  "riga": 5,
+  "file": "prodotti/kit-elisa/index.html",
+  "attuale": "Kit ELISA ed EIA colorimetrici e fluorimetrici per il dosaggio di antigeni, metaboliti e biomarcatori, dai produttori rappresentati da CABRU in Italia.",
+  "correzione": "Kit ELISA, EIA, colorimetrici e fluorimetrici per il dosaggio di antigeni, metaboliti e studio di vari processi biologici.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Prod_Kit ELISA",
+  "riga": 7,
+  "file": "prodotti/kit-elisa/index.html",
+  "attuale": "Kit ELISA e saggi immunoenzimatici",
+  "correzione": "Kit ELISA e saggi cellulari e biochimici | CABRU",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Prod_Kit ELISA",
+  "riga": 11,
+  "file": "prodotti/kit-elisa/index.html",
+  "attuale": "Gli impieghi tipici comprendono la quantificazione di biomarcatori sierici, l'endocrinologia, l'emostasi, l'immunologia e la tossicologia. Per un'analisi dei tipi di ELISA e della curva standard si rimanda alla guida al test ELISA.",
+  "correzione": "Gli impieghi tipici comprendono la quantificazione di biomarcatori sierici, plasmatici, tissutali, surnatanti e terreni di coltura",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Prod_Kit ELISA",
+  "riga": 13,
+  "file": "prodotti/kit-elisa/index.html",
+  "attuale": "CABRU rappresenta kit di BioVendor , FineTest , LDN (endocrinologia e neuroscienze), Affinity Biologicals (emostasi) e Cayman Chemical .",
+  "correzione": "CABRU fornisce i kit prodotti da Cayman Chemical, Fine Test, LDN, Affinity Biologicals, Gbiosciences, Biovendor",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Prod_Proteine",
+  "riga": 5,
+  "file": "prodotti/proteine/index.html",
+  "attuale": "Proteine ricombinanti e purificate, citochine e fattori di crescita per la ricerca, dai produttori rappresentati da CABRU in Italia. Richiedi informazioni.",
+  "correzione": "Proteine ricombinanti, anche con tag, o purificate, citochine e fattori di crescita prodotti da Fine Test, Cayman e Reliatech.Richiedi informazioni.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Prod_Proteine",
+  "riga": 9,
+  "file": "prodotti/proteine/index.html",
+  "attuale": "La categoria comprende proteine ricombinanti e purificate, citochine, fattori di crescita e proteine native, tra cui enzimi e cofattori. Sono reagenti destinati allo studio delle interazioni molecolari, ai saggi funzionali, alle colture cellulari e allo sviluppo di dosaggi.",
+  "correzione": "La categoria comprende proteine ricombinanti anche con tag, citochine, fattori di crescita e proteine native purificate, tra cui enzimi e cofattori. Sono reagenti destinati allo studio delle interazioni molecolari, ai saggi funzionali, alle colture cellulari, allo sviluppo di dosaggi ad analisi cromatografiche.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Prod_Proteine",
+  "riga": 11,
+  "file": "prodotti/proteine/index.html",
+  "attuale": "Gli ambiti applicativi includono la ricerca su immunologia e infiammazione, l'angiogenesi, il differenziamento cellulare, l'emostasi e la coagulazione. I contesti d'uso sono descritti nelle pagine Immunologia e infiammazione ed Emostasi e coagulazione.",
+  "correzione": "Biologia cellulare, biochimica",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Prod_Proteine",
+  "riga": 13,
+  "file": "prodotti/proteine/index.html",
+  "attuale": "CABRU rappresenta proteine di ReliaTech (citochine e fattori di crescita), BioVendor , FineTest , Enzyme Research Laboratories (proteine ed enzimi della coagulazione) e SEQENS (BSA).",
+  "correzione": "CABRU fornisce proteine di Cayman, Fine Test, ReliaTech (citochine e fattori di crescita), BioVendor , Enzyme Research Laboratories (proteine ed enzimi della coagulazione) e SEQENS (BSA).",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Prod_Proteine",
+  "riga": 20,
+  "file": "prodotti/proteine/index.html",
+  "attuale": "Sì, in particolare tramite ReliaTech. Il dettaglio è riportato nella pagina ReliaTech .",
+  "correzione": "Sì, in particolare si forniscono i prodotti Fine Test, Reliatech, Cayman",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Prod_Acidi nucleici",
+  "riga": 20,
+  "file": "prodotti/acidi-nucleici/index.html",
+  "attuale": "Sì, tra i reagenti Bioatlas per l'elettroforesi. Il dettaglio è riportato nella pagina Bioatlas .",
+  "correzione": "Sì, Atlas ClearSight. Il dettaglio è riportato nella pagina Bioatlas .",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Prod_Elettroforesi WB",
+  "riga": 5,
+  "file": "prodotti/elettroforesi-western-blot/index.html",
+  "attuale": "Reagenti e kit per elettroforesi di proteine 1D e 2D, western blot e marker di peso molecolare, dai produttori rappresentati da CABRU in Italia.",
+  "correzione": "Reagenti e kit per elettroforesi di proteine 1D e 2D, western blot e marker di peso molecolare",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Prod_Elettroforesi WB",
+  "riga": 13,
+  "file": "prodotti/elettroforesi-western-blot/index.html",
+  "attuale": "CABRU rappresenta reagenti di G Biosciences (proteomica: estrazione, dosaggio, purificazione, elettroforesi 1D/2D, marker per proteine).",
+  "correzione": "CABRU fornisce i reagenti di G Biosciences e Fine Test (estrazione, dosaggio, purificazione, elettroforesi 1D/2D, marker per proteine).",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Prod_Elettroforesi WB",
+  "riga": 20,
+  "file": "prodotti/elettroforesi-western-blot/index.html",
+  "attuale": "Sì, tramite G Biosciences.",
+  "correzione": "Sì",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Prod_Terreni microbiologia",
+  "riga": 20,
+  "file": "prodotti/terreni-microbiologia/index.html",
+  "attuale": "Sì, l'intera gamma tramite Condalab. Il dettaglio è riportato nella pagina Condalab .",
+  "correzione": "Sì, tutti questi prodotti sono presenti nel paniere Cabru. Il dettaglio è riportato nella pagina Condalab .",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Prod_Terreni microbiologia",
+  "riga": 22,
+  "file": "prodotti/terreni-microbiologia/index.html",
+  "attuale": "Coprono più ambiti; la referenza adatta al campo d'uso viene individuata in fase di richiesta.",
+  "correzione": "Coprono più ambiti;",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Prod_Soluzioni e polveri",
+  "riga": 5,
+  "file": "prodotti/soluzioni-polveri/index.html",
+  "attuale": "Soluzioni pronte all'uso, buffer stabilizzanti, BSA e polveri per la preparazione in laboratorio, dai produttori rappresentati da CABRU in Italia.",
+  "correzione": "Soluzioni pronte all'uso, tamponi stabilizzanti, BSA e polveri per la preparazione in laboratorio di tamponi.",
+  "stato": "ORFANA"
+ }
+]

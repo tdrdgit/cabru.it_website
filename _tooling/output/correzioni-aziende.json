@@ -1,0 +1,170 @@
+[
+ {
+  "foglio": "Az_Cayman Chemical",
+  "riga": 4,
+  "file": "aziende/cayman-chemical/index.html",
+  "attuale": "Cayman Chemical Italia — kit ELISA, anticorpi, inibitori | CABRU",
+  "correzione": "Cayman Chemical - molecole biochimiche, anticorpi, kit",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_Cayman Chemical",
+  "riga": 5,
+  "file": "aziende/cayman-chemical/index.html",
+  "attuale": "CABRU rappresenta Cayman Chemical in Italia: molecole biochimiche, inibitori, kit ELISA, anticorpi, proteine ed eicosanoidi. Informazioni e preventivi.",
+  "correzione": "CABRU forenisce i prodotti di Cayman Chemical: molecole biochimiche, inibitori, kit , anticorpi, proteine, standard analitici",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_Cayman Chemical",
+  "riga": 9,
+  "file": "aziende/cayman-chemical/index.html",
+  "attuale": "Cayman Chemical è un produttore statunitense di reagenti per la ricerca nelle scienze della vita, con sede ad Ann Arbor (Michigan) e attività dal 1980. Sviluppa e produce internamente piccole molecole biochimiche, saggi immunoenzimatici e reagenti ad elevata purezza, con una riconosciuta specializzazione nella chimica dei lipidi e degli eicosanoidi. I prodotti Cayman sono destinati alla ricerca (Research Use Only).",
+  "correzione": "Cayman Chemical è un produttore statunitense di reagenti per la ricerca nelle scienze della vita, con sede ad Ann Arbor (Michigan) e attività dal 1980. I prodotti Cayman Chemical sono destinati esclusivamente ad uso ricerca e per controllo qualità. Non possono essere utilizzati per la formulazione di preparati farmaceutici, galenici, cosmetici, integratori, destinati a uomo o animale.",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Az_Cayman Chemical",
+  "riga": 18,
+  "file": "aziende/cayman-chemical/index.html",
+  "attuale": "Oncologia, neuroscienze, infiammazione ed immunologia, metabolismo e biologia lipidica, stress ossidativo, epigenetica, nonché l'area tossicologia e scienze forensi (standard e composti di riferimento per il dosaggio analitico). → Metabolismo e lipidi · Tossicologia e scienze forensi · Immunologia e infiammazione · Oncologia",
+  "correzione": "Oncologia, neuroscienze, infiammazione ed immunologia, patologie cardiovascolari, trasduzione del segnale, biologia della cellula, apoptosi, ciclo cellulare, danni al DNA, metabolismo lipidi e zuccheri, lipidomica, metabolomica, stress ossidativo, epigenetica, tossicologia, farmacologia, nanoparticelle, endocrinologia, infezione, biologia delle piante",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Az_Cayman Chemical",
+  "riga": 20,
+  "file": "aziende/cayman-chemical/index.html",
+  "attuale": "CABRU rappresenta Cayman Chemical sul mercato italiano e ne cura gli ordini in qualità di interlocutore unico locale: raccolta della richiesta, verifica della disponibilità presso il produttore, formulazione del preventivo, gestione dell'ordine ed assistenza tecnica in lingua italiana. Non è richiesto alcun rapporto diretto con gli Stati Uniti: CABRU cura la comunicazione con il produttore e semplifica documentazione e logistica per laboratori di ricerca e realtà industriali.",
+  "correzione": "CABRU è fornitore autorizzato e diretto di Cayman Chemical per l'Italia pertanto richieste di preventivi, informazioni tecnico-scientifiche, gestione degli ordini diretti o mediante MePA, consegna dei prodotti, risoluzione di eventuali problematiche vengono svolte direttamente da Cabru.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_Cayman Chemical",
+  "riga": 21,
+  "file": "aziende/cayman-chemical/index.html",
+  "attuale": "Per l'individuazione del prodotto corretto o la richiesta di un preventivo è sufficiente comunicare il codice di catalogo o una descrizione dell'applicazione; CABRU fornisce il riscontro necessario. → Richiedi informazioni e preventivo",
+  "correzione": "Per l'individuazione del prodotto desiderato e/o la richiesta di un preventivo è sufficiente mandare un'email a: info@cabru.it",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_Cayman Chemical",
+  "riga": 24,
+  "file": "aziende/cayman-chemical/index.html",
+  "attuale": "CABRU s.a.s. rappresenta Cayman Chemical in Italia e ne gestisce richieste, preventivi ed ordini in qualità di interlocutore unico locale, con assistenza tecnica in lingua italiana.",
+  "correzione": "CABRU s.a.s. è fornitore autorizzato e diretto di Cayman Chemical in Italia e ne gestisce richieste, preventivi ed ordini con assistenza tecnica in lingua italiana.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_Cayman Chemical",
+  "riga": 26,
+  "file": "aziende/cayman-chemical/index.html",
+  "attuale": "L'acquisto avviene trasmettendo a CABRU il codice di catalogo o la descrizione del prodotto tramite il modulo contatti o email. CABRU verifica la disponibilità presso il produttore, formula un preventivo e segue l'ordine sino alla consegna.",
+  "correzione": "L'acquisto avviene trasmettendo a CABRU un buono d'ordine rilasciato dall'amministrazione dell'ente o dall'azienda a cui si afferisce.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_Cayman Chemical",
+  "riga": 28,
+  "file": "aziende/cayman-chemical/index.html",
+  "attuale": "Molecole biochimiche ed inibitori, kit ELISA e saggi, anticorpi, proteine ricombinanti ed eicosanoidi/mediatori lipidici. Qualora un articolo non figuri a listino, CABRU ne effettua la verifica presso Cayman.",
+  "correzione": "Tutti i prodotti presenti nel paniere Cayman Chemical tranne i prodotti tabellati (stupefacenti) anche in versione CRM, tossine, prodotti classificati come pericolosi e alcuni prodotti la cui commercializzazione è limitata solo agli USA",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_Cayman Chemical",
+  "riga": 29,
+  "file": "aziende/cayman-chemical/index.html",
+  "attuale": "Cosa sono gli eicosanoidi e perché Cayman ne è un riferimento?",
+  "correzione": "Cosa sono le LNP?",
+  "stato": "APPLICABILE"
+ },
+ {
+  "foglio": "Az_Cayman Chemical",
+  "riga": 30,
+  "file": "aziende/cayman-chemical/index.html",
+  "attuale": "Gli eicosanoidi sono mediatori lipidici (prostaglandine, leucotrieni e composti affini) coinvolti in infiammazione e segnalazione cellulare. Cayman vanta una lunga specializzazione nella loro sintesi e nei relativi saggi. → Metabolismo e lipidi",
+  "correzione": "Le LNP sono nanoparticelle lipidiche utilizzate come vettori di mRNA. Cayman Chemical offre una vasta gamma di opportunità.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_A&A Biotechnology",
+  "riga": 11,
+  "file": "aziende/a-a-biotechnology/index.html",
+  "attuale": "Il catalogo comprende kit per estrazione e purificazione di gDNA, DNA plasmidico, RNA e microRNA, oltre a reagenti per retrotrascrizione, amplificazione ( qPCR e PCR ), modificazione ed elettroforesi degli acidi nucleici. I prodotti sono concepiti per rese elevate e purezza costante.",
+  "correzione": "Il catalogo comprende kit per estrazione e purificazione di gDNA, DNA plasmidico, RNA e microRNA, oltre a reagenti per retrotrascrizione, amplificazione ( qPCR e PCR ), modificazione ed elettroforesi degli acidi nucleici. I prodotti garantiscono buone rese eccellente purezza, elevata riproducibilità e sensibilità..",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_A&A Biotechnology",
+  "riga": 13,
+  "file": "aziende/a-a-biotechnology/index.html",
+  "attuale": "Le principali aree d'impiego sono la genotipizzazione, l'espressione genica e la preparazione dei campioni per il sequenziamento. Si vedano la pagina Biologia molecolare e le guide Estrazione di acidi nucleici e PCR vs qPCR.",
+  "correzione": "Le principali aree d'impiego sono la genotipizzazione, l'espressione genica e la preparazione dei campioni per il sequenziamento.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_A&A Biotechnology",
+  "riga": 15,
+  "file": "aziende/a-a-biotechnology/index.html",
+  "attuale": "CABRU rappresenta A&A Biotechnology in Italia come unico referente, offrendo informazioni tecniche, verifica della disponibilità, preventivo e gestione dell'ordine fino alla consegna.",
+  "correzione": "CABRU rappresenta A&A Biotechnology in Italia offrendo informazioni tecniche, preventivi competitivi e gestione dell'ordine fino alla consegna.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_A&A Biotechnology",
+  "riga": 20,
+  "file": "aziende/a-a-biotechnology/index.html",
+  "attuale": "È sufficiente contattare CABRU indicando matrice di partenza e applicazione: la referenza adatta viene individuata e l'ordine gestito con un unico referente.",
+  "correzione": "È sufficiente contattare CABRU a info@cabru.it.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_Bioatlas",
+  "riga": 11,
+  "file": "aziende/bioatlas/index.html",
+  "attuale": "Il catalogo comprende reagenti per qPCR, PCR ed elettroforesi degli acidi nucleici, incluso un sostituto atossico del bromuro di etidio (EtBr) per la colorazione del DNA, più sicuro nella manipolazione e nello smaltimento.",
+  "correzione": "Il catalogo comprende reagenti per qPCR, PCR ed elettroforesi degli acidi nucleici, incluso Atlas ClearSight il sostituto atossico del bromuro di etidio (EtBr) per la colorazione del DNA, atossico e quindi sicuro nella manipolazione e nello smaltimento.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_Bioatlas",
+  "riga": 13,
+  "file": "aziende/bioatlas/index.html",
+  "attuale": "Le principali aree d'impiego sono l'amplificazione e la rilevazione del DNA, la visualizzazione su gel e la biologia molecolare di routine. Si vedano le guide PCR vs qPCR ed Estrazione di acidi nucleici.",
+  "correzione": "Le principali aree d'impiego sono l'amplificazione e la rilevazione del DNA, la visualizzazione su gel e la biologia molecolare di routine.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_Bioatlas",
+  "riga": 15,
+  "file": "aziende/bioatlas/index.html",
+  "attuale": "CABRU rappresenta Bioatlas in Italia come unico referente, offrendo informazioni tecniche, verifica della disponibilità, preventivo e gestione dell'ordine fino alla consegna.",
+  "correzione": "CABRU è fornitore esclusivo di Bioatlas in Italia",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_Condalab",
+  "riga": 9,
+  "file": "aziende/condalab/index.html",
+  "attuale": "Condalab (marchio del gruppo Conda) è un produttore spagnolo con sede a Madrid, specializzato da decenni nella produzione di terreni di coltura ed ingredienti per microbiologia. Realizza internamente terreni disidratati, terreni pronti, agar, peptoni ed estratti, con una gamma orientata sia al laboratorio di ricerca sia al controllo qualità industriale.",
+  "correzione": "Condalab è un produttore spagnolo con sede a Madrid, specializzato da decenni nella produzione di terreni di coltura ed ingredienti per microbiologia. Produce terreni disidratati, terreni pronti, agar, peptoni ed estratti, con una gamma orientata sia al laboratorio di ricerca sia al controllo qualità industriale.",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_Condalab",
+  "riga": 18,
+  "file": "aziende/condalab/index.html",
+  "attuale": "CABRU rappresenta Condalab sul mercato italiano e ne cura gli ordini in qualità di interlocutore unico locale: dalla richiesta al preventivo, dalla gestione dell'ordine all'assistenza tecnica in lingua italiana. Per i laboratori di microbiologia ciò si traduce in un unico referente per l'intera gamma di terreni ed ingredienti, con supporto nell'individuazione del terreno idoneo all'applicazione. → Richiedi informazioni e preventivo",
+  "correzione": "CABRU distribuisce i prodotti Condalab",
+  "stato": "ORFANA"
+ },
+ {
+  "foglio": "Az_Condalab",
+  "riga": 21,
+  "file": "aziende/condalab/index.html",
+  "attuale": "CABRU s.a.s. rappresenta Condalab in Italia e ne gestisce richieste, preventivi ed ordini in qualità di interlocutore unico locale.",
+  "correzione": "CABRU s.a.s. fornisce i prodotti Condalab gestendo richieste di preventivi, ordini e consegne.",
+  "stato": "ORFANA"
+ }
+]
