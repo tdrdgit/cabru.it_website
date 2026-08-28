@@ -282,3 +282,17 @@
   .tbl { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: .85rem; }
   .tbl th, .tbl td { padding: 8px 10px; }
 }
+
+/* --- Catalogo su schermo stretto: la nota non ruba spazio ai prodotti ---
+   La lista ha altezza fissa con scorrimento interno, quindi la nota che sta
+   sotto restava visibile per sempre: su iPhone si mangiava un quinto dello
+   schermo mentre si scorrevano i prodotti. Ora compare solo quando si e'
+   arrivati in fondo alla lista, che e' il momento in cui serve davvero. */
+@media (max-width: 720px) {
+  .cat-viewport { height: 74vh; }
+  .cat-nota {
+    max-height: 0; opacity: 0; margin-top: 0 !important; overflow: hidden;
+    transition: max-height .28s ease, opacity .22s ease, margin-top .28s ease;
+  }
+  .cat-nota.mostra { max-height: 12em; opacity: 1; margin-top: 14px !important; }
+}

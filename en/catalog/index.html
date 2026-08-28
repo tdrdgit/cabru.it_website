@@ -78,7 +78,7 @@
         </div>
       </div>
     </div>
-    <p class="cat-intro" style="margin-top:18px;font-size:.9rem">
+    <p class="cat-intro cat-nota" style="margin-top:18px;font-size:.9rem">
       The catalogue is indicative and may change. For availability, prices and quotations,
       please <a href="mailto:info@cabru.it" class="js-contact">contact CABRU</a> quoting the product code.
     </p>
@@ -407,5 +407,21 @@
 })();
 </script>
 <script src="../../js/site.js" defer></script>
+<script>
+/* La nota del catalogo compare quando si e' in fondo alla lista (solo mobile). */
+(function () {
+  var nota = document.querySelector('.cat-nota'), vp = document.getElementById('viewport');
+  if (!nota || !vp) return;
+  function aggiorna() {
+    if (!window.matchMedia('(max-width: 720px)').matches) { nota.classList.add('mostra'); return; }
+    var infondo = vp.scrollTop + vp.clientHeight >= vp.scrollHeight - 24;
+    nota.classList.toggle('mostra', infondo);
+  }
+  vp.addEventListener('scroll', aggiorna, { passive: true });
+  window.addEventListener('resize', aggiorna);
+  new MutationObserver(aggiorna).observe(vp, { childList: true, subtree: true });
+  aggiorna();
+})();
+</script>
 </body>
 </html>
