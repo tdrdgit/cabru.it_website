@@ -126,7 +126,7 @@ p  { margin: 0 0 1rem; }
    c'e' davvero (la home) e solo se il JS ha acceso il meccanismo: senza,
    l'intestazione resta come su ogni altra pagina. */
 .hero-logo { margin: 0 0 30px; }
-.hero-logo img { height: 130px; width: auto; display: block; }
+.hero-logo img { height: 91px; width: auto; display: block; }
 html.logo-doppio .hero-logo,
 html.logo-doppio .site-header .brand { transition: opacity .32s ease; }
 html.logo-doppio .site-header .brand { opacity: 0; pointer-events: none; }
@@ -137,7 +137,7 @@ html.logo-doppio.giu .hero-logo { opacity: 0; }
   html.logo-doppio .site-header .brand { transition: none; }
 }
 @media (max-width: 720px) {
-  .hero-logo img { height: 84px; }
+  .hero-logo img { height: 59px; }
   .hero-logo { margin-bottom: 22px; }
 }
 .hero h1 { color: var(--ink); }

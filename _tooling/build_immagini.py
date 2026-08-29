@@ -85,7 +85,7 @@ LOGO.resize((EMAIL_W*3, EMAIL_H*3), Image.LANCZOS)\
 # Logo grande per l'apertura della home. Il PNG dell'intestazione e' alto 96 px:
 # ingrandirlo lo sgranerebbe, quindi il grande si taglia dal sorgente ad alta
 # risoluzione. Anche questo e' il doppio della misura con cui viene mostrato.
-HERO_H = 130
+HERO_H = 91
 INTERO = src.crop((7, 133, 6086, 1550))      # marchio + payoff, come il logo dell'intestazione
 
 
