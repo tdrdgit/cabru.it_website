@@ -13,14 +13,15 @@
   var T = EN ? {
     title: "Contact us",
     sub: "Send a message to CABRU. We reply as soon as possible.",
-    name: "Full name", email: "Email", tel: "Phone",
+    first: "First name", last: "Last name", email: "Email", tel: "Phone",
     company: "Company / Institution", dept: "Department", msg: "Message",
     send: "Send message", sending: "Sending…",
     ok: "Message sent. Thank you, we will get back to you shortly.",
     err: "Sending failed. Please try again or write to info@cabru.it.",
     reqmail: "Please enter a valid email address.",
     reqmsg: "Please enter a message.", close: "Close",
-    consent: 'I have read the <a href="__PRIVACY__" target="_blank" rel="noopener">privacy policy</a> and consent to the processing of my data to handle this request. Data will not be used for marketing purposes.',
+    consent: 'I have read the <a href="__PRIVACY__" target="_blank" rel="noopener">privacy policy</a> and consent to the processing of my data to handle this request.',
+    updates: 'I would like to be kept up to date by CABRU on products and news. Optional: you can withdraw it at any time by writing to info@cabru.it.',
     reqconsent: "Please consent to the processing of your data.",
     remember: "Remember my details on this computer, so I do not have to type them again",
     prefilled: "Details filled in from your last request.",
@@ -28,14 +29,15 @@
   } : {
     title: "Contattaci",
     sub: "Invia un messaggio a CABRU. Rispondiamo nel più breve tempo possibile.",
-    name: "Nome e cognome", email: "Email", tel: "Telefono",
+    first: "Nome", last: "Cognome", email: "Email", tel: "Telefono",
     company: "Azienda / Ente", dept: "Reparto", msg: "Messaggio",
     send: "Invia messaggio", sending: "Invio in corso…",
     ok: "Messaggio inviato. Grazie, ti risponderemo a breve.",
     err: "Invio non riuscito. Riprova o scrivi a info@cabru.it.",
     reqmail: "Inserisci un indirizzo email valido.",
     reqmsg: "Inserisci un messaggio.", close: "Chiudi",
-    consent: 'Ho letto l\'<a href="__PRIVACY__" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per rispondere alla richiesta. I dati non saranno usati per finalità di marketing.',
+    consent: 'Ho letto l\'<a href="__PRIVACY__" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per rispondere alla richiesta.',
+    updates: 'Desidero essere tenuto aggiornato da CABRU su prodotti e novità. Facoltativo: è revocabile in qualsiasi momento scrivendo a info@cabru.it.',
     reqconsent: "È necessario autorizzare il trattamento dei dati.",
     remember: "Ricorda i miei dati su questo computer, così non devo riscriverli",
     prefilled: "Dati ripresi dalla tua richiesta precedente.",
@@ -99,13 +101,15 @@
     + '<h2>' + T.title + '</h2><p class="cm-sub">' + T.sub + '</p>'
     + '<p class="cm-recall" hidden>' + T.prefilled + ' <button type="button" class="cm-forget">' + T.forget + '</button></p>'
     + '<form class="cm-form" novalidate>'
-    + '<div class="full"><label>' + T.name + '</label><input name="name" type="text" autocomplete="name"></div>'
+    + '<div><label>' + T.first + '</label><input name="nome" type="text" autocomplete="given-name"></div>'
+    + '<div><label>' + T.last + '</label><input name="cognome" type="text" autocomplete="family-name"></div>'
     + '<div><label>' + T.email + ' <span class="req">*</span></label><input name="email" type="email" required autocomplete="email"></div>'
     + '<div><label>' + T.tel + '</label><input name="telefono" type="text" autocomplete="tel"></div>'
     + '<div><label>' + T.company + '</label><input name="azienda" type="text" autocomplete="organization"></div>'
     + '<div><label>' + T.dept + '</label><input name="reparto" type="text"></div>'
     + '<div class="full"><label>' + T.msg + ' <span class="req">*</span></label><textarea name="messaggio" rows="3" required></textarea></div>'
     + '<div class="cm-consent"><label><input name="consenso" type="checkbox"><span>' + T.consent.replace("__PRIVACY__", privacyHref()) + '</span></label></div>'
+    + '<div class="cm-consent"><label><input name="marketing" type="checkbox"><span>' + T.updates + '</span></label></div>'
     + '<div class="cm-consent"><label><input name="ricorda" type="checkbox"><span>' + T.remember + '</span></label></div>'
     + '<input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">'
     + '<p class="cm-note"></p>'
@@ -125,7 +129,7 @@
     fillFromSaved();
     setTimeout(function () {
       /* con i dati gia' compilati il campo utile e' il messaggio, non il nome */
-      var f = readSaved() ? form.querySelector('textarea[name=messaggio]') : form.querySelector('input[name=name]');
+      var f = readSaved() ? form.querySelector('textarea[name=messaggio]') : form.querySelector('input[name=nome]');
       if (f) f.focus();
     }, 30);
   }
@@ -142,8 +146,9 @@
      restano nel browser di chi compila, non vengono mai inviati altrove, e la
      casella e' spenta di default. Il consenso privacy non si ricorda mai: va
      ridato a ogni invio. */
-  var RKEY = "cabru.rfq.contatto.v1";
-  var RFIELDS = ["name", "telefono", "azienda", "reparto"];
+  var RKEY = "cabru.rfq.contatto.v2";
+  var RKEY_V1 = "cabru.rfq.contatto.v1";
+  var RFIELDS = ["nome", "cognome", "telefono", "azienda", "reparto"];
   var recall = wrap.querySelector(".cm-recall");
 
   function storage() {
@@ -151,7 +156,20 @@
   }
   function readSaved() {
     var s = storage(); if (!s) return null;
-    try { return JSON.parse(s.getItem(RKEY) || "null"); } catch (e) { return null; }
+    try {
+      var d = JSON.parse(s.getItem(RKEY) || "null");
+      if (d) return d;
+      /* chi aveva salvato i dati con il campo unico non deve riscriverli:
+         il nome si divide sul primo spazio, il resto e' cognome */
+      var v1 = JSON.parse(s.getItem(RKEY_V1) || "null");
+      if (!v1) return null;
+      var intero = String(v1.name || "").trim(), taglio = intero.indexOf(" ");
+      v1.nome = taglio > 0 ? intero.slice(0, taglio) : intero;
+      v1.cognome = taglio > 0 ? intero.slice(taglio + 1).trim() : "";
+      delete v1.name;
+      s.setItem(RKEY, JSON.stringify(v1)); s.removeItem(RKEY_V1);
+      return v1;
+    } catch (e) { return null; }
   }
   function fillFromSaved() {
     var d = readSaved(); if (!d) return;
@@ -175,7 +193,7 @@
     if (form.email) form.email.value = "";
     form.ricorda.checked = false;
     if (recall) recall.hidden = true;
-    if (form.name) form.name.focus();
+    if (form.nome) form.nome.focus();
   }
   if (recall) recall.querySelector(".cm-forget").addEventListener("click", forget);
 
@@ -197,6 +215,8 @@
     e.preventDefault();
     var email = form.email.value.trim();
     var msg = form.messaggio.value.trim();
+    var nome = form.nome.value.trim(), cognome = form.cognome.value.trim();
+    var nomeCompleto = (nome + " " + cognome).trim();
     if (!email || email.indexOf("@") < 1) { setNote("ko", T.reqmail); form.email.focus(); return; }
     if (!msg) { setNote("ko", T.reqmsg); form.messaggio.focus(); return; }
     if (!form.consenso.checked) { setNote("ko", T.reqconsent); form.consenso.focus(); return; }
@@ -205,14 +225,16 @@
     var data = {
       tipo: "contatto",
       lingua: EN ? "en" : "it",
-      nome: form.name.value.trim(),
+      nome: nomeCompleto,
+      nomeProprio: nome,
+      cognome: cognome,
       email: email,
       telefono: form.telefono.value.trim(),
       azienda: form.azienda.value.trim(),
       reparto: form.reparto.value.trim(),
       messaggio: msg,
       consensoPrivacy: true,
-      marketing: false
+      marketing: !!form.marketing.checked
     };
 
     btn.disabled = true; btn.textContent = T.sending; setNote("", "");

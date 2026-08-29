@@ -91,7 +91,7 @@
 <!-- modale: aggiungi prodotto -->
 <div class="modal" id="addModal" aria-hidden="true">
   <div class="modal__bg" data-close></div>
-  <div class="modal__box">
+  <div class="modal__box product">
     <button class="modal__close" type="button" data-close aria-label="Chiudi">×</button>
     <h2 id="amName">Prodotto</h2>
     <p class="sub" id="amCompany"></p>
@@ -100,6 +100,7 @@
       <div class="cat-field"><label class="cat-label" for="amQty">Quantità richiesta</label><input id="amQty" type="text" value="1" autocomplete="off"></div>
       <button class="btn btn-primary" id="amAdd" type="button" style="margin-bottom:1px">Aggiungi alla richiesta di quotazione</button>
     </div>
+    <div class="pdesc" id="amDesc" hidden><h3>Descrizione</h3><p id="amDescText"></p></div>
   </div>
 </div>
 
@@ -112,13 +113,15 @@
     <p class="sub">Prodotti selezionati e dati di contatto. La richiesta viene inviata a CABRU.</p>
     <div id="qItems"></div>
     <form id="qForm" class="qform" novalidate>
-      <div><label>Nome e cognome</label><input name="nome" type="text" autocomplete="name"></div>
+      <div><label>Nome</label><input name="nome" type="text" autocomplete="given-name"></div>
+      <div><label>Cognome</label><input name="cognome" type="text" autocomplete="family-name"></div>
       <div><label>Email <span class="req">*</span></label><input name="email" type="email" required autocomplete="email"></div>
       <div><label>Telefono</label><input name="tel" type="text" autocomplete="tel"></div>
       <div><label>Azienda / Ente</label><input name="azienda" type="text" autocomplete="organization"></div>
       <div><label>Reparto</label><input name="reparto" type="text"></div>
       <div class="full"><label>Note</label><textarea name="note" rows="2"></textarea></div>
-      <div class="full" style="margin-top:2px"><label style="display:flex;gap:7px;align-items:flex-start;font-size:.72rem;color:#7a828a;font-weight:400;line-height:1.35;cursor:pointer"><input name="consenso" type="checkbox" style="width:auto;margin-top:1px;flex:0 0 auto"> <span>Ho letto l'<a href="../privacy/" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per gestire la richiesta di quotazione. I dati non saranno usati per finalità di marketing.</span></label></div>
+      <div class="full" style="margin-top:2px"><label style="display:flex;gap:7px;align-items:flex-start;font-size:.72rem;color:#7a828a;font-weight:400;line-height:1.35;cursor:pointer"><input name="consenso" type="checkbox" style="width:auto;margin-top:1px;flex:0 0 auto"> <span>Ho letto l'<a href="../privacy/" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per gestire la richiesta di quotazione.</span></label></div>
+      <div class="full" style="margin-top:2px"><label style="display:flex;gap:7px;align-items:flex-start;font-size:.72rem;color:#7a828a;font-weight:400;line-height:1.35;cursor:pointer"><input name="marketing" type="checkbox" style="width:auto;margin-top:1px;flex:0 0 auto"> <span>Desidero essere tenuto aggiornato da CABRU su prodotti e novità. Facoltativo: è revocabile in qualsiasi momento scrivendo a <a href="mailto:info@cabru.it">info@cabru.it</a>.</span></label></div>
       <div class="full"><button class="btn btn-primary" type="submit">Invia richiesta di quotazione</button></div>
     </form>
     <p id="qSent" class="modal-sent"></p>
@@ -275,8 +278,8 @@
     var html = "";
     for(var i = start; i < end; i++){
       var p = state.filtered[i];
-      html += '<div class="cat-vrow" style="top:' + (i*ROWH) + 'px">' +
-        '<div class="add"><button class="add-btn" data-i="' + i + '" title="Aggiungi alla richiesta di quotazione">+</button></div>' +
+      html += '<div class="cat-vrow" data-i="' + i + '" style="top:' + (i*ROWH) + 'px">' +
+        '<div class="add"><button class="add-btn" type="button" tabindex="-1" title="Vedi i dettagli e aggiungi alla richiesta di quotazione">+</button></div>' +
         '<div class="code">' + esc(p[0]) + '</div>' +
         '<div class="name">' + esc(p[1]) + '</div>' +
         '<div class="qty">' + esc(p[2]) + '</div>' +
@@ -286,10 +289,10 @@
     elSpacer.innerHTML = html;
   }
 
-  // click sul "+" di una riga -> apre la modale di aggiunta
+  // click in un punto qualsiasi della riga -> apre la scheda prodotto
   elSpacer.addEventListener('click', function(e){
-    var b = e.target.closest('.add-btn'); if(!b) return;
-    var p = state.filtered[+b.getAttribute('data-i')];
+    var row = e.target.closest('.cat-vrow'); if(!row) return;
+    var p = state.filtered[+row.getAttribute('data-i')];
     if(p && window.CatalogAdd) window.CatalogAdd(p, state.mode === 'all' ? p[5] : state.companyName);
   });
 
@@ -326,6 +329,7 @@
   var addModal = document.getElementById('addModal'), quoteModal = document.getElementById('quoteModal');
   var amName = document.getElementById('amName'), amCompany = document.getElementById('amCompany'),
       amDetail = document.getElementById('amDetail'), amQty = document.getElementById('amQty'),
+      amDesc = document.getElementById('amDesc'), amDescText = document.getElementById('amDescText'),
       amAdd = document.getElementById('amAdd'), qItems = document.getElementById('qItems'),
       qForm = document.getElementById('qForm');
 
@@ -342,12 +346,21 @@
     pending = { code: p[0], name: p[1], pkg: p[2], app: p[3], desc: p[4], company: company || '' };
     amName.textContent = pending.name || pending.code;
     amCompany.textContent = pending.company;
-    var rows = [['Codice', pending.code], ['Confezione', pending.pkg], ['Applicazione', pending.app], ['Descrizione', pending.desc]];
+    var rows = [['Codice', pending.code], ['Confezione', pending.pkg], ['Applicazione', pending.app]];
     amDetail.innerHTML = rows.filter(function(r){return r[1];}).map(function(r){
       return '<dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd>'; }).join('');
+    /* La descrizione sta fuori dalla griglia, a piena larghezza e per intero:
+       nella riga della tabella e' troncata, qui e' il motivo per cui la scheda esiste. */
+    amDescText.textContent = pending.desc || '';
+    amDesc.hidden = !pending.desc;
     amQty.value = '1';
     openM(addModal);
-    setTimeout(function(){ amQty.focus(); amQty.select(); }, 30);
+    try { addModal.querySelector('.modal__box').scrollTop = 0; } catch(e){}
+    /* Su smartphone niente focus automatico: la tastiera coprirebbe la scheda
+       appena aperta, e spesso il click sulla riga serve solo a leggere. */
+    if(!window.matchMedia('(max-width: 640px)').matches){
+      setTimeout(function(){ amQty.focus(); amQty.select(); }, 30);
+    }
   };
 
   amAdd.addEventListener('click', function(){
@@ -392,9 +405,11 @@
     if(!basket.length){ qNote(false, 'Nessun prodotto selezionato.'); return; }
     var prod = basket.map(function(it){ return '[' + it.code + '] ' + (it.name||'') + (it.company?' ('+it.company+')':'') + (it.pkg?' — Conf.: '+it.pkg:'') + ' — Q.tà: ' + it.qty + (it.desc?' — '+it.desc:''); }).join('\n');
     var items = basket.map(function(it){ return { code: it.code, name: it.name||'', company: it.company||'', pkg: it.pkg||'', qty: it.qty, desc: it.desc||'' }; });
-    var data = { lingua: 'it', nome: f.nome.value, email: f.email.value, telefono: f.tel.value,
+    var nome = f.nome.value.trim(), cognome = f.cognome.value.trim();
+    var data = { lingua: 'it', nome: (nome + ' ' + cognome).trim(), nomeProprio: nome, cognome: cognome,
+      email: f.email.value, telefono: f.tel.value,
       azienda: f.azienda.value, reparto: f.reparto.value, numProdotti: basket.length, prodotti: prod, items: items, note: f.note.value,
-      consensoPrivacy: true, marketing: false };
+      consensoPrivacy: true, marketing: !!f.marketing.checked };
     var sb = qForm.querySelector('button[type=submit]'); var lbl = sb.textContent;
     sb.disabled = true; sb.textContent = 'Invio in corso…'; qNote(true, '');
     fetch(QUOTE_ENDPOINT, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(data) })
