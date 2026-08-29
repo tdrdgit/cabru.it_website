@@ -143,6 +143,24 @@
     } catch (e) { /* storage negato: non c'e' niente da cancellare */ }
   })();
 
+  /* ---- il logo grande dell'apertura e quello dell'intestazione ----
+     Si scambiano al primo scorrimento: uno sfuma via, l'altro compare, nello
+     stesso momento e con la stessa durata. La classe si mette da qui e non nel
+     CSS perche' senza JS l'intestazione deve restare visibile: un logo nascosto
+     che nessuno riaccende sarebbe peggio dell'effetto mancato. */
+  (function () {
+    var html = document.documentElement;
+    if (!document.querySelector(".hero-logo")) { html.classList.remove("logo-doppio"); return; }
+    html.classList.add("logo-doppio");
+    var giu = null;
+    function guarda() {
+      var ora = window.scrollY > 40;
+      if (ora !== giu) { giu = ora; html.classList.toggle("giu", ora); }
+    }
+    guarda();
+    window.addEventListener("scroll", guarda, { passive: true });
+  })();
+
   wrap.addEventListener("click", function (e) { if (e.target.hasAttribute("data-cx")) close(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
 

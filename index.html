@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="css/content.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"CABRU s.a.s.","url":"https://www.cabru.it/","logo":"https://www.cabru.it/img/logo-cabru.png","email":"info@cabru.it","telephone":"+39 039 6013988","description":"Reagenti e prodotti per laboratori di ricerca nell'ambito delle scienze della vita e per laboratori di controllo qualità di industrie biotecnologiche, farmaceutiche, alimentari, cosmetiche","address":{"@type":"PostalAddress","streetAddress":"Via Enrico Forlanini 52","postalCode":"20862","addressLocality":"Arcore","addressRegion":"MB","addressCountry":"IT"},"areaServed":{"@type":"Country","name":"Italy"},"contactPoint":{"@type":"ContactPoint","telephone":"+39 039 6013988","email":"info@cabru.it","contactType":"customer service","availableLanguage":["it","en"]}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "CABRU s.a.s.", "url": "https://www.cabru.it/", "inLanguage": "it-IT", "description": "Reagenti e prodotti per laboratori di ricerca nell'ambito delle scienze della vita e per laboratori di controllo qualità di industrie biotecnologiche, farmaceutiche, alimentari, cosmetiche", "publisher": {"@type": "Organization", "name": "CABRU s.a.s.", "url": "https://www.cabru.it/"}}</script>
+<script>/* il logo dell'intestazione parte invisibile solo se il JS c'e': senza, resta visibile come su ogni altra pagina */document.documentElement.classList.add("logo-doppio")</script>
 </head>
 <body>
 
@@ -52,6 +53,7 @@
   <section class="hero" style="padding:0;border-top:0">
     <div class="wrap">
       <div class="hero-inner">
+        <div class="hero-logo" aria-hidden="true"><img src="img/logo-cabru-hero.png" alt="" width="1115" height="260" fetchpriority="high"></div>
         <span class="eyebrow">CABRU Offre prodotti per laboratori di ricerca in ambito scientifico</span>
         <h1>Reagenti e prodotti per laboratori di <span class="accent">ricerca</span> nell'ambito delle scienze della vita e per laboratori di controllo qualità di industrie biotecnologiche, farmaceutiche, alimentari, cosmetiche</h1>
         <p class="lead">
@@ -353,6 +355,21 @@
     </div>
   </section>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"it-IT","mainEntity":[{"@type":"Question","name":"Che cosa distribuisce CABRU?","acceptedAnswer":{"@type":"Answer","text":"CABRU s.a.s. distribuisce in Italia reagenti, kit, anticorpi, proteine e terreni di coltura dei produttori internazionali che rappresenta, per la ricerca e l'industria."}},{"@type":"Question","name":"Come richiedere informazioni tecnico scientifiche e/o un preventivo?","acceptedAnswer":{"@type":"Answer","text":"Per ricevere informazioni tecnico scientifiche e/o un preventivo è sufficiente comunicare o il codice del prodotto selezionato o il nome del prodotto e mandare un'e-mail a info@cabru.it. CABRU verifica la disponibilità presso i produttori rappresentati, con un unico referente."}},{"@type":"Question","name":"Quali aziende rappresenta CABRU?","acceptedAnswer":{"@type":"Answer","text":"CABRU rappresenta oltre 20 produttori internazionali specializzati nelle scienze della vita."}},{"@type":"Question","name":"CABRU è distributore esclusivo dei marchi che rappresenta?","acceptedAnswer":{"@type":"Answer","text":"CABRU rappresenta e distribuisce in Italia i marchi indicati; salvo diversa indicazione, non opera in regime di esclusiva."}},{"@type":"Question","name":"Dove ha sede CABRU?","acceptedAnswer":{"@type":"Answer","text":"CABRU s.a.s. ha sede in Via Enrico Forlanini 52, 20862 Arcore (MB)."}}]}</script>
+
+  <!-- ============ INVITO AL CONTATTO (banda) ============ -->
+  <aside class="help-band" aria-label="Parla con noi prima di ordinare">
+    <div class="wrap">
+      <div class="help-band__text">
+        <p class="help-band__title"><strong>Un confronto prima dell&#39;ordine evita la referenza sbagliata.</strong></p>
+        <p class="help-band__sub">Dicci l&#39;applicazione, la matrice e il formato che ti servono: individuiamo la referenza adatta fra i produttori che rappresentiamo, verifichiamo disponibilit&agrave; e tempi di consegna, e seguiamo la richiesta fino alla consegna con un unico referente.</p>
+      </div>
+      <div class="help-band__actions">
+        <a class="btn btn-onband" href="tel:+390396013988"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h2l2 5-2 1a12 12 0 0 0 5 5l1-2 5 2v2a2 2 0 0 1-2 2A16 16 0 0 1 4 5Z"/></svg> 039 6013988</a>
+        <button type="button" class="btn btn-onband-ghost js-contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H7l-3 4V4Z"/><path d="M8 9h8M8 12h5"/></svg> Compila la scheda di contatto</button>
+        <a class="btn btn-onband-ghost" href="mailto:info@cabru.it?subject=Richiesta%20di%20informazioni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Scrivici dalla tua email</a>
+      </div>
+    </div>
+  </aside>
 
   <!-- ============ CONTATTI ============ -->
   <section id="contatti" class="section-soft">

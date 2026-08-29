@@ -82,6 +82,48 @@ EMAIL_W = round(EMAIL_H * LOGO.width / LOGO.height)
 LOGO.resize((EMAIL_W*3, EMAIL_H*3), Image.LANCZOS)\
     .save(os.path.join(SITO, 'img', 'logo-cabru-nopayoff.png'))
 
+# Logo grande per l'apertura della home. Il PNG dell'intestazione e' alto 96 px:
+# ingrandirlo lo sgranerebbe, quindi il grande si taglia dal sorgente ad alta
+# risoluzione. Anche questo e' il doppio della misura con cui viene mostrato.
+HERO_H = 130
+INTERO = src.crop((7, 133, 6086, 1550))      # marchio + payoff, come il logo dell'intestazione
+
+
+def senza_fondo(im):
+    """Toglie il bianco del sorgente, che altrimenti si vede come un rettangolo.
+
+    Il logo dell'intestazione sta su fondo bianco e il problema non si pone; in
+    apertura il fondo e' grigio chiaro, quindi il bianco va tolto davvero — non
+    coperto. Il bianco diventa trasparente in proporzione a quanto e' chiaro il
+    pixel, e il colore viene riportato al suo valore pieno: senza quest'ultimo
+    passaggio i bordi delle lettere restano slavati.
+    """
+    im = im.convert('RGB')
+    px = im.load(); W, H = im.size
+    out = Image.new('RGBA', (W, H))
+    op = out.load()
+    for y in range(H):
+        for x in range(W):
+            r, g, b = px[x, y]
+            # quanto il pixel e' lontano dal bianco lo dice il canale piu' scuro,
+            # non la luminosita': un blu pieno e' scuro solo sul rosso, e usare la
+            # luminosita' lo renderebbe semitrasparente, cioe' slavato
+            a = 255 - min(r, g, b)
+            if a < 6:
+                op[x, y] = (255, 255, 255, 0); continue
+            f = a / 255.0
+            op[x, y] = (
+                max(0, min(255, int((r - 255 * (1 - f)) / f))),
+                max(0, min(255, int((g - 255 * (1 - f)) / f))),
+                max(0, min(255, int((b - 255 * (1 - f)) / f))),
+                int(a))
+    return out
+
+
+senza_fondo(INTERO.resize((round(HERO_H * 2 * INTERO.width / INTERO.height), HERO_H * 2), Image.LANCZOS))\
+    .save(os.path.join(SITO, 'img', 'logo-cabru-hero.png'))
+
+
 def opaca(im):
     fondo = Image.new('RGB', im.size, (255,255,255))
     fondo.paste(im, mask=im.split()[3] if im.mode == 'RGBA' else None)
@@ -95,5 +137,6 @@ misure[0].save(os.path.join(SITO, 'favicon.ico'), format='ICO',
                sizes=[(48,48),(32,32),(16,16)], append_images=misure[1:])
 print('favicon.ico (16/32/48), img/icon-192.png, img/apple-touch-icon.png —',
       {con_simbolo:'simbolo C', con_logo:'logo senza payoff', con_griglia:'griglia del logo'}[gen])
+print('img/logo-cabru-hero.png per l\'apertura della home, alto %d px in pagina' % HERO_H)
 print('img/logo-cabru-nopayoff.png per le email — dichiararlo a %dx%d '
       'in CABRU_backend_AppsScript.gs (LOGO_W, LOGO_H)' % (EMAIL_W, EMAIL_H))

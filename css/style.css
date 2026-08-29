@@ -118,6 +118,28 @@ p  { margin: 0 0 1rem; }
 }
 .hero .wrap { position: relative; padding: 92px 24px 84px; }
 .hero-inner { max-width: 760px; }
+
+/* --- Il logo in apertura, e lo scambio con quello dell'intestazione ---
+   Scorrendo, il logo grande sfuma via e nello stesso istante compare quello
+   piccolo in alto. Non e' una riduzione in movimento: sono due dissolvenze
+   della stessa durata, avviate insieme. Tutto vale solo dove il logo grande
+   c'e' davvero (la home) e solo se il JS ha acceso il meccanismo: senza,
+   l'intestazione resta come su ogni altra pagina. */
+.hero-logo { margin: 0 0 30px; }
+.hero-logo img { height: 130px; width: auto; display: block; }
+html.logo-doppio .hero-logo,
+html.logo-doppio .site-header .brand { transition: opacity .32s ease; }
+html.logo-doppio .site-header .brand { opacity: 0; pointer-events: none; }
+html.logo-doppio.giu .site-header .brand { opacity: 1; pointer-events: auto; }
+html.logo-doppio.giu .hero-logo { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  html.logo-doppio .hero-logo,
+  html.logo-doppio .site-header .brand { transition: none; }
+}
+@media (max-width: 720px) {
+  .hero-logo img { height: 84px; }
+  .hero-logo { margin-bottom: 22px; }
+}
 .hero h1 { color: var(--ink); }
 .hero h1 .accent { color: var(--accent); }
 .hero .lead {
@@ -135,6 +157,29 @@ p  { margin: 0 0 1rem; }
 .btn-primary:hover { background: var(--accent-dark); color: #fff; transform: translateY(-1px); }
 .btn-ghost { background: #fff; color: var(--ink); border-color: var(--line); }
 .btn-ghost:hover { border-color: var(--ink-soft); color: var(--ink); }
+
+/* --- Banda: parlane con noi prima di ordinare --- */
+.help-band { background: var(--accent); color: #fff; }
+.help-band .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 44px; padding: 46px 24px;
+}
+.help-band__text { max-width: 640px; }
+.help-band__title { font-size: 1.62rem; line-height: 1.25; margin: 0 0 12px; }
+.help-band__title strong { font-weight: 700; }
+.help-band__sub { margin: 0; font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,.82); }
+.help-band__actions { display: flex; flex-direction: column; gap: 12px; flex: 0 0 auto; }
+.help-band .btn { justify-content: flex-start; width: 100%; box-sizing: border-box; }
+.help-band .btn svg { width: 19px; height: 19px; flex: 0 0 auto; }
+.btn-onband { background: #fff; color: var(--accent); }
+.btn-onband:hover { background: #fff; color: var(--accent-dark); transform: translateY(-1px); }
+.btn-onband-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.55); }
+.btn-onband-ghost:hover { background: rgba(255,255,255,.12); color: #fff; border-color: #fff; }
+@media (max-width: 860px) {
+  .help-band .wrap { flex-direction: column; align-items: flex-start; gap: 26px; padding: 38px 24px; }
+  .help-band__title { font-size: 1.4rem; }
+  .help-band__actions { width: 100%; }
+}
 
 /* strip statistiche */
 .stats {

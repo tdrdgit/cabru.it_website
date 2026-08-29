@@ -4,7 +4,9 @@
    ============================================================ */
 
 .lang-switch { display:inline-flex; gap:2px; margin-left:6px; border-left:1px solid var(--line); padding-left:16px; }
-.lang-switch .lang { font-size:.82rem; font-weight:700; color:var(--muted); padding:4px 6px; border-radius:6px; letter-spacing:.03em; }
+.lang-switch .lang { font-size:.82rem; font-weight:700; color:var(--muted); letter-spacing:.03em;
+  width:32px; height:32px; padding:0; border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center; }
 .lang-switch .lang.on { color:#fff; background:var(--accent); }
 .lang-switch .lang:hover { color:var(--ink); }
 .lang-switch .lang.on:hover { color:#fff; }
