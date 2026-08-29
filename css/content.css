@@ -196,6 +196,17 @@
 .q-empty { color: var(--muted); padding: 20px 0; text-align: center; }
 @media (max-width: 560px){ .qform { grid-template-columns: 1fr; } }
 
+/* Invio riuscito: il modale smette di essere un modulo e diventa una conferma.
+   I campi spariscono, resta il messaggio centrato. Lo stato si azzera alla
+   riapertura (qReset), altrimenti il form resterebbe nascosto per sempre. */
+.modal-sent { display: none; margin: 0; padding: 26px 8px 10px; text-align: center; font-size: 1.05rem; line-height: 1.55; color: #0a6485; }
+.modal__box.is-sent { text-align: center; }
+.modal__box.is-sent .sub,
+.modal__box.is-sent #qItems,
+.modal__box.is-sent .qform { display: none; }
+.modal__box.is-sent .modal-sent { display: block; }
+
+
 /* ============================================================
    QUALITÀ / ISO 9001 — badge, banda home, pagina certificazioni
    Il badge "ISO 9001" è un marchio tipografico disegnato in stile

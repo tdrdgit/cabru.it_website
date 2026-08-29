@@ -79,6 +79,10 @@
     + '.cm-recall{margin:-4px 0 12px;font-size:.85rem;color:#40474e;background:#f2f7f9;border:1px solid #d9e5ea;border-radius:8px;padding:7px 10px}'
     + '.cm-forget{border:0;background:none;padding:0;font:inherit;color:#0f80a8;text-decoration:underline;cursor:pointer}'
     + '.cm-consent a{color:#0f80a8}'
+    + '.cm-sent{display:none;margin:0;padding:22px 8px 6px;text-align:center;font-size:1.02rem;line-height:1.55;color:#0a6485}'
+    + '.cmodal__box.is-sent{text-align:center}'
+    + '.cmodal__box.is-sent .cm-sub,.cmodal__box.is-sent .cm-recall,.cmodal__box.is-sent .cm-form{display:none}'
+    + '.cmodal__box.is-sent .cm-sent{display:block}'
     + '@media(max-width:520px){.cm-form{grid-template-columns:1fr}}';
   var st = document.createElement("style");
   st.textContent = css;
@@ -106,15 +110,18 @@
     + '<input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">'
     + '<p class="cm-note"></p>'
     + '<div class="full"><button class="cm-btn" type="submit">' + T.send + '</button></div>'
-    + '</form></div>';
+    + '</form><p class="cm-sent"></p></div>';
   document.addEventListener("DOMContentLoaded", function () { document.body.appendChild(wrap); });
 
+  var box = wrap.querySelector(".cmodal__box");
+  var sent = wrap.querySelector(".cm-sent");
   var form = wrap.querySelector(".cm-form");
   var note = wrap.querySelector(".cm-note");
   var btn = wrap.querySelector(".cm-btn");
 
   function open() {
     wrap.classList.add("open"); wrap.setAttribute("aria-hidden", "false");
+    clearSent();
     fillFromSaved();
     setTimeout(function () {
       /* con i dati gia' compilati il campo utile e' il messaggio, non il nome */
@@ -124,6 +131,10 @@
   }
   function close() { wrap.classList.remove("open"); wrap.setAttribute("aria-hidden", "true"); }
   function setNote(cls, txt) { note.className = "cm-note " + cls; note.textContent = txt; }
+  /* Invio riuscito: via i campi, resta la conferma centrata. Lo stato si azzera
+     alla riapertura, o il form resterebbe nascosto per sempre. */
+  function showSent(txt) { setNote("", ""); sent.textContent = txt; box.classList.add("is-sent"); box.scrollTop = 0; }
+  function clearSent() { box.classList.remove("is-sent"); sent.textContent = ""; }
 
   /* ---- dati del richiedente ricordati in locale ----
      Chi ordina reagenti torna a chiedere quotazioni molte volte l'anno: riscrivere
@@ -215,7 +226,7 @@
         saveOrForget();       /* prima del reset: dopo, i campi sono vuoti */
         form.reset();
         fillFromSaved();      /* rimette i dati anagrafici, non il messaggio */
-        setNote("ok", T.ok);
+        showSent(T.ok);
       }
       else { setNote("ko", T.err); }
     }).catch(function () {
