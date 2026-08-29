@@ -116,8 +116,8 @@
     <p class="sub">Prodotti selezionati e dati di contatto. La richiesta viene inviata a CABRU.</p>
     <div id="qItems"></div>
     <form id="qForm" class="qform" novalidate>
-      <div><label>Nome</label><input name="nome" type="text" autocomplete="given-name"></div>
-      <div><label>Cognome</label><input name="cognome" type="text" autocomplete="family-name"></div>
+      <div><label>Nome <span class="req">*</span></label><input name="nome" type="text" required autocomplete="given-name"></div>
+      <div><label>Cognome <span class="req">*</span></label><input name="cognome" type="text" required autocomplete="family-name"></div>
       <div><label>Email <span class="req">*</span></label><input name="email" type="email" required autocomplete="email"></div>
       <div><label>Telefono</label><input name="tel" type="text" autocomplete="tel"></div>
       <div><label>Azienda / Ente</label><input name="azienda" type="text" autocomplete="organization"></div>
@@ -403,6 +403,9 @@
   qForm.addEventListener('submit', function(e){
     e.preventDefault();
     var f = qForm;
+    ['nome','cognome','email'].forEach(function(k){ if(f[k]) f[k].style.borderColor = ''; });
+    if(!f.nome.value.trim()){ f.nome.focus(); f.nome.style.borderColor = 'var(--accent)'; qNote(false, 'Inserisci il tuo nome.'); return; }
+    if(!f.cognome.value.trim()){ f.cognome.focus(); f.cognome.style.borderColor = 'var(--accent)'; qNote(false, 'Inserisci il tuo cognome.'); return; }
     if(!f.email.value.trim() || f.email.value.indexOf('@') < 1){ f.email.focus(); f.email.style.borderColor = 'var(--accent)'; qNote(false, 'Inserisci un indirizzo email valido.'); return; }
     if(!f.consenso.checked){ f.consenso.focus(); qNote(false, 'Per inviare la richiesta è necessario autorizzare il trattamento dei dati.'); return; }
     if(!basket.length){ qNote(false, 'Nessun prodotto selezionato.'); return; }

@@ -18,6 +18,8 @@
     send: "Send message", sending: "Sending…",
     ok: "Message sent. Thank you, we will get back to you shortly.",
     err: "Sending failed. Please try again or write to info@cabru.it.",
+    reqfirst: "Please enter your first name.",
+    reqlast: "Please enter your last name.",
     reqmail: "Please enter a valid email address.",
     reqmsg: "Please enter a message.", close: "Close",
     consent: 'I have read the <a href="__PRIVACY__" target="_blank" rel="noopener">privacy policy</a> and consent to the processing of my data to handle this request.',
@@ -34,6 +36,8 @@
     send: "Invia messaggio", sending: "Invio in corso…",
     ok: "Messaggio inviato. Grazie, ti risponderemo a breve.",
     err: "Invio non riuscito. Riprova o scrivi a info@cabru.it.",
+    reqfirst: "Inserisci il tuo nome.",
+    reqlast: "Inserisci il tuo cognome.",
     reqmail: "Inserisci un indirizzo email valido.",
     reqmsg: "Inserisci un messaggio.", close: "Chiudi",
     consent: 'Ho letto l\'<a href="__PRIVACY__" target="_blank" rel="noopener">informativa privacy</a> e acconsento al trattamento dei miei dati per rispondere alla richiesta.',
@@ -101,8 +105,8 @@
     + '<h2>' + T.title + '</h2><p class="cm-sub">' + T.sub + '</p>'
     + '<p class="cm-recall" hidden>' + T.prefilled + ' <button type="button" class="cm-forget">' + T.forget + '</button></p>'
     + '<form class="cm-form" novalidate>'
-    + '<div><label>' + T.first + '</label><input name="nome" type="text" autocomplete="given-name"></div>'
-    + '<div><label>' + T.last + '</label><input name="cognome" type="text" autocomplete="family-name"></div>'
+    + '<div><label>' + T.first + ' <span class="req">*</span></label><input name="nome" type="text" required autocomplete="given-name"></div>'
+    + '<div><label>' + T.last + ' <span class="req">*</span></label><input name="cognome" type="text" required autocomplete="family-name"></div>'
     + '<div><label>' + T.email + ' <span class="req">*</span></label><input name="email" type="email" required autocomplete="email"></div>'
     + '<div><label>' + T.tel + '</label><input name="telefono" type="text" autocomplete="tel"></div>'
     + '<div><label>' + T.company + '</label><input name="azienda" type="text" autocomplete="organization"></div>'
@@ -217,6 +221,8 @@
     var msg = form.messaggio.value.trim();
     var nome = form.nome.value.trim(), cognome = form.cognome.value.trim();
     var nomeCompleto = (nome + " " + cognome).trim();
+    if (!nome) { setNote("ko", T.reqfirst); form.nome.focus(); return; }
+    if (!cognome) { setNote("ko", T.reqlast); form.cognome.focus(); return; }
     if (!email || email.indexOf("@") < 1) { setNote("ko", T.reqmail); form.email.focus(); return; }
     if (!msg) { setNote("ko", T.reqmsg); form.messaggio.focus(); return; }
     if (!form.consenso.checked) { setNote("ko", T.reqconsent); form.consenso.focus(); return; }
