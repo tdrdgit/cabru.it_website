@@ -1,7 +1,11 @@
 var CABRU_EMAIL = 'info@cabru.it';
 var CABRU_NAME = 'CABRU s.a.s.';
 var CABRU_FROM = 'clienti@cabru.it';
-var LOGO_URL = 'https://tdrdgit.github.io/cabru.it_website/img/logo-cabru.png';
+// Logo SENZA payoff: sotto, in testo, il payoff c'e' gia'.
+// Il file e' 696x120 e viene dichiarato a 232x40 (3x, per gli schermi ad alta densita').
+// Da cambiare quando il sito passa sul dominio: https://www.cabru.it/img/logo-cabru-nopayoff.png
+var LOGO_URL = 'https://tdrdgit.github.io/cabru.it_website/img/logo-cabru-nopayoff.png';
+var LOGO_W = 232, LOGO_H = 40;
 
 function doPost(e) {
   try {
@@ -25,11 +29,16 @@ function send_(to, subject, html, replyTo){
   }
 }
 
-function shell_(inner){
+function shell_(inner, en){
+  // Larghezza E altezza vanno dichiarate tutte e due, in attributo e in stile:
+  // con la sola altezza Apple Mail allarga l'immagine a tutta la colonna e la deforma.
+  var payoff = en ? 'Laboratory, industry and research products'
+                  : 'Prodotti per laboratorio, industria e ricerca';
   return '<div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;color:#23262b;border:1px solid #e6eaed;border-radius:12px;overflow:hidden">'+
     '<div style="background:#ffffff;padding:20px 24px;border-bottom:2px solid #0f80a8;text-align:center">'+
-    '<img src="'+LOGO_URL+'" alt="CABRU s.a.s." height="34" style="height:34px;display:inline-block">'+
-    '<div style="font-size:11px;letter-spacing:1px;color:#6b7178;margin-top:6px">Prodotti per laboratorio, industria e ricerca</div></div>'+
+    '<img src="'+LOGO_URL+'" alt="CABRU s.a.s." width="'+LOGO_W+'" height="'+LOGO_H+'" '+
+    'style="width:'+LOGO_W+'px;height:'+LOGO_H+'px;display:block;margin:0 auto;border:0;outline:none;text-decoration:none">'+
+    '<div style="font-size:11px;letter-spacing:1px;color:#6b7178;margin-top:8px">'+payoff+'</div></div>'+
     '<div style="padding:22px 24px">'+ inner +'</div>'+
     '<div style="background:#f5f7f8;padding:14px 24px;font-size:11px;color:#6b7178;line-height:1.6;border-top:1px solid #e6eaed">'+
     '<b style="color:#23262b">CABRU s.a.s.</b> · Via Enrico Forlanini 52, 20862 Arcore (MB)<br>Tel. 039 6013988 · info@cabru.it · www.cabru.it</div></div>';
@@ -89,7 +98,7 @@ function handleQuote_(d) {
       kicker_(t.prod)+prodTable_(d,en)+
       kicker_(t.your)+dataTable_(en?contactEn:contact.slice(0,5))+
       '<p style="margin:20px 0 0;font-size:12px;line-height:1.6;color:#6b7178;border-top:1px solid #eef1f3;padding-top:14px">'+t.note+'</p>';
-    send_(d.email, t.subj, shell_(inner), CABRU_EMAIL);
+    send_(d.email, t.subj, shell_(inner, en), CABRU_EMAIL);
   }
   return json_({ ok: true, id: id });
 }
@@ -124,7 +133,7 @@ function handleContact_(d) {
       kicker_(t.msg)+msgHtml+
       kicker_(t.your)+dataTable_(en?contactEn:contact)+
       '<p style="margin:20px 0 0;font-size:12px;line-height:1.6;color:#6b7178;border-top:1px solid #eef1f3;padding-top:14px">'+t.note+'</p>';
-    send_(d.email, t.subj, shell_(inner), CABRU_EMAIL);
+    send_(d.email, t.subj, shell_(inner, en), CABRU_EMAIL);
   }
   return json_({ ok: true, id: id });
 }

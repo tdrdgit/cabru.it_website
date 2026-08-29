@@ -118,6 +118,7 @@
 .cat-viewport { height: 62vh; min-height: 360px; overflow-y: auto; overflow-x: hidden; position: relative; background: #fff; }
 .cat-spacer { position: relative; width: 100%; }
 .cat-vrow { position: absolute; left: 0; width: 100%; height: 40px; align-items: center; border-bottom: 1px solid var(--line); }
+.cat-vrow { cursor: pointer; }
 .cat-vrow:hover { background: var(--accent-soft); }
 .cat-vrow > div { padding: 0 12px; font-size: .82rem; color: var(--ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cat-vrow .code { font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 600; }
@@ -166,12 +167,44 @@
 .modal h2 { font-size: 1.4rem; margin: 0 0 4px; }
 .modal .sub { color: var(--muted); font-size: .9rem; margin: 0 0 20px; }
 
-/* --- scheda prodotto nella modale add --- */
-.pdetail { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; margin: 4px 0 20px; font-size: .92rem; }
+/* --- scheda prodotto nella modale add ---
+   Il box e' largo e la descrizione sta a piena larghezza, senza riquadri
+   interni e senza troncature: il 99% delle descrizioni del catalogo sta
+   sotto i 1.900 caratteri e si legge tutta senza scorrere. Oltre, scorre
+   il box intero, non una finestrella dentro la scheda. */
+.modal__box.product { max-width: 860px; max-height: 92vh; }
+.pdetail { display: grid; grid-template-columns: auto 1fr; gap: 9px 18px; margin: 4px 0 20px; font-size: .92rem; }
 .pdetail dt { color: var(--muted); font-weight: 600; }
-.pdetail dd { margin: 0; color: var(--ink); }
+.pdetail dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
 .qty-row { display: flex; align-items: flex-end; gap: 12px; margin-top: 8px; }
 .qty-row .cat-field { flex: 0 0 130px; }
+.qty-row .lbl-short { display: none; }
+.pdesc { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); }
+.pdesc h3 { margin: 0 0 9px; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.pdesc p { margin: 0; font-size: .92rem; line-height: 1.62; color: var(--ink-soft); overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  .modal { padding: 12px; }
+  .modal__box { padding: 24px 18px; max-height: 92vh; }
+  /* Su telefono la descrizione viene prima e il pulsante di aggiunta resta
+     agganciato in fondo alla scheda: la scheda si apre soprattutto per
+     leggere, e l'azione non deve costringere a scorrere per essere trovata.
+     L'ordine si cambia con "order", il DOM resta quello del desktop. */
+  .modal__box.product { display: flex; flex-direction: column; padding-bottom: 0; }
+  .modal__box.product h2 { order: 1; }
+  .modal__box.product .sub { order: 2; margin-bottom: 16px; }
+  .modal__box.product .pdetail { order: 3; margin-bottom: 4px; }
+  .modal__box.product .pdesc { order: 4; margin-top: 18px; margin-bottom: 4px; }
+  .modal__box.product .qty-row {
+    order: 5; position: sticky; bottom: 0; z-index: 2;
+    margin: 0 -18px; padding: 12px 18px calc(14px + env(safe-area-inset-bottom, 0px));
+    background: #fff; border-top: 1px solid var(--line); align-items: flex-end; }
+  /* Etichetta breve: "Quantita' richiesta" su 84px andrebbe a capo e alzerebbe
+     la barra. "Q.tà" e' la stessa parola dell'intestazione della colonna. */
+  .qty-row .cat-field { flex: 0 0 84px; min-width: 0; }
+  .qty-row .lbl-full { display: none; }
+  .qty-row .lbl-short { display: inline; }
+  .qty-row .btn { flex: 1 1 auto; padding: 12px 14px; font-size: .9rem; line-height: 1.25; }
+}
 
 /* --- pulsante basket flottante --- */
 .basket-fab { position: fixed; right: 22px; bottom: 22px; z-index: 150; background: var(--accent); color: #fff; border: 0; border-radius: 999px; padding: 14px 22px; font-weight: 700; font-size: .95rem; box-shadow: var(--shadow-lg); cursor: pointer; display: none; align-items: center; gap: 9px; }
