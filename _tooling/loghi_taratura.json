@@ -1,0 +1,9 @@
+{
+  "_commento": "Regolazioni della resa dei loghi. I due valori sotto governano tutto: _peso_inchiostro 1 uniforma la superficie scura, 0 l'ingombro, 0.5 sta in mezzo; _altezza_mediana dice quanto e' alto il logo mediano rispetto alla fascia. Sotto, un moltiplicatore per i singoli casi che l'occhio giudica fuori posto.",
+  "_peso_inchiostro": 0.5,
+  "_altezza_mediana": 0.72,
+  "exbio.png": 0.92,
+  "MedixBiochemica.png": 0.9,
+  "enzyme-research.png": 1.08,
+  "ldn.png": 1.06
+}

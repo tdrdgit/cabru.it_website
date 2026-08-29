@@ -187,7 +187,7 @@ section { padding: 88px 0; }
   height: 104px; display: grid; place-items: center;
   padding: 20px; border-bottom: 1px solid var(--line); background: #fff;
 }
-.partner__logo img { max-height: 54px; max-width: 78%; width: auto; object-fit: contain; transition: transform .18s; }
+.partner__logo img { max-height: 58px; max-width: 84%; width: auto; object-fit: contain; transition: transform .18s; }
 .partner:hover .partner__logo img { transform: scale(1.04); }
 .partner__body { padding: 18px 20px 20px; }
 .partner__name { font-size: 1.02rem; margin-bottom: 8px; color: var(--ink); }
@@ -199,7 +199,7 @@ section { padding: 88px 0; }
   flex: 0 0 300px; height: auto;
   border-bottom: 0; border-right: 1px solid var(--line);
 }
-.partner--lead .partner__logo img { max-height: 72px; max-width: 74%; }
+.partner--lead .partner__logo img { max-height: 74px; max-width: 100%; }
 .partner--lead .partner__body { display: flex; flex-direction: column; justify-content: center; padding: 20px 28px; }
 .partner--lead .partner__name { font-size: 1.1rem; }
 .partner--lead .partner__desc { font-size: .92rem; max-width: 78ch; }
