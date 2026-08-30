@@ -1,3 +1,23 @@
+/* CABRU — backend dei moduli del sito (Google Apps Script, web app).
+ *
+ * Riceve le richieste di contatto e di quotazione, le registra nel foglio
+ * "Richieste", le replica nel database Supabase e manda due email: una a CABRU
+ * e la conferma di ricezione a chi ha scritto.
+ *
+ * ATTENZIONE, e non e' un dettaglio: modificare questo file NON aggiorna il
+ * servizio. Il codice va incollato nell'editor Apps Script e ridistribuito con
+ * una versione nuova, o l'indirizzo pubblico continua a servire quella vecchia.
+ *
+ * 30.08.2026 — ricostruito dalla Versione 12 del 24.07.2026 dopo che il 29.08
+ * nell'editor era stata incollata una versione priva di Supabase e dei consensi,
+ * salvata come Versione 13. Rispetto alla 12 cambiano due cose: il logo delle
+ * email (senza payoff, con larghezza e altezza dichiarate) e i consensi, che
+ * ora vanno in due colonne separate invece che in una sola stringa.
+ *
+ * Le credenziali Supabase NON stanno qui: sono nelle Proprieta' dello script
+ * (Impostazioni progetto → Proprieta' script), SUPABASE_URL e SUPABASE_KEY.
+ */
+
 var CABRU_EMAIL = 'info@cabru.it';
 var CABRU_NAME = 'CABRU s.a.s.';
 var CABRU_FROM = 'clienti@cabru.it';
@@ -6,6 +26,10 @@ var CABRU_FROM = 'clienti@cabru.it';
 // Da cambiare quando il sito passa sul dominio: https://www.cabru.it/img/logo-cabru-nopayoff.png
 var LOGO_URL = 'https://tdrdgit.github.io/cabru.it_website/img/logo-cabru-nopayoff.png';
 var LOGO_W = 232, LOGO_H = 40;
+
+// Le colonne dei consensi nel foglio "Richieste".
+var COL_PRIVACY = 13;   // M
+var COL_MARKETING = 14; // N
 
 function doPost(e) {
   try {
@@ -21,6 +45,28 @@ function json_(o){ return ContentService.createTextOutput(JSON.stringify(o)).set
 function esc_(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function nowStr_(){ return Utilities.formatDate(new Date(), 'Europe/Rome', 'yyyy-MM-dd HH:mm'); }
 function newId_(p){ return p + Utilities.formatDate(new Date(), 'Europe/Rome', 'yyyyMMdd-HHmmss'); }
+function si_(v){ return v ? 'Sì' : 'No'; }
+
+function foglio_(){
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  return ss.getSheetByName('Richieste') || ss.getSheets()[0];
+}
+
+function toSupabase_(rec){
+  var p = PropertiesService.getScriptProperties();
+  var url = p.getProperty('SUPABASE_URL'), key = p.getProperty('SUPABASE_KEY');
+  if (!url || !key) return;
+  try {
+    UrlFetchApp.fetch(url + '/rest/v1/richieste', {
+      method: 'post',
+      contentType: 'application/json',
+      headers: { apikey: key, Authorization: 'Bearer ' + key, Prefer: 'return=minimal' },
+      payload: JSON.stringify(rec),
+      muteHttpExceptions: true
+    });
+  } catch (e) { /* se Supabase è irraggiungibile non blocchiamo mail/foglio */ }
+}
+
 function send_(to, subject, html, replyTo){
   try {
     GmailApp.sendEmail(to, subject, '', { from: CABRU_FROM, name: CABRU_NAME, htmlBody: html, replyTo: replyTo || CABRU_EMAIL });
@@ -70,18 +116,23 @@ function prodTable_(d, en) {
 }
 
 function handleQuote_(d) {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sh = ss.getSheetByName('Richieste') || ss.getSheets()[0];
+  var sh = foglio_();
   var id = newId_('CB-');
   var en = String(d.lingua || '').toLowerCase().indexOf('en') === 0;
   sh.appendRow([ id, nowStr_(), d.lingua||'', d.nome||'', d.email||'', d.telefono||'',
-    d.azienda||'', d.reparto||'', d.numProdotti||'', d.prodotti||'', d.note||'', 'New' ]);
+    d.azienda||'', d.reparto||'', d.numProdotti||'', d.prodotti||'', d.note||'', 'QUOTATION',
+    si_(d.consensoPrivacy), si_(d.marketing) ]);
+  toSupabase_({ ref:id, tipo:'QUOTATION', lingua:d.lingua||'', nome:d.nome||'',
+    nome_proprio:d.nomeProprio||'', cognome:d.cognome||'', email:d.email||'',
+    telefono:d.telefono||'', azienda:d.azienda||'', reparto:d.reparto||'',
+    num_prodotti:d.numProdotti||null, prodotti:d.prodotti||'', messaggio:null, note:d.note||'',
+    items:d.items||null, consenso_privacy:!!d.consensoPrivacy, marketing:!!d.marketing });
 
   var contact = [['Nome',d.nome],['Email',d.email],['Telefono',d.telefono],['Azienda / Ente',d.azienda],['Reparto',d.reparto],['Note',d.note]];
   var contactEn = [['Name',d.nome],['Email',d.email],['Phone',d.telefono],['Company / Institution',d.azienda],['Department',d.reparto]];
 
   send_(CABRU_EMAIL, 'Nuova richiesta di quotazione — ' + id,
-    shell_(kicker_('Richiesta di quotazione — '+id)+prodTable_(d,false)+kicker_('Contatto')+dataTable_(contact)),
+    shell_(kicker_('Richiesta di quotazione — '+id)+prodTable_(d,false)+kicker_('Contatto')+dataTable_(contact), false),
     d.email || CABRU_EMAIL);
 
   if (d.email && d.email.indexOf('@') > 0) {
@@ -104,19 +155,24 @@ function handleQuote_(d) {
 }
 
 function handleContact_(d) {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sh = ss.getSheetByName('Contatti');
-  if (!sh) { sh = ss.insertSheet('Contatti'); sh.appendRow(['Request ID','Date/Time (Europe/Rome)','Language','Name','Email','Phone','Company / Institution','Department','Message','Status']); }
+  var sh = foglio_();
   var id = newId_('CT-');
   var en = String(d.lingua || '').toLowerCase().indexOf('en') === 0;
-  sh.appendRow([ id, nowStr_(), d.lingua||'', d.nome||'', d.email||'', d.telefono||'', d.azienda||'', d.reparto||'', d.messaggio||'', 'New' ]);
+  sh.appendRow([ id, nowStr_(), d.lingua||'', d.nome||'', d.email||'', d.telefono||'',
+    d.azienda||'', d.reparto||'', '', d.messaggio||'', '', 'INFO',
+    si_(d.consensoPrivacy), si_(d.marketing) ]);
+  toSupabase_({ ref:id, tipo:'INFO', lingua:d.lingua||'', nome:d.nome||'',
+    nome_proprio:d.nomeProprio||'', cognome:d.cognome||'', email:d.email||'',
+    telefono:d.telefono||'', azienda:d.azienda||'', reparto:d.reparto||'',
+    num_prodotti:null, prodotti:null, messaggio:d.messaggio||'', note:'',
+    items:null, consenso_privacy:!!d.consensoPrivacy, marketing:!!d.marketing });
 
   var contact = [['Nome',d.nome],['Email',d.email],['Telefono',d.telefono],['Azienda / Ente',d.azienda],['Reparto',d.reparto]];
   var contactEn = [['Name',d.nome],['Email',d.email],['Phone',d.telefono],['Company / Institution',d.azienda],['Department',d.reparto]];
   var msgHtml = '<div style="background:#f5f8fa;border-radius:8px;padding:12px 14px;font-size:14px;color:#23262b;white-space:pre-line">'+esc_(d.messaggio)+'</div>';
 
   send_(CABRU_EMAIL, 'Nuovo messaggio dal sito — ' + id,
-    shell_(kicker_('Messaggio dal sito — '+id)+msgHtml+kicker_('Contatto')+dataTable_(contact)),
+    shell_(kicker_('Messaggio dal sito — '+id)+msgHtml+kicker_('Contatto')+dataTable_(contact), false),
     d.email || CABRU_EMAIL);
 
   if (d.email && d.email.indexOf('@') > 0) {
@@ -136,4 +192,29 @@ function handleContact_(d) {
     send_(d.email, t.subj, shell_(inner, en), CABRU_EMAIL);
   }
   return json_({ ok: true, id: id });
+}
+
+/* Da lanciare UNA VOLTA SOLA dall'editor, dopo aver incollato questo codice.
+ * Intesta le due colonne dei consensi e converte le righe gia' registrate, che
+ * tenevano i due valori in una stringa sola ("Privacy: Si · Marketing: No").
+ * Rilanciarla non fa danni: sulle righe gia' convertite non trova nulla da fare. */
+function sistemaColonneConsensi() {
+  var sh = foglio_();
+  sh.getRange(1, COL_PRIVACY).setValue('Consenso privacy');
+  sh.getRange(1, COL_MARKETING).setValue('Consenso marketing');
+  var n = sh.getLastRow();
+  if (n < 2) return;
+  var vals = sh.getRange(2, COL_PRIVACY, n - 1, 2).getValues();
+  var toccate = 0;
+  for (var i = 0; i < vals.length; i++) {
+    var v = String(vals[i][0] || '');
+    if (v.indexOf('Privacy') !== 0) continue;
+    var p = /Privacy:\s*(S.|No)/.exec(v);
+    var m = /Marketing:\s*(S.|No)/.exec(v);
+    vals[i][0] = p ? (p[1] === 'No' ? 'No' : 'Sì') : '';
+    vals[i][1] = m ? (m[1] === 'No' ? 'No' : 'Sì') : '';
+    toccate++;
+  }
+  sh.getRange(2, COL_PRIVACY, n - 1, 2).setValues(vals);
+  SpreadsheetApp.getActiveSpreadsheet().toast(toccate + ' righe convertite', 'Consensi', 5);
 }
