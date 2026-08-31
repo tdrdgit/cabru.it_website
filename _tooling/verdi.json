@@ -1,0 +1,5 @@
+{
+  "_cosa_e": "Registro dei testi modificati da un umano. Chiave: nome del foglio. Valore: i testi che in colonna B vanno scritti in verde. Sopravvive alla rigenerazione dell'XLS, che altrimenti riscriverebbe tutto in grigio.",
+  "_verde": "1B5E20 - stesso verde della convenzione globale: una decisione presa da un umano, che vale anche per le prossime volte.",
+  "testi": {}
+}

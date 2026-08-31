@@ -13,6 +13,15 @@ SITE = os.path.dirname(HERE)                # la cartella sito/ (padre di _tooli
 OUT  = os.path.join(HERE, "CABRU_testi_IT_da_correggere.xlsx")  # XLS dentro _tooling: versionato e visibile in Antigravity, ma ignorato da Pages (cartella con _)
 DESC = json.load(open(os.path.join(HERE, "desc.json"), encoding="utf-8"))["it"]
 
+# Registro dei testi decisi da un umano: senza questo, ogni rigenerazione li riscrive in grigio
+VERDI_PATH = os.path.join(HERE, "verdi.json")
+try:
+    VERDI = json.load(open(VERDI_PATH, encoding="utf-8")).get("testi", {})
+except FileNotFoundError:
+    VERDI = {}
+def e_verde(tab, testo):
+    return norm(testo) in {norm(t) for t in VERDI.get(tab, [])}
+
 # ---------- stili ----------
 TITLE_FILL = PatternFill("solid", fgColor="0F80A8")
 TITLE_FONT = Font(bold=True, color="FFFFFF", size=13)
@@ -24,6 +33,7 @@ MARK_FILL  = PatternFill("solid", fgColor="D9D9D9")
 MARK_FONT  = Font(bold=True, color="333333", size=10)
 CORR_FILL  = PatternFill("solid", fgColor="FFFCEC")   # colonna correzione, leggermente evidenziata
 BODY_FONT  = Font(size=10, color="222222")
+GREEN_FONT = Font(size=10, color="1B5E20", bold=True)   # testo voluto da un umano: non si tocca senza segnalarlo
 TYPE_FONT  = Font(size=9,  color="777777", italic=True)
 WRAP  = Alignment(wrap_text=True, vertical="top")
 WRAPC = Alignment(wrap_text=True, vertical="center")
@@ -176,7 +186,8 @@ def write_sheet(wb, tab, page_title, title_tag, meta, rows, list_mode=False):
         if divider:
             a.fill = b.fill = DIV_FILL; b.font = DIV_FONT; a.font = TYPE_FONT
         else:
-            a.font = TYPE_FONT; b.font = BODY_FONT
+            a.font = TYPE_FONT
+            b.font = GREEN_FONT if e_verde(ws.title, text) else BODY_FONT
         cc.fill = CORR_FILL
         ws.row_dimensions[r].height = est_height(text)
         r += 1
@@ -193,6 +204,22 @@ def write_sheet(wb, tab, page_title, title_tag, meta, rows, list_mode=False):
             typ, text, div = tup
             row(typ, text, div)
     return ws
+
+# ---------- salvaguardia: non si sovrascrivono correzioni non ancora processate ----------
+# Rigenerare riscrive il file da zero: una richiesta di modifica ancora in colonna C
+# sparirebbe senza dire niente. Prima si processa (correzioni.py), poi si rigenera.
+if os.path.exists(OUT) and "--forza" not in sys.argv:
+    _wb = openpyxl.load_workbook(OUT)
+    _p = [(w.title, r) for w in _wb.worksheets if w.title != "Istruzioni"
+          for r in range(3, w.max_row + 1)
+          if w.cell(r, 3).value and str(w.cell(r, 3).value).strip()]
+    if _p:
+        print(f"FERMO: ci sono {len(_p)} correzioni ancora da processare, e rigenerare le cancellerebbe.")
+        for t, r in _p[:10]: print(f"   {t} riga {r}")
+        print("Prima:  python3 correzioni.py elenca   (poi integrale nel sito, IT+EN, e correzioni.py chiudi)")
+        print("Oppure, se sono da buttare:  python3 build_xls.py --forza")
+        sys.exit(1)
+    _wb.close()
 
 # ---------- costruzione workbook ----------
 wb = openpyxl.Workbook()
