@@ -32,7 +32,7 @@ Sito bilingue: italiano su https://www.cabru.it/ , inglese su https://www.cabru.
 - [MAGBIO in Italia](https://www.cabru.it/aziende/magbio/)
 - [ReliaTech in Italia](https://www.cabru.it/aziende/reliatech/)
 - [Rovalab in Italia](https://www.cabru.it/aziende/rovalab/)
-- [SEQENS in Italia](https://www.cabru.it/aziende/seqens/)
+- [Solabia in Italia](https://www.cabru.it/aziende/solabia/)
 
 ## Guide e applicazioni
 - [Eicosanoidi](https://www.cabru.it/guide/eicosanoidi/): mediatori lipidici derivati dall'acido arachidonico — prostaglandine, trombossani, leucotrieni e lipossine — con i saggi e gli standard per studiarli.

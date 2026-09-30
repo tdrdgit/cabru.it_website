@@ -367,7 +367,7 @@
           ],
           [
             "p",
-            "CABRU rappresenta proteine di [ReliaTech](/aziende/reliatech/) (citochine e fattori di crescita), [BioVendor](/aziende/biovendor/), [FineTest](/aziende/finetest/), [Enzyme Research Laboratories](/aziende/enzyme-research-laboratories/) (proteine ed enzimi della coagulazione) e [SEQENS](/aziende/seqens/) (BSA)."
+            "CABRU rappresenta proteine di [ReliaTech](/aziende/reliatech/) (citochine e fattori di crescita), [BioVendor](/aziende/biovendor/), [FineTest](/aziende/finetest/), [Enzyme Research Laboratories](/aziende/enzyme-research-laboratories/) (proteine ed enzimi della coagulazione) e [Solabia](/aziende/solabia/) (BSA)."
           ],
           [
             "h2",
@@ -421,7 +421,7 @@
           ],
           [
             "p",
-            "CABRU represents proteins from [ReliaTech](/en/brands/reliatech/) (cytokines and growth factors), [BioVendor](/en/brands/biovendor/), [FineTest](/en/brands/finetest/), [Enzyme Research Laboratories](/en/brands/enzyme-research-laboratories/) (coagulation proteins and enzymes) and [SEQENS](/en/brands/seqens/) (BSA)."
+            "CABRU represents proteins from [ReliaTech](/en/brands/reliatech/) (cytokines and growth factors), [BioVendor](/en/brands/biovendor/), [FineTest](/en/brands/finetest/), [Enzyme Research Laboratories](/en/brands/enzyme-research-laboratories/) (coagulation proteins and enzymes) and [Solabia](/en/brands/solabia/) (BSA)."
           ],
           [
             "h2",
@@ -815,7 +815,7 @@
           ],
           [
             "p",
-            "CABRU rappresenta prodotti di [Candor Bioscience](/aziende/candor-bioscience/) (buffer e stabilizzanti per ottimizzare gli anticorpi in ELISA, WB, IF, ICC, IHC, IP e array), [SEQENS](/aziende/seqens/) (BSA) e [G Biosciences](/aziende/g-biosciences/) (reagenti e polveri di laboratorio)."
+            "CABRU rappresenta prodotti di [Candor Bioscience](/aziende/candor-bioscience/) (buffer e stabilizzanti per ottimizzare gli anticorpi in ELISA, WB, IF, ICC, IHC, IP e array), [Solabia](/aziende/solabia/) (BSA) e [G Biosciences](/aziende/g-biosciences/) (reagenti e polveri di laboratorio)."
           ],
           [
             "h2",
@@ -833,7 +833,7 @@
           ],
           [
             "È disponibile BSA per il laboratorio?",
-            "Sì, tramite SEQENS. Il dettaglio è riportato nella [pagina SEQENS](/aziende/seqens/)."
+            "Sì, tramite Solabia. Il dettaglio è riportato nella [pagina Solabia](/aziende/solabia/)."
           ],
           [
             "Le soluzioni sono pronte all'uso o da preparare?",
@@ -869,7 +869,7 @@
           ],
           [
             "p",
-            "CABRU represents products from [Candor Bioscience](/en/brands/candor-bioscience/) (buffers and stabilisers to optimise antibodies in ELISA, WB, IF, ICC, IHC, IP and array), [SEQENS](/en/brands/seqens/) (BSA) and [G Biosciences](/en/brands/g-biosciences/) (lab reagents and powders)."
+            "CABRU represents products from [Candor Bioscience](/en/brands/candor-bioscience/) (buffers and stabilisers to optimise antibodies in ELISA, WB, IF, ICC, IHC, IP and array), [Solabia](/en/brands/solabia/) (BSA) and [G Biosciences](/en/brands/g-biosciences/) (lab reagents and powders)."
           ],
           [
             "h2",
@@ -887,7 +887,7 @@
           ],
           [
             "Is BSA available for the laboratory?",
-            "Yes, through SEQENS. Details are given on the [SEQENS page](/en/brands/seqens/)."
+            "Yes, through Solabia. Details are given on the [Solabia page](/en/brands/solabia/)."
           ],
           [
             "Are the solutions ready-to-use or to be prepared?",
@@ -2353,25 +2353,25 @@
       }
     },
     {
-      "key": "/aziende/seqens/",
-      "name": "SEQENS",
+      "key": "/aziende/solabia/",
+      "name": "Solabia",
       "it": {
-        "title": "SEQENS Italia — BSA (albumina sierica bovina) | CABRU",
-        "meta": "CABRU rappresenta SEQENS in Italia per la BSA (albumina sierica bovina) da laboratorio. Richiedi informazioni, disponibilità e preventivo.",
-        "h1": "SEQENS in Italia",
-        "keywords": "SEQENS Italia, BSA albumina sierica bovina",
+        "title": "Solabia Italia — BSA (albumina sierica bovina) | CABRU",
+        "meta": "CABRU rappresenta Solabia in Italia per la BSA (albumina sierica bovina) da laboratorio. Richiedi informazioni, disponibilità e preventivo.",
+        "h1": "Solabia in Italia",
+        "keywords": "Solabia Italia, BSA albumina sierica bovina",
         "blocks": [
           [
             "h2",
-            "Chi è SEQENS"
+            "Chi è Solabia"
           ],
           [
             "p",
-            "SEQENS è un gruppo internazionale attivo nella chimica di specialità e negli ingredienti per le scienze della vita, tra cui la produzione di albumina sierica bovina (BSA)."
+            "Solabia è un gruppo francese, fondato nel 1972, che sviluppa e produce ingredienti biotecnologici e soluzioni diagnostiche. Nel 2026 ha rilevato da Seqens l'attività di diagnostica in vitro di Limoges, dove viene prodotta l'albumina sierica bovina (BSA)."
           ],
           [
             "h2",
-            "Cosa produce SEQENS"
+            "Cosa produce Solabia"
           ],
           [
             "p",
@@ -2387,17 +2387,17 @@
           ],
           [
             "h2",
-            "SEQENS con CABRU"
+            "Solabia con CABRU"
           ],
           [
             "p",
-            "CABRU rappresenta SEQENS in Italia come unico referente per la BSA, offrendo informazioni tecniche, verifica della disponibilità, preventivo e gestione dell'ordine fino alla consegna."
+            "CABRU rappresenta Solabia in Italia come unico referente per la BSA, offrendo informazioni tecniche, verifica della disponibilità, preventivo e gestione dell'ordine fino alla consegna."
           ]
         ],
         "faq": [
           [
-            "Chi distribuisce la BSA SEQENS in Italia?",
-            "CABRU rappresenta e distribuisce SEQENS in Italia per la BSA."
+            "Chi distribuisce la BSA Solabia in Italia?",
+            "CABRU rappresenta e distribuisce Solabia in Italia per la BSA."
           ],
           [
             "A cosa serve la BSA in laboratorio?",
@@ -2410,22 +2410,22 @@
         ]
       },
       "en": {
-        "title": "SEQENS in Italy — BSA (bovine serum albumin) | CABRU",
-        "meta": "CABRU represents SEQENS in Italy for laboratory-grade BSA (bovine serum albumin). Request information, availability and a quote.",
-        "h1": "SEQENS in Italy",
-        "keywords": "SEQENS Italy, BSA bovine serum albumin",
+        "title": "Solabia in Italy — BSA (bovine serum albumin) | CABRU",
+        "meta": "CABRU represents Solabia in Italy for laboratory-grade BSA (bovine serum albumin). Request information, availability and a quote.",
+        "h1": "Solabia in Italy",
+        "keywords": "Solabia Italy, BSA bovine serum albumin",
         "blocks": [
           [
             "h2",
-            "About SEQENS"
+            "About Solabia"
           ],
           [
             "p",
-            "SEQENS is an international group active in specialty chemistry and life-science ingredients, including the production of bovine serum albumin (BSA)."
+            "Solabia is a French group, founded in 1972, that develops and produces biotech ingredients and diagnostic solutions. In 2026 it took over Seqens' in-vitro diagnostics business in Limoges, where bovine serum albumin (BSA) is produced."
           ],
           [
             "h2",
-            "What SEQENS makes"
+            "What Solabia makes"
           ],
           [
             "p",
@@ -2441,17 +2441,17 @@
           ],
           [
             "h2",
-            "SEQENS with CABRU"
+            "Solabia with CABRU"
           ],
           [
             "p",
-            "CABRU represents SEQENS in Italy as a single point of contact for BSA, providing technical information, availability checks, quotation and order handling through to delivery."
+            "CABRU represents Solabia in Italy as a single point of contact for BSA, providing technical information, availability checks, quotation and order handling through to delivery."
           ]
         ],
         "faq": [
           [
-            "Who distributes SEQENS BSA in Italy?",
-            "CABRU represents and distributes SEQENS in Italy for BSA."
+            "Who distributes Solabia BSA in Italy?",
+            "CABRU represents and distributes Solabia in Italy for BSA."
           ],
           [
             "What is BSA used for in the laboratory?",
@@ -2487,7 +2487,7 @@
           ],
           [
             "p",
-            "- **[Anticorpi](/prodotti/anticorpi/):** ExBio, ReliaTech, IMMBIOMED, Affinity Biologicals, BioMedica Diagnostics, Cayman Chemical, BioVendor, FineTest.\n- **[Kit ELISA](/prodotti/kit-elisa/):** BioVendor, FineTest, LDN, Affinity Biologicals, DIA.PRO, Cayman Chemical.\n- **[Proteine](/prodotti/proteine/):** ReliaTech, Enzyme Research Laboratories, BioVendor, FineTest, SEQENS.\n- **[Acidi nucleici](/prodotti/acidi-nucleici/):** A&A Biotechnology, Bioatlas, Rovalab, MAGBIO, SMOBIO.\n- **[Elettroforesi e western blot](/prodotti/elettroforesi-western-blot/):** G Biosciences, SMOBIO.\n- **[Molecole biochimiche](/prodotti/molecole-biochimiche/):** Cayman Chemical, G Biosciences.\n- **[Terreni per microbiologia](/prodotti/terreni-microbiologia/):** Condalab.\n- **[Soluzioni e polveri](/prodotti/soluzioni-polveri/):** Candor Bioscience, SEQENS, G Biosciences."
+            "- **[Anticorpi](/prodotti/anticorpi/):** ExBio, ReliaTech, IMMBIOMED, Affinity Biologicals, BioMedica Diagnostics, Cayman Chemical, BioVendor, FineTest.\n- **[Kit ELISA](/prodotti/kit-elisa/):** BioVendor, FineTest, LDN, Affinity Biologicals, DIA.PRO, Cayman Chemical.\n- **[Proteine](/prodotti/proteine/):** ReliaTech, Enzyme Research Laboratories, BioVendor, FineTest, Solabia.\n- **[Acidi nucleici](/prodotti/acidi-nucleici/):** A&A Biotechnology, Bioatlas, Rovalab, MAGBIO, SMOBIO.\n- **[Elettroforesi e western blot](/prodotti/elettroforesi-western-blot/):** G Biosciences, SMOBIO.\n- **[Molecole biochimiche](/prodotti/molecole-biochimiche/):** Cayman Chemical, G Biosciences.\n- **[Terreni per microbiologia](/prodotti/terreni-microbiologia/):** Condalab.\n- **[Soluzioni e polveri](/prodotti/soluzioni-polveri/):** Candor Bioscience, Solabia, G Biosciences."
           ],
           [
             "h2",
@@ -2533,7 +2533,7 @@
           ],
           [
             "p",
-            "- **[Antibodies](/en/products/antibodies/):** ExBio, ReliaTech, IMMBIOMED, Affinity Biologicals, BioMedica Diagnostics, Cayman Chemical, BioVendor, FineTest.\n- **[ELISA kits](/en/products/elisa-kits/):** BioVendor, FineTest, LDN, Affinity Biologicals, DIA.PRO, Cayman Chemical.\n- **[Proteins](/en/products/proteins/):** ReliaTech, Enzyme Research Laboratories, BioVendor, FineTest, SEQENS.\n- **[Nucleic acids](/en/products/nucleic-acids/):** A&A Biotechnology, Bioatlas, Rovalab, MAGBIO, SMOBIO.\n- **[Electrophoresis & western blot](/en/products/electrophoresis-western-blot/):** G Biosciences, SMOBIO.\n- **[Biochemicals](/en/products/biochemicals/):** Cayman Chemical, G Biosciences.\n- **[Microbiology media](/en/products/microbiology-media/):** Condalab.\n- **[Solutions & powders](/en/products/solutions-powders/):** Candor Bioscience, SEQENS, G Biosciences."
+            "- **[Antibodies](/en/products/antibodies/):** ExBio, ReliaTech, IMMBIOMED, Affinity Biologicals, BioMedica Diagnostics, Cayman Chemical, BioVendor, FineTest.\n- **[ELISA kits](/en/products/elisa-kits/):** BioVendor, FineTest, LDN, Affinity Biologicals, DIA.PRO, Cayman Chemical.\n- **[Proteins](/en/products/proteins/):** ReliaTech, Enzyme Research Laboratories, BioVendor, FineTest, Solabia.\n- **[Nucleic acids](/en/products/nucleic-acids/):** A&A Biotechnology, Bioatlas, Rovalab, MAGBIO, SMOBIO.\n- **[Electrophoresis & western blot](/en/products/electrophoresis-western-blot/):** G Biosciences, SMOBIO.\n- **[Biochemicals](/en/products/biochemicals/):** Cayman Chemical, G Biosciences.\n- **[Microbiology media](/en/products/microbiology-media/):** Condalab.\n- **[Solutions & powders](/en/products/solutions-powders/):** Candor Bioscience, Solabia, G Biosciences."
           ],
           [
             "h2",
@@ -2583,7 +2583,7 @@
           ],
           [
             "p",
-            "- **[Anticorpi](/prodotti/anticorpi/):** ExBio, ReliaTech, IMMBIOMED, Affinity Biologicals, BioMedica Diagnostics, Cayman Chemical, BioVendor, FineTest.\n- **[Kit ELISA](/prodotti/kit-elisa/):** BioVendor, FineTest, LDN, Affinity Biologicals, DIA.PRO, Cayman Chemical.\n- **[Proteine](/prodotti/proteine/):** ReliaTech, Enzyme Research Laboratories, BioVendor, FineTest, SEQENS.\n- **[Acidi nucleici](/prodotti/acidi-nucleici/):** A&A Biotechnology, Bioatlas, Rovalab, MAGBIO, SMOBIO.\n- **[Elettroforesi e western blot](/prodotti/elettroforesi-western-blot/):** G Biosciences, SMOBIO.\n- **[Molecole biochimiche](/prodotti/molecole-biochimiche/):** Cayman Chemical, G Biosciences.\n- **[Terreni per microbiologia](/prodotti/terreni-microbiologia/):** Condalab.\n- **[Soluzioni e polveri](/prodotti/soluzioni-polveri/):** Candor Bioscience, SEQENS, G Biosciences."
+            "- **[Anticorpi](/prodotti/anticorpi/):** ExBio, ReliaTech, IMMBIOMED, Affinity Biologicals, BioMedica Diagnostics, Cayman Chemical, BioVendor, FineTest.\n- **[Kit ELISA](/prodotti/kit-elisa/):** BioVendor, FineTest, LDN, Affinity Biologicals, DIA.PRO, Cayman Chemical.\n- **[Proteine](/prodotti/proteine/):** ReliaTech, Enzyme Research Laboratories, BioVendor, FineTest, Solabia.\n- **[Acidi nucleici](/prodotti/acidi-nucleici/):** A&A Biotechnology, Bioatlas, Rovalab, MAGBIO, SMOBIO.\n- **[Elettroforesi e western blot](/prodotti/elettroforesi-western-blot/):** G Biosciences, SMOBIO.\n- **[Molecole biochimiche](/prodotti/molecole-biochimiche/):** Cayman Chemical, G Biosciences.\n- **[Terreni per microbiologia](/prodotti/terreni-microbiologia/):** Condalab.\n- **[Soluzioni e polveri](/prodotti/soluzioni-polveri/):** Candor Bioscience, Solabia, G Biosciences."
           ],
           [
             "h2",
@@ -2629,7 +2629,7 @@
           ],
           [
             "p",
-            "- **[Antibodies](/en/products/antibodies/):** ExBio, ReliaTech, IMMBIOMED, Affinity Biologicals, BioMedica Diagnostics, Cayman Chemical, BioVendor, FineTest.\n- **[ELISA kits](/en/products/elisa-kits/):** BioVendor, FineTest, LDN, Affinity Biologicals, DIA.PRO, Cayman Chemical.\n- **[Proteins](/en/products/proteins/):** ReliaTech, Enzyme Research Laboratories, BioVendor, FineTest, SEQENS.\n- **[Nucleic acids](/en/products/nucleic-acids/):** A&A Biotechnology, Bioatlas, Rovalab, MAGBIO, SMOBIO.\n- **[Electrophoresis & western blot](/en/products/electrophoresis-western-blot/):** G Biosciences, SMOBIO.\n- **[Biochemicals](/en/products/biochemicals/):** Cayman Chemical, G Biosciences.\n- **[Microbiology media](/en/products/microbiology-media/):** Condalab.\n- **[Solutions & powders](/en/products/solutions-powders/):** Candor Bioscience, SEQENS, G Biosciences."
+            "- **[Antibodies](/en/products/antibodies/):** ExBio, ReliaTech, IMMBIOMED, Affinity Biologicals, BioMedica Diagnostics, Cayman Chemical, BioVendor, FineTest.\n- **[ELISA kits](/en/products/elisa-kits/):** BioVendor, FineTest, LDN, Affinity Biologicals, DIA.PRO, Cayman Chemical.\n- **[Proteins](/en/products/proteins/):** ReliaTech, Enzyme Research Laboratories, BioVendor, FineTest, Solabia.\n- **[Nucleic acids](/en/products/nucleic-acids/):** A&A Biotechnology, Bioatlas, Rovalab, MAGBIO, SMOBIO.\n- **[Electrophoresis & western blot](/en/products/electrophoresis-western-blot/):** G Biosciences, SMOBIO.\n- **[Biochemicals](/en/products/biochemicals/):** Cayman Chemical, G Biosciences.\n- **[Microbiology media](/en/products/microbiology-media/):** Condalab.\n- **[Solutions & powders](/en/products/solutions-powders/):** Candor Bioscience, Solabia, G Biosciences."
           ],
           [
             "h2",

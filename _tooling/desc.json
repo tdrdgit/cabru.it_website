@@ -72,8 +72,8 @@
       "name": "Rovalab",
       "desc": "Nucleotidi, Taq DNA polimerasi, mix per PCR."
     },
-    "seqens": {
-      "name": "SEQENS",
+    "solabia": {
+      "name": "Solabia",
       "desc": "Bovine Serum Albumin (BSA)."
     },
     "smobio": {
@@ -154,8 +154,8 @@
       "name": "Rovalab",
       "desc": "Nucleotides, Taq DNA polymerase, PCR mixes."
     },
-    "seqens": {
-      "name": "SEQENS",
+    "solabia": {
+      "name": "Solabia",
       "desc": "Bovine Serum Albumin (BSA)."
     },
     "smobio": {

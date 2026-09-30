@@ -72,7 +72,7 @@ BRAND_SITE = {
     "magbio": "https://www.magbiogenomics.com/",
     "reliatech": "https://www.reliatech.de/",
     "rovalab": "http://www.rovalab.com/",
-    "seqens": "https://www.seqens.com/",
+    "solabia": "https://www.solabia.com/",
     "smobio": "https://www.smobio.com/",
 }
 

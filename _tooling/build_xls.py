@@ -283,7 +283,7 @@ t, m, hubrows = extract_doc(os.path.join(SITE, "aziende/index.html"))
 BRANDS = ["cayman-chemical", "a-a-biotechnology", "affinity-biologicals", "bioatlas",
           "biomedica-diagnostics", "biovendor", "candor-bioscience", "condalab",
           "enzyme-research-laboratories", "exbio", "finetest", "g-biosciences",
-          "ldn", "magbio", "reliatech", "rovalab", "seqens"]
+          "ldn", "magbio", "reliatech", "rovalab", "solabia"]
 list_rows = [(DESC[s]["name"], DESC[s]["desc"]) for s in BRANDS]
 ws = write_sheet(wb, "Le aziende che rappresentiamo",
                  "Le aziende che rappresentiamo — nome + descrizione", "", "",
