@@ -12,9 +12,17 @@ deploy. Cosi' il lastmod non va mai aggiornato a mano, che e' il modo con cui
 diventa un segnale falso.
 
 changefreq e priority non vengono scritti: Google li ignora da anni.
+
+Dal 05.10.2026 scrive anche il dateModified nel JSON-LD di ogni pagina, sul nodo
+che rappresenta la pagina (FAQPage, AboutPage, ContactPage, TechArticle...), con
+la stessa data del lastmod: due date diverse per la stessa pagina sono un
+segnale che si contraddice. Se la data va cambiata, si scrive quella di oggi,
+perche' il file cambia e verra' committato oggi. Le pagine senza un nodo pagina
+(privacy, termini, catalogo, qualita', hub prodotti) restano senza.
 """
 
 import datetime
+import json
 import os
 import re
 import subprocess
@@ -22,6 +30,37 @@ import sys
 
 BASE = "https://www.cabru.it"
 SITEMAP = "sitemap.xml"
+PAGINA = {"WebPage", "FAQPage", "AboutPage", "ContactPage", "CollectionPage",
+          "TechArticle", "Article"}
+LD = re.compile(r'(<script type="application/ld\+json">)(.*?)(</script>)', re.S)
+
+
+def scrivi_data(path, d):
+    """Allinea il dateModified del nodo pagina a d; ritorna la data che vale per la pagina."""
+    testo = open(path, encoding="utf-8").read()
+    oggi = datetime.date.today().isoformat()
+    esito = {"data": d, "trovato": False}
+
+    def sostituisci(m):
+        if esito["trovato"]:
+            return m.group(0)
+        blocco = m.group(2)
+        nodo = json.loads(blocco)
+        if not isinstance(nodo, dict) or nodo.get("@type") not in PAGINA:
+            return m.group(0)
+        esito["trovato"] = True
+        if nodo.get("dateModified") == d:
+            return m.group(0)
+        # si rispetta la forma del blocco: compatto se era compatto
+        compatto = json.dumps(nodo, ensure_ascii=False, separators=(",", ":")) == blocco
+        nodo["dateModified"] = esito["data"] = oggi
+        sep = (",", ":") if compatto else None
+        return m.group(1) + json.dumps(nodo, ensure_ascii=False, separators=sep) + m.group(3)
+
+    nuovo = LD.sub(sostituisci, testo)
+    if nuovo != testo:
+        open(path, "w", encoding="utf-8").write(nuovo)
+    return esito["data"]
 
 
 def is_dirty(path):
@@ -91,7 +130,7 @@ def main():
     ]
     uncommitted = []
     for loc, fp in pages:
-        d = last_modified(fp)
+        d = scrivi_data(fp, last_modified(fp))
         if is_dirty(fp):
             uncommitted.append(loc)
         out += ["  <url>", f"    <loc>{loc}</loc>", f"    <lastmod>{d}</lastmod>", "  </url>"]
